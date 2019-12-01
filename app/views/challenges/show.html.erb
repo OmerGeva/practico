@@ -1,1 +1,39 @@
-<h1>Current Challenge</h1>
+<h1 class="text-center"><%= @challenge.skill.title %></h1>
+<div class="container">
+  <div class="grid">
+    <div class="row mt-2">
+      <div class="col-4">
+        <div class="challenge-page-card">
+          <h2> Challenge Leaderboard</h2>
+          <ol>
+            <% @challenge.users.order(:user_progress).each do |user| %>
+              <li><p><%= user.username %></p></li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="challenge-page-card">
+          <h2> Challenge Group Stats</h2>
+          <% @challenge.users.order(:user_progress).each do |user| %>
+            <p><%= user.username %> - <%= @challenge.users_challenges.find_by(user: user).user_progress %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-4">
+        <div class="challenge-page-card">
+          <h2> Challenge Trashtalk Board</h2>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="challenge-page-card">
+          <h2> Challenge Personal Stats</h2>
+            <p><%= current_user.username %> - <%= @challenge.users_challenges.find_by(user: current_user).user_progress %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

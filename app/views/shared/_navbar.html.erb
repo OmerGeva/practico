@@ -38,15 +38,19 @@
 <!-- Vertical navbar -->
 <div class="vertical-nav bg-white" id="sidebar">
   <div class="py-4 px-3 mb-4 bg-light">
-    <div class="media d-flex align-items-center">
-      <img class="avatar-large mr-2" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
-      <div class="media-body">
-        <h4 class="m-0">
-          <%= current_user.first_name %>
-          <%= current_user.last_name %>
-        </h4>
-        <p class="font-weight-light text-muted mb-0"><%= current_user.username %></p>
-      </div>
+    <% unless current_user.nil? %>
+      <div class="media d-flex align-items-center">
+        <img class="avatar-large mr-2" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
+        <div class="media-body">
+          <h4 class="m-0">
+              <%= current_user.first_name %>
+              <%= current_user.last_name %>
+          </h4>
+          <p class="font-weight-light text-muted mb-0">
+            <%= current_user.username %>
+          </p>
+        </div>
+      <% end %>
     </div>
   </div>
 

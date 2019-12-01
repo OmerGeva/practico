@@ -1,5 +1,14 @@
 class AccountsController < ApplicationController
   def show
+    if params[:query]
+      @user = User.find_by(username: params[:query])
+    else
+      @user = User.find(params[:id])
+    end
+    skip_authorization
+  end
+
+  def friends
     @user = User.find(params[:id])
     skip_authorization
   end

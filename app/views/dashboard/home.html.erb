@@ -1,5 +1,13 @@
 <% link_to 'New challenge', new_challenge_path, class: 'btn btn-primary' %>
-
+<div style="width: 200px">
+<%= form_tag account_path(current_user), method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Enter Username"
+      %>
+      <% end %>
+</div>
 <div class="dashboard-container">
 
     <div class="col-4">
@@ -17,12 +25,16 @@
 
       <!-- ACHIEVEMENTS -->
       <div class="achievements">
-        Achievements
+        <h4>Achievements</h4>
       </div>
 
       <!-- NOTIFICATIONS -->
       <div class="notifications">
-        Notiffications
+        <h4>Notifications</h4>
+        <h6>Friend Requests:</h6>
+        <% current_user.requested_friends.each do |friend| %>
+          <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}"  %> <%= link_to "Accept", accept_friend_account_path(friend), method: :post, class: "btn btn-primary btn-sm" %>
+        <% end %>
       </div>
 
     </div>
@@ -35,7 +47,7 @@
         <div class="challenge-card">
           <p><%= link_to user_challenge.challenge.skill.title, challenge_path(user_challenge) %></p>
           <p>Milestone: <%= user_challenge.challenge.milestone %></p>
-          <p>Start Date: <%= user_challenge.challenge.starting_date %></p>
+          <p>Start Date: <%= user_challenge.challenge.starting_date.strftime('%B %e at %l:%M %p') %></p>
           <p><%= user_challenge.challenge.description %></p>
           <%= link_to "Check in", '#', class: 'btn btn-secondary' %>
         </div>

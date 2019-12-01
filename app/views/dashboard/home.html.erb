@@ -1,2 +1,7 @@
-<h1>Dashboard#home</h1>
-<p>Find me in app/views/dashboard/home.html.erb</p>
+<h1>Dashboard</h1>
+
+<%= link_to 'New challenge', new_challenge_path, class: 'btn btn-primary' %>
+
+<% @challenges.each do |challenge| %>
+  <p><%= link_to challenge.skill.title, challenge_path(challenge) %></p>
+<% end %>

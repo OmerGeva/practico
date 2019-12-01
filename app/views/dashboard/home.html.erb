@@ -7,22 +7,22 @@
       <!-- USER INFO -->
       <div class="user-info">
         <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
-        <p><%= User.last.username %></p>
-        <p><%= User.last.email %></p>
+        <p><%= current_user.username %></p>
+        <p><%= current_user.email %></p>
         <p>
-          <%= User.last.first_name %>
-          <%= User.last.last_name %>
+          <%= current_user.first_name %>
+          <%= current_user.last_name %>
         </p>
       </div>
 
       <!-- ACHIEVEMENTS -->
       <div class="achievements">
-
+        Achievements
       </div>
 
       <!-- NOTIFICATIONS -->
       <div class="notifications">
-
+        Notiffications
       </div>
 
     </div>

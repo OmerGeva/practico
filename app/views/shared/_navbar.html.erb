@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<!-- <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "http://cdn.shopify.com/s/files/1/1933/5861/products/02073-6_P_grande.png?v=1528479474" %>
     <% end %>
@@ -32,4 +32,77 @@
       <% end %>
     </ul>
   </div>
+</div> -->
+
+
+<!-- Vertical navbar -->
+<div class="vertical-nav bg-white" id="sidebar">
+  <div class="py-4 px-3 mb-4 bg-light">
+    <div class="media d-flex align-items-center">
+      <img class="avatar-large mr-2" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
+      <div class="media-body">
+        <h4 class="m-0">
+          <%= current_user.first_name %>
+          <%= current_user.last_name %>
+        </h4>
+        <p class="font-weight-light text-muted mb-0"><%= current_user.username %></p>
+      </div>
+    </div>
+  </div>
+
+  <ul class="nav flex-column bg-white mb-0">
+
+    <li class="nav-item">
+      <%= link_to new_challenge_path do %>
+        <img class='navbar-icons' src="https://image.flaticon.com/icons/svg/561/561169.svg" alt="new challenge">
+        <p>New Challenge</p>
+      <% end %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to dashboard_home_path do %>
+        <img src="https://image.flaticon.com/icons/svg/1828/1828791.svg" alt="dashboard">
+        <p>Dashboard</p>
+        <!-- ! Make active ! -->
+      <% end %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to '#' do %>
+        <img src="https://image.flaticon.com/icons/svg/1170/1170667.svg" alt="charts">
+        <p>Charts</p>
+      <% end %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to '#' do %>
+        <img src="https://image.flaticon.com/icons/svg/59/59293.svg" alt="friends">
+        <p>Friends</p>
+      <% end %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to '#' do %>
+        <img src="https://image.flaticon.com/icons/svg/860/860733.svg" alt="user profile">
+        <p>User Profile</p>
+      <% end %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to '#' do %>
+        <img src="https://image.flaticon.com/icons/svg/61/61469.svg" alt="schedule">
+        <p>Schedule</p>
+      <% end %>
+    </li>
+
+  </ul>
+
 </div>
+<!-- End vertical navbar -->
+
+
+<!-- Page content holder -->
+<div class="page-content p-5" id="content">
+  <!-- Toggle button -->
+  <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
+

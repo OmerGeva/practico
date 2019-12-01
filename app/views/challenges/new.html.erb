@@ -1,11 +1,37 @@
 <h1>New Challenge</h1>
 
+<%= simple_form_for [@challenge] do |f| %>
 <!-- Choose pre-made challenges or create challenge -->
 
-<!-- Create Challenge -->
+<!-- ############ Create Challenge ################## -->
 
 <!-- Set Skill -->
+<%= f.input :skill, label: 'What do you want to work on?' %>
 
 <!-- Set Goal -->
+<%= f.input :starting_date, label: 'When should we start?' %>
+<%= f.input :milestone, label: 'First to...' %>
 
 <!-- Start Date -->
+
+<!-- Users -->
+
+<!-- Proof -->
+
+<!-- Sponsors -->
+
+<!-- Stakes -->
+<%= f.input :first_place %>
+<%= f.input :last_place %>
+
+<%= f.submit "New Challenge", class: "btn btn-primary ml-3", id:"new-challenge-button" %>
+<% end %>
+
+<!--
+
+skill: skill2,
+  milestone: 500,
+  starting_date: Date.new,
+  first_place: "Gets a trip to Japan paid for by loser",
+  last_place: "Pays for the winner's trip to Japan",
+  description: "Learning Japanese for a certain amount of hours" -->

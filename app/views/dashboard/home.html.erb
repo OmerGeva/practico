@@ -1,2 +1,47 @@
-<h1>Dashboard#home</h1>
-<p>Find me in app/views/dashboard/home.html.erb</p>
+<% link_to 'New challenge', new_challenge_path, class: 'btn btn-primary' %>
+
+<div class="dashboard-container">
+
+    <div class="col-4">
+
+      <!-- USER INFO -->
+      <div class="user-info">
+        <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
+        <p><%= User.last.username %></p>
+        <p><%= User.last.email %></p>
+        <p>
+          <%= User.last.first_name %>
+          <%= User.last.last_name %>
+        </p>
+      </div>
+
+      <!-- ACHIEVEMENTS -->
+      <div class="achievements">
+
+      </div>
+
+      <!-- NOTIFICATIONS -->
+      <div class="notifications">
+
+      </div>
+
+    </div>
+
+    <!-- CHALLENGES -->
+    <div class="col-8 challenges-index pl-0">
+      <% @users_challenges.each do |user_challenge| %>
+
+        <!-- CHALLENGE CARD -->
+        <div class="challenge-card">
+          <p><%= link_to user_challenge.challenge.skill.title, challenge_path(user_challenge) %></p>
+          <p>Milestone: <%= user_challenge.challenge.milestone %></p>
+          <p>Start Date: <%= user_challenge.challenge.starting_date %></p>
+          <p><%= user_challenge.challenge.description %></p>
+          <%= link_to "Check in", '#', class: 'btn btn-secondary' %>
+        </div>
+
+      <% end %>
+    </div>
+
+
+</div>

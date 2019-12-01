@@ -1,1 +1,10 @@
-// Specific CSS for your home-page
+.dashboard-container {
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  height: 100vh;
+}
+
+.user-info {
+  display: block;
+}

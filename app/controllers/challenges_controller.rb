@@ -7,6 +7,7 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = Challenge.new
+
     authorize @challenge
   end
 

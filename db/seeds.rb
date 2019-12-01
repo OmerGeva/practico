@@ -27,6 +27,34 @@ user3 = User.create(
   last_name: 'Henry',
   username: 'levyhenry'
   )
+user4 = User.create(
+  email: 'omer@geva.com',
+  password: '123456',
+  first_name: 'Omer',
+  last_name: 'Geva',
+  username: 'omergeva'
+  )
+user5 = User.create(
+  email: 'brad@korman.com',
+  password: '123456',
+  first_name: 'Brad',
+  last_name: 'Korman',
+  username: 'bradkorman'
+  )
+user6 = User.create(
+  email: 'alisa@silina.com',
+  password: '123456',
+  first_name: 'Alisa',
+  last_name: 'Silina',
+  username: 'alisasilina'
+  )
+user7 = User.create(
+  email: 'david@sellam.com',
+  password: '123456',
+  first_name: 'David',
+  last_name: 'Sellam',
+  username: 'davidsellam'
+  )
 ############# Skills ##################################
 puts 'Creating skills...'
 
@@ -48,7 +76,9 @@ challenge1 = Challenge.create(
   starting_date: Date.today,
   first_place: "Gets lunch from loser",
   last_place: "Buys winner lunch",
-  description: "Not Smoking for consecutive days"
+  description: "Not Smoking for consecutive days",
+  time_type: 'days',
+  count_type: 'in a row'
   )
 challenge2 = Challenge.create(
   skill: skill2,
@@ -56,7 +86,9 @@ challenge2 = Challenge.create(
   starting_date: Date.today,
   first_place: "Gets a trip to Japan paid for by loser",
   last_place: "Pays for the winner's trip to Japan",
-  description: "Learning Japanese for a certain amount of hours"
+  description: "Learning Japanese for a certain amount of hours",
+  time_type: 'hours',
+  count_type: 'total'
   )
 challenge3 = Challenge.create(
   skill: skill3,
@@ -64,7 +96,9 @@ challenge3 = Challenge.create(
   starting_date: Date.today,
   first_place: "Gets lunch from loser",
   last_place: "Buys winner lunch",
-  description: "Working on doing a handstand for consecutive days, winner has to be able to do it for 10 seconds without moving."
+  description: "Working on doing a handstand for consecutive days, winner has to be able to do it for 10 seconds without moving.",
+  time_type: 'days',
+  count_type: 'in a row'
   )
 
 ############# For Challenge Two ##################################

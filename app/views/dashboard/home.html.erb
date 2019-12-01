@@ -45,7 +45,7 @@
 
         <!-- CHALLENGE CARD -->
         <div class="challenge-card">
-          <p><%= link_to user_challenge.challenge.skill.title, challenge_path(user_challenge) %></p>
+          <p><%= link_to user_challenge.challenge.skill.title, challenge_path(user_challenge.challenge) %></p>
           <p>Milestone: <%= user_challenge.challenge.milestone %></p>
           <p>Start Date: <%= user_challenge.challenge.starting_date.strftime('%B %e at %l:%M %p') %></p>
           <p><%= user_challenge.challenge.description %></p>

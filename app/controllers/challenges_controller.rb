@@ -1,4 +1,5 @@
 class ChallengesController < ApplicationController
+  skip_before_action :authenticate_user!
   def new
     @challenge = Challenge.new
   end
@@ -9,5 +10,6 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find(params[:id])
+    authorize @challenge
   end
 end

@@ -1,5 +1,7 @@
 class DashboardController < ApplicationController
-  def home
+  skip_before_action :authenticate_user!, only: [:home]
 
+  def home
+    skip_authorization
   end
 end

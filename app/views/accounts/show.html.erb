@@ -1,0 +1,21 @@
+<%= @user.username %>
+
+<% unless @user == current_user %>
+<%= link_to "Add Friend", request_friend_account_path(@user), method: :post %>
+<% end %>
+
+<h2>Friend Requests:</h2>
+
+<% @user.requested_friends.each do |friend| %>
+<ul>
+  <%= friend.username %> <%= link_to "Accept Friend Request", accept_friend_account_path(friend), method: :post %>
+</ul>
+<% end %>
+<h2>Friends:</h2>
+<% @user.friends.each do |friend| %>
+<ul>
+  <% unless friend == current_user %>
+    <%= friend.username %> <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :post %>
+    <% end %>
+</ul>
+<% end %>

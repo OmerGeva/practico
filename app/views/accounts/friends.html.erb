@@ -1,0 +1,46 @@
+
+
+
+
+<div class="container">
+  <div class="grid">
+    <div class="row mt-2">
+      <div class="col">
+        <div class="challenge-page-card">
+          <h2>Pending Requests:</h2>
+          <% @user.pending_friends.each do |friend| %>
+          <ul>
+            <li><%= friend.username %> - Pending</li>
+          </ul>
+          <% end %>
+        </div>
+      </div>
+      <div class="col">
+        <div class="challenge-page-card">
+          <h2>Friend Requests:</h2>
+          <% @user.requested_friends.each do |friend| %>
+          <ul>
+            <%= friend.username %> <%= link_to "Accept Friend Request", accept_friend_account_path(friend), method: :post %>
+          </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col">
+        <div class="challenge-page-card">
+          <h2> Friends</h2>
+          <% @user.friends.each do |friend| %>
+          <ul class="mt-2">
+            <li>
+              <img class="avatar-small" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
+              <span class="mr-5"><%= friend.username %></span>
+              <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :post, class: "btn btn-primary btn-sm ml-5" %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

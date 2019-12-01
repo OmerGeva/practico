@@ -45,7 +45,7 @@ puts 'Creating challenges...'
 challenge1 = Challenge.create(
   skill: skill1,
   milestone: 100,
-  starting_date: Date.new,
+  starting_date: Date.today,
   first_place: "Gets lunch from loser",
   last_place: "Buys winner lunch",
   description: "Not Smoking for consecutive days"
@@ -53,7 +53,7 @@ challenge1 = Challenge.create(
 challenge2 = Challenge.create(
   skill: skill2,
   milestone: 500,
-  starting_date: Date.new,
+  starting_date: Date.today,
   first_place: "Gets a trip to Japan paid for by loser",
   last_place: "Pays for the winner's trip to Japan",
   description: "Learning Japanese for a certain amount of hours"
@@ -61,7 +61,7 @@ challenge2 = Challenge.create(
 challenge3 = Challenge.create(
   skill: skill3,
   milestone: 100,
-  starting_date: Date.new,
+  starting_date: Date.today,
   first_place: "Gets lunch from loser",
   last_place: "Buys winner lunch",
   description: "Working on doing a handstand for consecutive days, winner has to be able to do it for 10 seconds without moving."

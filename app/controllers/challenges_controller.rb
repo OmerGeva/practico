@@ -5,6 +5,7 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = Challenge.new
+    @users = User.find(params[:id])
   end
 
   def show

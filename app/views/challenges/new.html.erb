@@ -1,37 +1,45 @@
-<h1>New Challenge</h1>
+<div class="container">
+  <h1>New Challenge</h1>
 
-<%= simple_form_for [@challenge] do |f| %>
-<!-- Choose pre-made challenges or create challenge -->
+  <%= simple_form_for [@challenge] do |f| %>
 
-<!-- ############ Create Challenge ################## -->
+  <!-- SET SKILL -->
+  <%= f.input :skill, label: 'What do you want to work on?' %>
+  <p>Need some ideas? <a href="">Browse Challenges</a></p>
 
-<!-- Set Skill -->
-<%= f.input :skill, label: 'What do you want to work on?' %>
+  <!-- SET GOAL -->
+  <%= f.input :milestone, label: 'First person to...' %>
+  <%= f.input :time_type, collection: Challenge::TIME_TYPE %>
+  <%= f.input :count_type, collection: Challenge::COUNT_TYPE %>
 
-<!-- Set Goal -->
-<%= f.input :starting_date, label: 'When should we start?' %>
-<%= f.input :milestone, label: 'First to...' %>
+  <!-- ADD USERS -->
+  <p>Add Friends:</p>
+    <ul>
+      <li>Me</li>
+      <li><a href="#">Add Friends</a></li>
+    </ul>
 
-<!-- Start Date -->
+  <!-- ADD SPONSORS -->
+  <p>Invite friends and family to sponsor this challenge</p>
+  <a href="#">Share</a><br>
 
-<!-- Users -->
+  <!-- ADD PROOF -->
+  <p>Set the Stakes</p>
+    <!-- Checkbox, Timer, Photo -->
+    <ul>
+      <li>Checkbox</li>
+      <li>Timer</li>
+      <li>Photo</li>
+    </ul>
 
-<!-- Proof -->
+  <!-- SET STAKES -->
+  <%= f.input :first_place %>
+  <%= f.input :last_place %>
 
-<!-- Sponsors -->
+  <!-- START DATE -->
+  <%= f.input :starting_date, label: 'When should we start?' %>
 
-<!-- Stakes -->
-<%= f.input :first_place %>
-<%= f.input :last_place %>
-
-<%= f.submit "New Challenge", class: "btn btn-primary ml-3", id:"new-challenge-button" %>
-<% end %>
-
-<!--
-
-skill: skill2,
-  milestone: 500,
-  starting_date: Date.new,
-  first_place: "Gets a trip to Japan paid for by loser",
-  last_place: "Pays for the winner's trip to Japan",
-  description: "Learning Japanese for a certain amount of hours" -->
+  <!-- SUBMIT -->
+  <%= f.submit "New Challenge", class: "btn btn-primary ml-3", id:"new-challenge-button" %>
+  <% end %>
+</div>

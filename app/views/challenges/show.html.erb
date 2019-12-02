@@ -7,7 +7,7 @@
           <h2> Challenge Leaderboard</h2>
           <ol>
             <% @challenge.users.order(:user_progress).each do |user| %>
-              <li><p><%= user.username %></p></li>
+            <li><p><%= user.username %></p></li>
             <% end %>
           </ol>
         </div>
@@ -16,7 +16,7 @@
         <div class="challenge-page-card">
           <h2> Challenge Group Stats</h2>
           <% @challenge.users.order(:user_progress).each do |user| %>
-            <p><%= user.username %> - <%= @challenge.users_challenges.find_by(user: user).user_progress %></p>
+          <p><%= user.username %> - <%= @challenge.users_challenges.find_by(user: user).user_progress %></p>
           <% end %>
         </div>
       </div>
@@ -30,10 +30,30 @@
       <div class="col-8">
         <div class="challenge-page-card">
           <h2> Challenge Personal Stats</h2>
-            <p><%= current_user.username %> - <%= @challenge.users_challenges.find_by(user: current_user).user_progress %></p>
+          <p><%= current_user.username %> - <%= @challenge.users_challenges.find_by(user: current_user).user_progress %></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="chat-header" style="width: 100%"><h4>Trash Talk Board</h4></div>
+        <div class="messages">
+          <% @chat_room.messages.last(5).each do |message| %>
+          <%= render 'message', message: message %>
+          <% end %>
+        </div>
+        <div id="create-message">
+          <%= simple_form_for [@chat_room, Message.new], remote: true do |f| %>
+          <%= f.input :content, label: false %>
+          <%= f.submit %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+  </div>
+</div>

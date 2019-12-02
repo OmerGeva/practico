@@ -7,7 +7,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.3'
-gem 'redis'
 gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 gem 'dotenv-rails', groups: [:development, :test]

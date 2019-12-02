@@ -19,6 +19,8 @@ gem 'webpacker'
 gem 'cloudinary', '~> 1.9.1'
 gem 'pundit'
 gem 'has_friendship'
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'
 
 
 group :development do

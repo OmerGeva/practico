@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'dashboard#home'
-  resources :challenges
+  resources :challenges do
+    resources :check_ins, only: [:new]
+  end
   resources :accounts, only: [:show] do
     member do
       get 'friends', to: "accounts#friends"
@@ -10,5 +12,4 @@ Rails.application.routes.draw do
       post 'accept-friend', to: "accounts#accept_friend"
     end
   end
-
 end

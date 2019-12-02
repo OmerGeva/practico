@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'dashboard#home'
-  resources :challenges
+  resources :challenges do
+    patch 'accept', to: 'challenges#accept'
+    delete 'decline', to: 'challenges#decline'
+  end
+
   resources :accounts, only: [:show] do
     member do
       get 'friends', to: "accounts#friends"

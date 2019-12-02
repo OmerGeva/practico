@@ -11,6 +11,11 @@
 
 .nav-item {
   margin: 16px;
+  img {
+    width: 30px;
+    margin-right: 12px;
+    filter: opacity(.9) invert(100%) grayscale(100%) brightness(50%) sepia(100%) hue-rotate(140deg) saturate(300%) contrast(0.6);
+  }
   a {
     display: flex;
     align-items: center;
@@ -18,16 +23,13 @@
     &:hover {
       text-decoration: none;
       font-weight: bold;
+      img {
+        filter: opacity(1) invert(100%) grayscale(100%) brightness(60%) sepia(100%) hue-rotate(140deg) saturate(500%) contrast(0.6);
+      }
     }
     p {
       margin: 0;
     }
-  }
-  img {
-    width: 30px;
-    margin-right: 12px;
-    filter: opacity(.8);
-    // filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
   }
 }
 

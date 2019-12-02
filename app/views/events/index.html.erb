@@ -1,0 +1,23 @@
+<%= month_calendar events: @events do |date, events| %>
+  <%= date %>
+  <div class='badges'>
+  <% events.each do |event| %>
+    <div class="event-badge"
+         style="background-color: <%= event.color %>"
+         data-event-color="<%= event.color %>"
+         data-event-title="<%= event.challenge.skill.title %>"
+         data-event-time="12:00">
+    </div>
+  <% end %>
+</div>
+<% end %>
+
+<div class='events collapse' id="collapseExample">
+  <% @events.each do |event| %>
+  <div>
+    <%= event.users_challenge.challenge.skill.title %>
+  </div>
+  <% end %>
+</div>
+
+<%= javascript_pack_tag 'tippy' %>

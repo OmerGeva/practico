@@ -1,7 +1,11 @@
 puts 'Cleaning database...'
+
+Skill.destroy_all
+UsersChallenge.destroy_all
+Message.destroy_all
+ChatRoom.destroy_all
 Challenge.destroy_all
 User.destroy_all
-Skill.destroy_all
 
 ############# Users ##################################
 puts 'Creating users...'
@@ -78,7 +82,11 @@ challenge1 = Challenge.create(
   last_place: "Buys winner lunch",
   description: "Not Smoking for consecutive days",
   time_type: 'days',
-  count_type: 'in a row'
+  count_type: 'in a row',
+  )
+chatroom1 = ChatRoom.create(
+  challenge_id: challenge1.id,
+  name: skill1.title,
   )
 challenge2 = Challenge.create(
   skill: skill2,
@@ -90,6 +98,10 @@ challenge2 = Challenge.create(
   time_type: 'hours',
   count_type: 'total'
   )
+chatroom2 = ChatRoom.create(
+  challenge_id: challenge2.id,
+  name: skill2.title,
+  )
 challenge3 = Challenge.create(
   skill: skill3,
   milestone: 100,
@@ -99,6 +111,28 @@ challenge3 = Challenge.create(
   description: "Working on doing a handstand for consecutive days, winner has to be able to do it for 10 seconds without moving.",
   time_type: 'days',
   count_type: 'in a row'
+  )
+chatroom3 = ChatRoom.create(
+  challenge_id: challenge3.id,
+  name: skill3.title,
+  )
+
+
+
+############# For Chat Rooms ##################################
+puts 'Creating ChatRooms...'
+
+############# For Challenge One ##################################
+
+users_challenge4 = UsersChallenge.create(
+  user: user2,
+  challenge: challenge1,
+  user_progress: 112
+  )
+users_challenge5 = UsersChallenge.create(
+  user: user3,
+  challenge: challenge1,
+  user_progress: 93
   )
 
 ############# For Challenge Two ##################################
@@ -118,18 +152,6 @@ users_challenge3 = UsersChallenge.create(
   user: user3,
   challenge: challenge2,
   user_progress: 43
-  )
-############# For Challenge One ##################################
-
-users_challenge4 = UsersChallenge.create(
-  user: user2,
-  challenge: challenge1,
-  user_progress: 112
-  )
-users_challenge5 = UsersChallenge.create(
-  user: user3,
-  challenge: challenge1,
-  user_progress: 93
   )
 ############# For Challenge Three ##################################
 users_challenge6 = UsersChallenge.create(

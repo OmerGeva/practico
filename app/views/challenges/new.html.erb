@@ -3,43 +3,40 @@
 
   <%= simple_form_for [@challenge] do |f| %>
 
-  <!-- SET SKILL -->
-  <%= f.input :skill, label: 'What do you want to work on?' %>
-  <p>Need some ideas? <a href="">Browse Challenges</a></p>
+    <!-- SET SKILL -->
+    <%= f.input :skill, label: 'What do you want to work on?' %>
+    <p>Need some ideas? <a href="">Browse Challenges</a></p>
 
-  <!-- SET GOAL -->
-  <%= f.input :milestone, label: 'First person to...' %>
-  <%= f.input :time_type, collection: Challenge::TIME_TYPE %>
-  <%= f.input :count_type, collection: Challenge::COUNT_TYPE %>
+    <!-- SET GOAL -->
+    <%= f.input :milestone, label: 'First person to...' %>
+    <%= f.input :time_type, collection: Challenge::TIME_TYPE %>
+    <%= f.input :count_type, collection: Challenge::COUNT_TYPE %>
 
-  <!-- ADD USERS -->
-  <p>Add Friends:</p>
-    <ul>
-      <li>Me</li>
-      <li><a href="#">Add Friends</a></li>
-    </ul>
+    <!-- ADD USERS -->
 
-  <!-- ADD SPONSORS -->
-  <p>Invite friends and family to sponsor this challenge</p>
-  <a href="#">Share</a><br>
+    <%= f.input :users, as: :check_boxes, collection: @friends, label_method: :first_name %>
 
-  <!-- ADD PROOF -->
-  <p>Add Proof</p>
-    <!-- Checkbox, Timer, Photo -->
-    <ul>
-      <li>Checkbox</li>
-      <li>Timer</li>
-      <li>Photo</li>
-    </ul>
+    <!-- ADD SPONSORS -->
+    <p>Invite friends and family to sponsor this challenge</p>
+    <a href="#">Share</a><br>
 
-  <!-- SET STAKES -->
-  <%= f.input :first_place %> <p></p>
-  <%= f.input :last_place %>
+    <!-- ADD PROOF -->
+    <p>Add Proof</p>
+      <!-- Checkbox, Timer, Photo -->
+      <ul>
+        <li>Checkbox</li>
+        <li>Timer</li>
+        <li>Photo</li>
+      </ul>
 
-  <!-- START DATE -->
-  <%= f.input :starting_date, label: 'When should we start?' %>
+    <!-- SET STAKES -->
+    <%= f.input :first_place %> <p></p>
+    <%= f.input :last_place %>
 
-  <!-- SUBMIT -->
-  <%= f.submit "New Challenge", class: "btn btn-primary ml-3", id:"new-challenge-button" %>
+    <!-- START DATE -->
+    <%= f.input :starting_date, label: 'When should we start?' %>
+
+    <!-- SUBMIT -->
+    <%= f.submit "New Challenge", class: "btn btn-primary ml-3", id:"new-challenge-button" %>
   <% end %>
 </div>

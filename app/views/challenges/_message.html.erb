@@ -1,0 +1,6 @@
+<div class="message <%= user_is_messages_author ? "right" : "" %>">
+  <img class="avatar-small" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
+  <strong><%= "#{message.user.first_name}"  %> </strong>
+
+  <div class="messsage-content"> <%= "#{message.content}" %></div>
+</div>

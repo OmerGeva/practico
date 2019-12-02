@@ -44,13 +44,17 @@
 
         <!-- CHALLENGE CARD -->
         <div class="challenge-card">
-          <p><%= link_to user_challenge.challenge.skill.title, challenge_path(user_challenge.challenge) %></p>
-          <p>Milestone: <%= user_challenge.challenge.milestone %></p>
-          <p>Start Date: <%= user_challenge.challenge.starting_date.strftime('%B %e at %l:%M %p') %></p>
-          <p><%= user_challenge.challenge.description %></p>
+          <% challenge = user_challenge.challenge %>
+          <p><%= link_to challenge.skill.title.capitalize, challenge_path(challenge) %></p>
+            <% unless user_challenge.accepted %>
+              <%= link_to "Accept", challenge_accept_path(challenge), method: :patch, class: 'btn btn-primary' %>
+              <%= link_to "Decline", challenge_decline_path(challenge), method: :delete, class: 'btn btn-primary' %>
+            <% end %>
+          <p>Milestone: <%= challenge.milestone %></p>
+          <p>Start Date: <%= challenge.starting_date.strftime('%B %e at %l:%M %p') %></p>
+          <p><%= challenge.description %></p>
           <%= link_to "Check in", '#', class: 'btn btn-secondary' %>
         </div>
-
       <% end %>
     </div>
 

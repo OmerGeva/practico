@@ -4,6 +4,7 @@
 
 <div class="container">
   <div class="grid">
+
     <div class="row mt-2">
       <div class="col">
         <div class="challenge-page-card">
@@ -26,9 +27,21 @@
         </div>
       </div>
     </div>
+
     <div class="row mt-2">
       <div class="col">
         <div class="challenge-page-card">
+
+          <div style="width: 200px">
+          <%= form_tag account_path(current_user), method: :get do %>
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Enter Username"
+                %>
+                <% end %>
+          </div>
+
           <h2> Friends</h2>
           <% @user.friends.each do |friend| %>
           <ul class="mt-2">
@@ -42,9 +55,9 @@
               <% end %>
               <% end %>
             </ul>
-          </div>
         </div>
       </div>
     </div>
-  </div>
 
+  </div>
+</div>

@@ -3,8 +3,9 @@
 console.log("error");
 <% else %>
   const messagesContainer = document.querySelector(".messages");
-  messagesContainer.insertAdjacentHTML('beforeend', '<%= j render "challenges/message", message: @message %>');
+  messagesContainer.insertAdjacentHTML('beforeend', '<%= j render "challenges/message", message: @message, user_is_messages_author: true %>');
   const input = document.querySelector('#message_content');
   input.value = '';
   input.blur();
+  scrollLastMessageIntoView();
 <% end %>

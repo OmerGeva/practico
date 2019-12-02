@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
     @message.chat_room = @chat_room
     @message.user = current_user
     if @message.save
+
       respond_to do |format|
         format.html { redirect_to challenge_path(@chat_room)}
         format.js

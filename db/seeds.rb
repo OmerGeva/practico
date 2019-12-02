@@ -1,9 +1,11 @@
 puts 'Cleaning database...'
+
+Skill.destroy_all
+UsersChallenge.destroy_all
 Message.destroy_all
 ChatRoom.destroy_all
 Challenge.destroy_all
 User.destroy_all
-Skill.destroy_all
 
 ############# Users ##################################
 puts 'Creating users...'
@@ -120,6 +122,19 @@ chatroom3 = ChatRoom.create(
 ############# For Chat Rooms ##################################
 puts 'Creating ChatRooms...'
 
+############# For Challenge One ##################################
+
+users_challenge4 = UsersChallenge.create(
+  user: user2,
+  challenge: challenge1,
+  user_progress: 112
+  )
+users_challenge5 = UsersChallenge.create(
+  user: user3,
+  challenge: challenge1,
+  user_progress: 93
+  )
+
 ############# For Challenge Two ##################################
 puts 'Creating UsersChallenges...'
 
@@ -137,18 +152,6 @@ users_challenge3 = UsersChallenge.create(
   user: user3,
   challenge: challenge2,
   user_progress: 43
-  )
-############# For Challenge One ##################################
-
-users_challenge4 = UsersChallenge.create(
-  user: user2,
-  challenge: challenge1,
-  user_progress: 112
-  )
-users_challenge5 = UsersChallenge.create(
-  user: user3,
-  challenge: challenge1,
-  user_progress: 93
   )
 ############# For Challenge Three ##################################
 users_challenge6 = UsersChallenge.create(

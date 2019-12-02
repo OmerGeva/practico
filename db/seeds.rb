@@ -1,10 +1,10 @@
 puts 'Cleaning database...'
 
-Skill.destroy_all
-UsersChallenge.destroy_all
 Message.destroy_all
 ChatRoom.destroy_all
+UsersChallenge.destroy_all
 Challenge.destroy_all
+Skill.destroy_all
 User.destroy_all
 
 ############# Users ##################################

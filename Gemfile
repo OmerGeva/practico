@@ -20,7 +20,7 @@ gem 'webpacker'
 gem 'cloudinary', '~> 1.9.1'
 gem 'pundit'
 gem 'has_friendship'
-gem 'redis', '3.0.0'
+gem 'redis', '3.3'
 
 
 

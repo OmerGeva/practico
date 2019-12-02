@@ -46,7 +46,7 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-  config.action_cable.url = 'wss://thepractico.com/cable'
+  config.action_cable.url = 'ws://thepractico.com/cable'
   config.action_cable.allowed_request_origins = [ 'http://thepractico.com', 'https://thepractico.com' ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.

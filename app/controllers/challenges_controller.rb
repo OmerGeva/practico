@@ -43,6 +43,7 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find(params[:id])
+    @chat_room = @challenge.chat_room.first
     authorize @challenge
   end
 

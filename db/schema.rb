@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 2019_12_02_123601) do
     t.index ["skill_id"], name: "index_challenges_on_skill_id"
   end
 
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "challenge_id"
+    t.index ["challenge_id"], name: "index_chat_rooms_on_challenge_id"
+  end
+
   create_table "check_ins", force: :cascade do |t|
     t.bigint "users_challenge_id"
     t.boolean "completed"
@@ -47,6 +55,16 @@ ActiveRecord::Schema.define(version: 2019_12_02_123601) do
     t.integer "blocker_id"
     t.integer "status"
     t.index ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "chat_room_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -82,7 +100,10 @@ ActiveRecord::Schema.define(version: 2019_12_02_123601) do
   end
 
   add_foreign_key "challenges", "skills"
+  add_foreign_key "chat_rooms", "challenges"
   add_foreign_key "check_ins", "users_challenges"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "users_challenges", "challenges"
   add_foreign_key "users_challenges", "users"
 end

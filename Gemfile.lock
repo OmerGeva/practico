@@ -241,7 +241,7 @@ DEPENDENCIES
   puma
   pundit
   rails (= 5.2.3)
-  redis (= 3.3)
+  redis (~> 3.3)
   sassc-rails
   simple_form
   spring

@@ -7,5 +7,6 @@ class User < ApplicationRecord
   has_many :users_challenges
   has_many :messages, dependent: :destroy
   has_many :challenges, through: :users_challenges
+  has_many :events
   has_friendship
 end

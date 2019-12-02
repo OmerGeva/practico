@@ -20,8 +20,8 @@ gem 'webpacker'
 gem 'cloudinary', '~> 1.9.1'
 gem 'pundit'
 gem 'has_friendship'
+gem "simple_calendar", "~> 2.0"
 gem 'redis', '~> 3.3'
-
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

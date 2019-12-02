@@ -10,6 +10,16 @@ class ChallengesController < ApplicationController
   end
 
   def create
+
+    @challenge = Challenge.new
+    @challenge.save
+    if @challenge.count_type == 'in a row'
+      date = @challenge.starting_date
+      @challenge.milestone.times do |i|
+        Event.create(start_date: date, challenge: @challenge)
+        # date + i.challenge.time_type
+      end
+
     @skill = Skill.create(title: skill_params[:skill])
     @challenge = Challenge.new(challenge_params)
     @users_challenge = UsersChallenge.create(user: @user, challenge: @challenge, user_progress: 0, accepted: true)

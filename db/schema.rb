@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_123601) do
+ActiveRecord::Schema.define(version: 2019_12_02_134305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 2019_12_02_123601) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["users_challenge_id"], name: "index_check_ins_on_users_challenge_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "users_challenge_id"
+    t.bigint "user_id"
+    t.string "color"
+    t.index ["user_id"], name: "index_events_on_user_id"
+    t.index ["users_challenge_id"], name: "index_events_on_users_challenge_id"
   end
 
   create_table "friendships", id: :serial, force: :cascade do |t|
@@ -102,6 +113,8 @@ ActiveRecord::Schema.define(version: 2019_12_02_123601) do
   add_foreign_key "challenges", "skills"
   add_foreign_key "chat_rooms", "challenges"
   add_foreign_key "check_ins", "users_challenges"
+  add_foreign_key "events", "users"
+  add_foreign_key "events", "users_challenges"
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "users_challenges", "challenges"

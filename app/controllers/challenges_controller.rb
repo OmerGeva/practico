@@ -20,17 +20,18 @@ class ChallengesController < ApplicationController
         # date + i.challenge.time_type
       end
 
-    @skill = Skill.create(title: skill_params[:skill])
-    @challenge = Challenge.new(challenge_params)
-    @users_challenge = UsersChallenge.create(user: @user, challenge: @challenge, user_progress: 0, accepted: true)
-    @challenge.users_challenges << @users_challenge
-    @challenge.skill = @skill
+      @skill = Skill.create(title: skill_params[:skill])
+      @challenge = Challenge.new(challenge_params)
+      @users_challenge = UsersChallenge.create(user: @user, challenge: @challenge, user_progress: 0, accepted: true)
+      @challenge.users_challenges << @users_challenge
+      @challenge.skill = @skill
 
-    @friends = @user.friends
-    friends = params[:challenge][:users]
-    if friends.size > 1
-      friends.each do |friend|
-        UsersChallenge.create(user_id: friend, challenge: @challenge, user_progress: 0, accepted: false)
+      @friends = @user.friends
+      friends = params[:challenge][:users]
+      if friends.size > 1
+        friends.each do |friend|
+          UsersChallenge.create(user_id: friend, challenge: @challenge, user_progress: 0, accepted: false)
+        end
       end
     end
 

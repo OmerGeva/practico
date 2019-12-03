@@ -53,7 +53,7 @@
           <p>Milestone: <%= challenge.milestone %></p>
           <p>Start Date: <%= challenge.starting_date.strftime('%B %e at %l:%M %p') %></p>
           <p><%= challenge.description %></p>
-          <%= link_to "Check in", '#', class: 'btn btn-secondary' %>
+          <%= link_to "Check in", new_challenge_check_in_path(user_challenge.challenge), class: 'btn btn-secondary' %>
         </div>
       <% end %>
     </div>

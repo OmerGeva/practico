@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :challenges, through: :users_challenges
   has_many :events
   has_friendship
+
+  mount_uploader :photo, PhotoUploader
 end

@@ -14,6 +14,10 @@
 @import "challenges/challenge-page";
 @import "challenges/new-challenge-page";
 
+body {
+  background-image: url(asset-path('background1.png'));
+}
+
 li {
   list-style:none;
 }

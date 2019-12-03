@@ -1,5 +1,5 @@
 <h1 class="text-center"><%= @challenge.skill.title %></h1>
-  <%= link_to "Check in", new_challenge_check_in_path(@challenge), class: 'btn btn-secondary' %>
+<%= link_to "Check in", new_challenge_check_in_path(@challenge), class: 'btn btn-secondary' %>
 <div class="container">
   <div class="grid">
     <div class="row mt-2">
@@ -10,67 +10,91 @@
             <% @challenge.users.order(:user_progress).each do |user| %>
             <div>
               <li><%= cl_image_tag user.photo, class: 'avatar-small', alt: "avatar" %>
-              <p><%= user.username %></p></li>
+                <p><%= user.username %></p></li>
+              </div>
+              <% end %>
+            </ol>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="challenge-page-card">
+            <h2> Challenge Group Stats</h2>
+            <% @challenge.users.order(:user_progress).each do |user| %>
+            <% @progress = ((UsersChallenge.find_by(challenge_id: @challenge.id, user_id: user.id).user_progress/@challenge.milestone)*100).round %>
+            <div class="row">
+              <div class="col-4">
+            <p><%= user.username %> - <%= @challenge.users_challenges.find_by(user: user).user_progress %></p>
+
+              </div>
+              <div class="col-8">
+            <progress class="skill-1" max="100" value="<%= @progress %>">
+              <strong>Progress <%= @progress %>%</strong>
+
+              </div>
+            </progress>
             </div>
             <% end %>
-          </ol>
+          </div>
         </div>
       </div>
-      <div class="col-8">
-        <div class="challenge-page-card">
-          <h2> Challenge Group Stats</h2>
-          <% @challenge.users.order(:user_progress).each do |user| %>
-          <p><%= user.username %> - <%= @challenge.users_challenges.find_by(user: user).user_progress %></p>
-          <% end %>
+      <div class="row mt-2">
+        <div class="col-4">
+          <div class="challenge-page-card">
+            <h2> Challenge Trashtalk Board</h2>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="row mt-2">
-      <div class="col-4">
-        <div class="challenge-page-card">
-          <h2> Challenge Trashtalk Board</h2>
-        </div>
-      </div>
-      <div class="col-8">
-        <div class="challenge-page-card">
-          <h2> Challenge Personal Stats</h2>
-          <p><%= current_user.username %> - <%= @challenge.users_challenges.find_by(user: current_user).user_progress %></p>
-        </div>
-      </div>
-    </div>
+        <div class="col-8">
+          <div class="challenge-page-card d-flex justify-content-between">
+            <div>
 
-    <div class="row">
-      <div class="col">
-        <div class="chat-header text-center" style="width: 100%"><h4>Trash Talk Board</h4></div>
-        <div class="messages" style="height: 200px">
-          <% @chat_room.messages.each do |message| %>
-          <%= render 'message', message: message, user_is_messages_author: message.user == current_user %>
-          <% end %>
+            <h2> Challenge Personal Stats</h2>
+            <p><%= current_user.username %> - <%= @challenge.users_challenges.find_by(user: current_user).user_progress %></p>
+            </div>
+            <div class="set-size charts-container">
+              <div class="pie-wrapper">
+                <span class="label"><%= ((@users_challenge.user_progress/@challenge.milestone)*100).round %><span class="smaller">%</span></span>
+                <div class="pie">
+                  <div class="left-side half-circle"></div>
+                  <div class="right-side half-circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="create-message">
-          <%= simple_form_for [@chat_room, Message.new], remote: true do |f| %>
-          <%= f.input :content, label: false, id: "messsage-content" %>
-          <%= f.submit %>
-          <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="chat-header text-center" style="width: 100%"><h4>Trash Talk Board</h4></div>
+          <div class="messages" style="height: 200px">
+            <% @chat_room.messages.each do |message| %>
+            <%= render 'message', message: message, user_is_messages_author: message.user == current_user %>
+            <% end %>
+          </div>
+          <div id="create-message">
+            <%= simple_form_for [@chat_room, Message.new], remote: true do |f| %>
+            <%= f.input :content, label: false, id: "messsage-content" %>
+            <%= f.submit %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<% content_for :after_js do %>
+  <% content_for :after_js do %>
   <script>
-      scrollLastMessageIntoView();
-      App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create(
+    scrollLastMessageIntoView();
+    App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create(
       { channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> },
       { received: (data) => {
-          if (data.current_user_id !== <%= current_user.id %>){
+        if (data.current_user_id !== <%= current_user.id %>){
 
           const messagesContainer = document.querySelector(".messages");
           messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
           scrollLastMessageIntoView();
-          }
+        }
       }
     })
   </script>
-<% end %>
+  <% end %>

@@ -66,6 +66,32 @@ class ChallengesController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @challenge = Challenge.find(params[:id])
+    authorize @challenge
+  end
+
+  def update
+    @challenge = Challenge.find(params[:id])
+    @challenge.update(challenge_params)
+    @challenge.users_challenges.each do |users_challenge|
+      users_challenge.update(user_progress: 0)
+    end
+    authorize @challenge
+
+
+    redirect_to challenge_path(@challenge)
+  end
+
+  def renew
+    @challenge = Challenge.find(params[:challenge_id])
+    @challenge.users_challenges.each do |users_challenge|
+      users_challenge.update(user_progress: 0)
+    end
+
+    authorize @challenge
+    redirect_to challenge_path(@challenge)
+  end
   def decline
     @challenge = Challenge.find(params[:challenge_id])
     @user_challenge = UsersChallenge.where(user: @user, challenge: @challenge).first
@@ -74,6 +100,10 @@ class ChallengesController < ApplicationController
     redirect_to root_path
   end
 
+  def finished
+    @challenge = Challenge.find(params[:challenge_id])
+    authorize @challenge
+  end
   private
 
   def set_user

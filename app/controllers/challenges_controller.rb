@@ -16,6 +16,7 @@ class ChallengesController < ApplicationController
     @challenge.users_challenges << @users_challenge
     @challenge.skill = @skill
 
+    # ============ ADD FRIENDS ============ #
     @friends = @user.friends
     friends = params[:challenge][:users]
 
@@ -25,9 +26,14 @@ class ChallengesController < ApplicationController
       end
     end
 
+    # ============ ADD CHECKINS ============ #
+    @check_in = CheckIn.create(users_challenge_id: @users_challenge)
+
     authorize @challenge
 
     if @challenge.save
+      @chat_room = ChatRoom.create(challenge_id: @challenge.id, name: @skill.title)
+      # raise
       redirect_to challenge_path(@challenge)
     else
       redirect_to new_challenge_path
@@ -37,6 +43,7 @@ class ChallengesController < ApplicationController
   def show
     @challenge = Challenge.find(params[:id])
     @chat_room = @challenge.chat_room.first
+    # raise
     authorize @challenge
   end
 
@@ -74,7 +81,7 @@ class ChallengesController < ApplicationController
   end
 
   def challenge_params
-    params.require(:challenge).permit(:milestone, :time_type, :count_type, :first_place, :last_place, :starting_date)
+    params.require(:challenge).permit(:milestone, :time_type, :count_type, :first_place, :last_place, :starting_date, :validation_type)
   end
 
   def skill_params
@@ -83,5 +90,9 @@ class ChallengesController < ApplicationController
 
   def friend_params
     params.require(:challenge).permit(:friends)
+  end
+
+  def check_in_params
+    params.require(:challenge).permit(:check_in)
   end
 end

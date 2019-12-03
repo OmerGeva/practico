@@ -2,7 +2,7 @@
 
 <% if @challenge.validation_type == 'photo, checkbox' %>
   <h2>photo checkbox</h2>
-  <%= simple_form_for [@challenge,@check_in] do |f| %>
+  <%= simple_form_for [@challenge, @check_in] do |f| %>
 
   <%= f.input :completed, as: :radio_buttons %>
   <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>

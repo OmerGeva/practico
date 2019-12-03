@@ -10,38 +10,20 @@ class ChallengesController < ApplicationController
   end
 
   def create
+    @skill = Skill.create(title: skill_params[:skill])
+    @challenge = Challenge.new(challenge_params)
+    @users_challenge = UsersChallenge.create(user: @user, challenge: @challenge, user_progress: 0, accepted: true)
+    @challenge.users_challenges << @users_challenge
+    @challenge.skill = @skill
 
-    @challenge = Challenge.new
-    @challenge.save
-    if @challenge.count_type == 'in a row'
-      date = @challenge.starting_date
-      @challenge.milestone.times do |i|
-        Event.create(start_date: date, challenge: @challenge)
-        # date + i.challenge.time_type
-      end
+    @friends = @user.friends
+    friends = params[:challenge][:users]
 
-      @skill = Skill.create(title: skill_params[:skill])
-      @challenge = Challenge.new(challenge_params)
-      @users_challenge = UsersChallenge.create(user: @user, challenge: @challenge, user_progress: 0, accepted: true)
-      @challenge.users_challenges << @users_challenge
-      @challenge.skill = @skill
-
-      @friends = @user.friends
-      friends = params[:challenge][:users]
-      if friends.size > 1
-        friends.each do |friend|
-          UsersChallenge.create(user_id: friend, challenge: @challenge, user_progress: 0, accepted: false)
-        end
+    if friends.size > 1
+      friends.each do |friend|
+        UsersChallenge.create(user_id: friend, challenge: @challenge, user_progress: 0, accepted: false)
       end
     end
-
-    # UsersChallenge.where(user: current_user, accepted: false)
-
-    # if friends parameter comes through new challenge form
-    # iterate over friends
-    # create a user_challenge for each
-    # set accepted as true for me and false for friends
-
 
     authorize @challenge
 

@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
+$dark: #555;
+$color--primary: hsla(269, 100%, 50%, 1);
+
+.typo {
+  font-size: 50px;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  color: #585858;
+  text-decoration: none;
+  option {
+    font-size: 30px;
+  }
+}
+
+.transition {
+   transition: all .4s ease-in-out;
+}
+
+.wrapper {
+  margin: 32px 0;
+  font-size: 50px;
+}
+
+.list {
+  display: inline-block;
+  position: relative;
+  margin-left: 6px;
+  ul {
+    text-align: left;
+    position: absolute;
+    padding: 0;
+    top: 0;
+    left: 0;
+    display: none;
+    .active {
+      display: block;
+    }
+
+  }
+  li {
+    list-style:none;
+    &:first-child a {
+      color: desaturate($color--primary, 50%);
+    }
+  }
+  a {
+    @extend .typo;
+    transition: all .4s;
+    color: $color--primary;
+    position: relative;
+    &:after {
+      position: absolute;
+      content: '';
+      height: 5px;
+      width: 0;
+      left: 0;
+      background: lighten($color--primary, 20%);
+      bottom: 0;
+      transition: all .4s ease-out;
+    }
+    &:hover {
+      cursor: pointer;
+      color: lighten($color--primary, 20%);
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// select {
+//   display: inline;
+//   border: 0;
+//   width: auto;
+//   margin-left: 10px;
+//   outline: none;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   border-bottom: 2px solid $dark;
+//   color: $color--primary;
+//   transition: all .4s ease-in-out;
+
+//   &:hover {
+//     cursor: pointer;
+//   }
+
+//   option {
+//     border: 0;
+//     border-bottom: 1px solid $dark;
+//     padding: 10px;
+//     -webkit-appearance: none;
+//     -moz-appearance: none;
+//   }
+// }
+
+.time_type_placeholder, .count_type_placeholder {
+  //visibility: hidden;
+  //position: fixed;
+  border-bottom: 4px solid;
+  cursor: pointer;
+  &:hover {
+    color: lighten($dark, 20%);
+  }
+}
+
+
+#challenge_time_type {
+  display: none;
+}
+
+#challenge_count_type {
+  display: none;
+}
+
+#challenge_milestone {
+  display: none;
+}
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+}
+
+input:focus,
+textarea:focus {
+  outline: 0;
+  border: 0;
+  border-bottom: 4px solid $color--primary;
+}
+
+#challenge_skill {
+  border: none;
+  border-bottom: 4px solid;
+  background: transparent;
+  &:hover {
+    border-bottom: 0;
+  }
+}
+
+.skill-input {
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  position: relative;
+  input {
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    color: #585858;
+    font-size: 30px;
+    text-align: center;
+  }
+  .underline {
+    width: 0;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+    background: $color--primary;
+    transition: all 1s ease-out;
+  }
+  &:hover {
+    .underline {
+      width: 100%;
+    }
+  }
+}
+
+.milestone_input {
+  text-align: center;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  color: #585858;
+  text-decoration: none;
+  width: 100px;
+  background: transparent;
+  border: none;
+  border-bottom: 4px solid $dark;
+  &:hover {
+    border: 0;
+  }
+}
+
+.milestone-input {
+  display: inline-block;
+  width: 100px;
+  position: relative;
+  .underline {
+    width: 0;
+    height: 4px;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: $color--primary;
+    transition: all .4s ease-out;
+  }
+  &:hover {
+    .underline {
+      width: 100%;
+    }
+  }
+}

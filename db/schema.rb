@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_140733) do
     t.string "time_type"
     t.string "count_type"
     t.string "validation_type"
+    t.boolean "completed", default: false
     t.index ["skill_id"], name: "index_challenges_on_skill_id"
   end
 

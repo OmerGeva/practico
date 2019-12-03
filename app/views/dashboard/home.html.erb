@@ -30,6 +30,12 @@
       <!-- NOTIFICATIONS -->
       <div class="notifications">
         <h4>Notifications</h4>
+        <h6>Finished Challenges:</h6>
+        <% current_user.users_challenges.each do |users_challenge| %>
+          <% if users_challenge.unread %>
+            <p><%= users_challenge.challenge.skill.title %> has finished!</p> <%= link_to 'Check Challenge', challenge_finished_path(users_challenge.challenge), class: "btn btn-primary btn-sm"%>
+          <% end %>
+        <% end %>
         <h6>Friend Requests:</h6>
         <% current_user.requested_friends.each do |friend| %>
           <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}"  %> <%= link_to "Accept", accept_friend_account_path(friend), method: :post, class: "btn btn-primary btn-sm" %>

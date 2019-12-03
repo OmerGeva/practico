@@ -102,6 +102,13 @@ class ChallengesController < ApplicationController
 
   def finished
     @challenge = Challenge.find(params[:challenge_id])
+    @users_challenge =  UsersChallenge.find_by(user_id: current_user.id, challenge_id: @challenge.id)
+    @challenge.users_challenges.each do |users_challenge|
+      if users_challenge.user == current_user
+        users_challenge.update(unread: false)
+      end
+    end
+
     authorize @challenge
   end
   private

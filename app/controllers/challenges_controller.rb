@@ -46,6 +46,16 @@ class ChallengesController < ApplicationController
     @user_challenge.accepted = true
     authorize @user_challenge
     @user_challenge.save
+    counter = 0
+    @challenge.users_challenges.each do |users_challenge|
+      if users_challenge.accepted
+        counter += 1
+      end
+    end
+    if counter == @challenge.users_challenges.count
+      @challenge.update(starting_date: Date.today)
+    end
+
     redirect_to root_path
   end
 

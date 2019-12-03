@@ -18,7 +18,7 @@ class ChallengePolicy < ApplicationPolicy
   end
 
   def finished?
-    record.milestone <= UsersChallenge.find_by(user_id: user.id, challenge_id: record.id).user_progress
+    record.users.include? user
   end
 
   def renew?

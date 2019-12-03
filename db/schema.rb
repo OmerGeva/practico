@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_12_03_140733) do
 
   # These are extensions that must be enabled in order to support this database
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_140733) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "accepted"
+    t.boolean "unread", default: false
     t.index ["challenge_id"], name: "index_users_challenges_on_challenge_id"
     t.index ["user_id"], name: "index_users_challenges_on_user_id"
   end

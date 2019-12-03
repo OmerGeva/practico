@@ -23,6 +23,11 @@ class CheckInsController < ApplicationController
     authorize @check_in
     if @users_challenge.user_progress >= @users_challenge.challenge.milestone
       @users_challenge.challenge.update(completed: true)
+      @users_challenge.challenge.users_challenges.each do |users_challenge|
+        unless users_challenge.user == current_user
+          users_challenge.update(unread: true)
+        end
+      end
       redirect_to challenge_finished_path(@users_challenge.challenge)
     else
       redirect_to challenge_path(@users_challenge.challenge)

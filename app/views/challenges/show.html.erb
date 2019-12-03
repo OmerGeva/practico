@@ -7,7 +7,10 @@
           <h2> Challenge Leaderboard</h2>
           <ol>
             <% @challenge.users.order(:user_progress).each do |user| %>
-            <li><p><%= user.username %></p></li>
+            <div>
+              <li><%= cl_image_tag user.photo, class: 'avatar-small', alt: "avatar" %>
+              <p><%= user.username %></p></li>
+            </div>
             <% end %>
           </ol>
         </div>

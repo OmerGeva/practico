@@ -1,4 +1,5 @@
 // TIME TYPE PICKER
+const dataPickerHomepage = () => {
 
 var el = {};
 
@@ -86,3 +87,6 @@ countInput3 = document.getElementById("challenge_count_type")
 countList3.addEventListener('click', (e) => {
   countInput3.value = e.currentTarget.firstChild.firstChild.innerText
 })
+}
+
+export { dataPickerHomepage };

@@ -15,6 +15,10 @@
 @import "challenges/new-challenge-page";
 @import "challenges/challenge-show-progress-pie";
 
+body {
+  background-image: url(asset-path('background1.png'));
+}
+
 li {
   list-style:none;
 }

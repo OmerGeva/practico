@@ -5,6 +5,16 @@
 <div class="container">
   <div class="grid">
 
+    <div style="width: 200px">
+      <%= form_tag account_path(current_user), method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+        placeholder: "Enter Username"
+        %>
+      <% end %>
+    </div>
+
     <div class="row mt-2">
       <div class="col">
         <div class="challenge-page-card">

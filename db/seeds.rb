@@ -17,6 +17,9 @@ user1 = User.create(
   last_name: 'Bob',
   username: 'spongebob'
   )
+user1.remote_photo_url = 'https://res.cloudinary.com/dv2x1zvtu/image/upload/v1574676603/SpongeBob_stock_art_wxxisz.png'
+user1.save
+
 user2 = User.create(
   email: 'noah@nash.com',
   password: '123456',
@@ -24,6 +27,9 @@ user2 = User.create(
   last_name: 'Nash',
   username: 'noahnash'
   )
+user2.remote_photo_url = 'https://res.cloudinary.com/dv2x1zvtu/image/upload/v1574845946/Users/NoahNash_pco64j.jpg'
+user2.save
+
 user3 = User.create(
   email: 'levy@henry.com',
   password: '123456',
@@ -31,6 +37,9 @@ user3 = User.create(
   last_name: 'Henry',
   username: 'levyhenry'
   )
+user3.remote_photo_url = 'https://res.cloudinary.com/dv2x1zvtu/image/upload/v1574846398/Users/LevyHenry_kk3qiu.jpg'
+user3.save
+
 user4 = User.create(
   email: 'omer@geva.com',
   password: '123456',
@@ -38,6 +47,9 @@ user4 = User.create(
   last_name: 'Geva',
   username: 'omergeva'
   )
+user4.remote_photo_url = 'https://avatars2.githubusercontent.com/u/54701359?v=4'
+user4.save
+
 user5 = User.create(
   email: 'brad@korman.com',
   password: '123456',
@@ -45,6 +57,9 @@ user5 = User.create(
   last_name: 'Korman',
   username: 'bradkorman'
   )
+user5.remote_photo_url = 'https://avatars2.githubusercontent.com/u/54051432?v=4'
+user5.save
+
 user6 = User.create(
   email: 'alisa@silina.com',
   password: '123456',
@@ -52,6 +67,9 @@ user6 = User.create(
   last_name: 'Silina',
   username: 'alisasilina'
   )
+user6.remote_photo_url = 'https://avatars0.githubusercontent.com/u/54353429?v=4'
+user6.save
+
 user7 = User.create(
   email: 'david@sellam.com',
   password: '123456',
@@ -59,6 +77,54 @@ user7 = User.create(
   last_name: 'Sellam',
   username: 'davidsellam'
   )
+user7.remote_photo_url = 'https://avatars1.githubusercontent.com/u/37403593?v=4'
+user7.save
+
+user8 = User.create(
+  email: 'dean@wheeler.com',
+  password: '123456',
+  first_name: 'Alisa',
+  last_name: 'Silina',
+  username: 'alisasilina'
+  )
+user8.remote_photo_url = 'https://avatars2.githubusercontent.com/u/35640022?v=4'
+user8.save
+
+############# Friendships ##################################
+
+puts 'Making friends...'
+
+user1.friend_request(user2)
+user2.accept_request(user1)
+
+user2.friend_request(user3)
+user3.accept_request(user2)
+
+user3.friend_request(user4)
+user4.accept_request(user3)
+
+user4.friend_request(user5)
+user5.accept_request(user4)
+
+user4.friend_request(user6)
+user6.accept_request(user4)
+
+user4.friend_request(user7)
+user7.accept_request(user4)
+
+user4.friend_request(user8)
+user8.accept_request(user4)
+
+user5.friend_request(user6)
+user6.accept_request(user5)
+
+user6.friend_request(user7)
+user7.accept_request(user6)
+
+user7.friend_request(user8)
+user8.accept_request(user7)
+
+
 ############# Skills ##################################
 puts 'Creating skills...'
 

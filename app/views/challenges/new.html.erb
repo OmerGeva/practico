@@ -21,13 +21,7 @@
     <a href="#">Share</a><br>
 
     <!-- ADD PROOF -->
-    <p>Add Proof</p>
-      <!-- Checkbox, Timer, Photo -->
-      <ul>
-        <li>Checkbox</li>
-        <li>Timer</li>
-        <li>Photo</li>
-      </ul>
+    <%=  f.input :validation_type, as: :radio_buttons, collection: Challenge::VALIDATION_TYPE, label: 'How will you check in?' %>
 
     <!-- SET STAKES -->
     <%= f.input :first_place %> <p></p>

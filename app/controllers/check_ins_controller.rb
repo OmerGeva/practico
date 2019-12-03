@@ -21,7 +21,12 @@ class CheckInsController < ApplicationController
       @users_challenge.update(user_progress: progress)
     end
     authorize @check_in
-    redirect_to challenge_path(@users_challenge.challenge)
+    if @users_challenge.user_progress >= @users_challenge.challenge.milestone
+      @users_challenge.challenge.update(completed: true)
+      redirect_to challenge_finished_path(@users_challenge.challenge)
+    else
+      redirect_to challenge_path(@users_challenge.challenge)
+    end
   end
 
   private

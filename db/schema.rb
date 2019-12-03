@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_085927) do
+ActiveRecord::Schema.define(version: 2019_12_03_125023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_085927) do
     t.string "time_type"
     t.string "count_type"
     t.string "validation_type"
+    t.boolean "completed", default: false
     t.index ["skill_id"], name: "index_challenges_on_skill_id"
   end
 

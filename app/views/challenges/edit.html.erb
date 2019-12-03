@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>Edit and Renew Challenge</h1>
+
+  <%= simple_form_for [@challenge] do |f| %>
+
+    <!-- SET SKILL -->
+    <h3 class="border-bottom"> <%= @challenge.skill.title.capitalize %></h3>
+    <p>Need some ideas? <a href="">Browse Challenges</a></p>
+
+    <!-- SET GOAL -->
+    <%= f.input :milestone, label: 'First person to...' %>
+    <%= f.input :time_type, collection: Challenge::TIME_TYPE %>
+    <%= f.input :count_type, collection: Challenge::COUNT_TYPE %>
+
+    <!-- ADD SPONSORS -->
+    <p>Invite friends and family to sponsor this challenge</p>
+    <a href="#">Share</a><br>
+
+    <!-- ADD PROOF -->
+    <p>Add Proof</p>
+      <!-- Checkbox, Timer, Photo -->
+      <ul>
+        <li>Checkbox</li>
+        <li>Timer</li>
+        <li>Photo</li>
+      </ul>
+
+    <!-- SET STAKES -->
+    <%= f.input :first_place %> <p></p>
+    <%= f.input :last_place %>
+
+    <!-- START DATE -->
+    <%= f.input :starting_date, label: 'When should we start?' %>
+
+    <!-- SUBMIT -->
+    <%= f.submit "Renew Challenge!", class: "btn btn-primary ml-3", id:"new-challenge-button" %>
+  <% end %>
+</div>

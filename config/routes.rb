@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'dashboard#home'
   resources :challenges do
+    get 'renew', to: 'challenges#renew'
+    get 'finished', to: 'challenges#finished'
     patch 'accept', to: 'challenges#accept'
     delete 'decline', to: 'challenges#decline'
     resources :check_ins, only: [:new, :create]

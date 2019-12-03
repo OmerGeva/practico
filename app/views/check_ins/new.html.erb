@@ -5,9 +5,9 @@
   <%= simple_form_for [@challenge, @check_in] do |f| %>
 
   <%= f.input :completed, as: :radio_buttons %>
-  <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-    <%= f.input :photo  %>
-    <%= f.input :photo_cache, as: :hidden %>
+    <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+      <%= f.input :photo, input_html: { class: 'hidden d-none', id: 'photo-input'}, label_html: { class: 'upload-photo btn btn-primary btn-custom'}, label: '📷 Upload a photo' %>
+      <%= f.input :photo_cache, as: :hidden %>
     <%= f.submit "Check In", class: "btn btn-primary" %>
   <% end %>
 
@@ -24,8 +24,8 @@
   <%= simple_form_for [@challenge,@check_in] do |f| %>
     <%= f.input :duration %>
 
-  <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-      <%= f.input :photo  %>
+      <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+      <%= f.input :photo, input_html: { class: 'hidden d-none', id: 'photo-input'}, label_html: { class: 'upload-photo btn btn-primary btn-custom'}, label: '📷 Upload a photo' %>
       <%= f.input :photo_cache, as: :hidden %>
       <%= f.submit "Check In", class: "btn btn-primary" %>
     <% end %>

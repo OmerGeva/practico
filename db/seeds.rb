@@ -83,6 +83,7 @@ challenge1 = Challenge.create(
   description: "Not Smoking for consecutive days",
   time_type: 'days',
   count_type: 'in a row',
+  validation_type: 'checkbox'
   )
 chatroom1 = ChatRoom.create(
   challenge_id: challenge1.id,
@@ -96,7 +97,8 @@ challenge2 = Challenge.create(
   last_place: "Pays for the winner's trip to Japan",
   description: "Learning Japanese for a certain amount of hours",
   time_type: 'hours',
-  count_type: 'total'
+  count_type: 'total',
+  validation_type: 'duration'
   )
 chatroom2 = ChatRoom.create(
   challenge_id: challenge2.id,
@@ -110,7 +112,8 @@ challenge3 = Challenge.create(
   last_place: "Buys winner lunch",
   description: "Working on doing a handstand for consecutive days, winner has to be able to do it for 10 seconds without moving.",
   time_type: 'days',
-  count_type: 'in a row'
+  count_type: 'in a row',
+  validation_type: 'photo, checkbox'
   )
 chatroom3 = ChatRoom.create(
   challenge_id: challenge3.id,

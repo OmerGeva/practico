@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_134305) do
+ActiveRecord::Schema.define(version: 2019_12_03_085927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_134305) do
     t.datetime "updated_at", null: false
     t.string "time_type"
     t.string "count_type"
+    t.string "validation_type"
     t.index ["skill_id"], name: "index_challenges_on_skill_id"
   end
 
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_134305) do
     t.float "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
     t.index ["users_challenge_id"], name: "index_check_ins_on_users_challenge_id"
   end
 

@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   resources :challenges do
     patch 'accept', to: 'challenges#accept'
     delete 'decline', to: 'challenges#decline'
-    resources :check_ins, only: [:new]
+    resources :check_ins, only: [:new, :create]
   end
-  
+
   resources :accounts, only: [:show] do
     member do
       get 'friends', to: "accounts#friends"

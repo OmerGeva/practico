@@ -2,6 +2,7 @@ puts 'Cleaning database...'
 
 Message.destroy_all
 ChatRoom.destroy_all
+Event.destroy_all
 UsersChallenge.destroy_all
 Challenge.destroy_all
 Skill.destroy_all

@@ -2,29 +2,23 @@
 
   <div class="col-4">
 
-    <!-- USER INFO -->
+      <!-- USER INFO -->
     <div class="user-info">
-      <svg viewBox="0 0 36 36" class="circular-chart">
-        <path class="circle"
-          stroke-dasharray="60, 100"
-          d="M18 2.0845
-            a 15.9155 15.9155 0 0 1 0 31.831
-            a 15.9155 15.9155 0 0 1 0 -31.831"
-        />
-      </svg>
-      <p class='m-0'>@<%= current_user.username %></p>
-      <p class='m-0'>
+      <%= cl_image_tag current_user.photo, alt: "user avatar", class: "avatar-large" %>
+      <p><%= current_user.username %></p>
+      <p><%= current_user.email %></p>
+      <p>
         <%= current_user.first_name %>
         <%= current_user.last_name %>
       </p>
     </div>
 
-    <!-- ACHIEVEMENTS -->
+      <!----------------------------------------- ACHIEVEMENTS -------------------------------------------------------->
     <div class="achievements">
       <h4>Achievements</h4>
     </div>
 
-    <!-- NOTIFICATIONS -->
+      <!------------------------------------------ NOTIFICATIONS ------------------------------------------------------>
     <div class="notifications">
       <h4 class="border-bottom pb-1">Notifications</h4>
       <div class="border-bottom">
@@ -63,14 +57,12 @@
     </div>
   </div>
 
-  <!-- CHALLENGES -->
-  <% unless current_user.challenges.empty? %>
+    <!-- CHALLENGES -->
 
   <div class="col-8 challenges-index pl-0">
     <% unless current_user.challenges.empty? %>
       <% @users_challenges.each do |user_challenge| %>
-
-        <!-- CHALLENGE CARD -->
+      <!-- CHALLENGE CARD -->
         <div class="challenge-card">
           <% challenge = user_challenge.challenge %>
           <% if user_challenge.accepted %>
@@ -108,6 +100,7 @@
           <% end %>
         </div>
       <% end %>
+
     <% else %>
       <div class="challenge-card">
         <h2 class="text-center">You have no challenges</h2>
@@ -133,5 +126,4 @@
     <% end %>
   </div>
 </div>
-<% end %>
 

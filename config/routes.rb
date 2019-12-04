@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     get 'renew', to: 'challenges#renew'
     get 'finished', to: 'challenges#finished'
     patch 'accept', to: 'challenges#accept'
+    get 'schedule', to: 'challenges#schedule'
+    post 'schedule', to: 'challenges#update_schedule'
     delete 'decline', to: 'challenges#decline'
     resources :check_ins, only: [:new, :create]
   end

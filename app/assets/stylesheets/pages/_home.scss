@@ -8,3 +8,16 @@
 .user-info {
   display: block;
 }
+
+.marker {
+  position: relative;
+
+  &:after {
+    content: attr(data-content);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50%;
+    background-color: $yellow;
+  }
+}

@@ -5,6 +5,12 @@
   max-height: 250px;
 }
 
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+
 .circle {
   stroke: $turq;
   fill: none;
@@ -17,4 +23,10 @@
   0% {
     stroke-dasharray: 0 100;
   }
+}
+
+.percentage {
+  fill: #666;
+  font-size: 0.5em;
+  text-anchor: middle;
 }

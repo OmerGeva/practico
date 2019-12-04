@@ -1,3 +1,5 @@
+// *= require simple_calendar
+
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -20,10 +22,9 @@ body {
 }
 
 li {
-  list-style:none;
+  list-style: none;
 }
 
-// *= require simple_calendar
 svg {
   width: 210px;
   height: 210px;
@@ -34,3 +35,18 @@ a {
     text-decoration: none;
   }
 }
+
+h1, h2, h3, h4 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
+  opacity: .9;
+}
+

@@ -64,8 +64,8 @@ $('select').on('change', function (e) {
 
 // MILESTONE
 
-countList1 = document.querySelector('.milestone_input');
-countInput1 = document.getElementById("challenge_milestone")
+const countList1 = document.querySelector('.milestone_input');
+const countInput1 = document.getElementById("challenge_milestone")
 
 countList1.addEventListener('change', (e) => {
   countInput1.value = e.currentTarget.value
@@ -73,8 +73,8 @@ countList1.addEventListener('change', (e) => {
 
 // TIME TYPE
 
-countList2 = document.querySelector(".time_type_list")
-countInput2 = document.getElementById("challenge_time_type")
+const countList2 = document.querySelector(".time_type_list")
+const countInput2 = document.getElementById("challenge_time_type")
 
 countList2.addEventListener('click', (e) => {
   countInput2.value = e.currentTarget.firstChild.firstChild.innerText
@@ -82,8 +82,8 @@ countList2.addEventListener('click', (e) => {
 
 // COUNT_TYPE
 
-countList3 = document.querySelector(".count_type_list")
-countInput3 = document.getElementById("challenge_count_type")
+const countList3 = document.querySelector(".count_type_list")
+const countInput3 = document.getElementById("challenge_count_type")
 
 countList3.addEventListener('click', (e) => {
   countInput3.value = e.currentTarget.firstChild.firstChild.innerText

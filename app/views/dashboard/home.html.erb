@@ -1,17 +1,3 @@
-<% link_to 'New challenge', new_challenge_path, class: 'btn btn-primary' %>
-<!-------------------------------- Search Form For Username!!! --------------------------------------->
-<div style="width: 200px">
-  <%= form_tag account_path(current_user), method: :get do %>
-  <%= text_field_tag :query,
-  params[:query],
-  class: "form-control",
-    placeholder: "Enter Username"
-    %>
-  <% end %>
-</div>
-
-<!-------------------------------- Container For all the dashboard cards!!!!! --------------------------------------->
-
 <div class="dashboard-container">
   <div class="col-4">
 
@@ -31,7 +17,7 @@
       <h4>Achievements</h4>
     </div>
 
-      <!------------------------------------------ NOTIFICATIONS -------------------------------------------------------->
+      <!------------------------------------------ NOTIFICATIONS ------------------------------------------------------>
     <div class="notifications">
       <h4 class="border-bottom pb-1">Notifications</h4>
       <div class="border-bottom">
@@ -72,6 +58,7 @@
 
     <!-- CHALLENGES -->
   <% unless current_user.challenges.empty? %>
+
     <div class="col-8 challenges-index pl-0">
       <% @users_challenges.each do |user_challenge| %>
       <!-- CHALLENGE CARD -->
@@ -110,6 +97,7 @@
             </div>
           <% end %>
         </div>
+
       <% end %>
     </div>
 

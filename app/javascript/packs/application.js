@@ -1,4 +1,5 @@
 import "bootstrap";
+import "../plugins/flatpickr"
 import "../components/sidebar_toggle"
 import { previewImageOnFileSelect} from "../components/photo_preview"
 import { dataPickerHomepage} from "../components/datapicker"

@@ -47,20 +47,46 @@
     <%= f.input :time_type, label: false, value: 'hours', collection: Challenge::TIME_TYPE %>
     <%= f.input :count_type, label: false, value: 'in a row', collection: Challenge::COUNT_TYPE %>
 
-    <!-- ADD USERS -->
+    <!-- ADD FRIENDS -->
 
-    <%= f.input :users, as: :check_boxes, collection: @friends, label_method: :first_name %>
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Add Friends
+      </button>
+      <div class="dropdown-menu">
+        <ul class="friend_list">
+        <% @friends.each do |friend| %>
+          <li class="dropdown-item" id="friend"><%= cl_image_tag friend.photo, alt: "Friend avatar", class: "avatar-small" %>
+            <%= friend.first_name %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Hidden -->
+    <%= f.input :users, label: false, as: :check_boxes, collection: @friends, label_method: :first_name %>
 
     <!-- ADD SPONSORS -->
     <p>Invite friends and family to sponsor this challenge</p>
     <a href="#">Share</a><br>
 
-    <!-- ADD PROOF -->
+    <!-- SET CHECKINS -->
     <%=  f.input :validation_type, as: :radio_buttons, collection: Challenge::VALIDATION_TYPE, label: 'How will you check in?' %>
 
     <!-- SET STAKES -->
-    <%= f.input :first_place %> <p></p>
-    <%= f.input :last_place %>
+
+    <div class='skill-input'>
+      <%= f.input :first_place, label: 'First place will', placeholder: 'get free lunch' %>
+      <div class='underline'></div>
+    </div>
+
+    <div class='skill-input'>
+      <%= f.input :last_place, label: 'Last place will', placeholder: 'buy the lunch' %>
+      <div class='underline'></div>
+    </div>
+
+     <p></p>
+
 
     <!-- START DATE -->
     <%= f.input :starting_date, label: 'When should we start?' %>

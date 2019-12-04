@@ -34,8 +34,8 @@ class ChallengesController < ApplicationController
     if @challenge.save
 
       @chat_room = ChatRoom.create(challenge_id: @challenge.id, name: @skill.title)
-      redirect_to challenge_schedule_path(@challenge)
-      # redirect_to challenge_path(@challenge)
+
+      redirect_to challenge_path(@challenge)
     else
       redirect_to new_challenge_path
     end
@@ -121,8 +121,60 @@ class ChallengesController < ApplicationController
   end
 
   def update_schedule
-    binding.pry
-    #####events made here
+    @challenge = Challenge.find(params[:challenge_id])
+    @challenge.update(scheduled: true)
+    milestone = @challenge.milestone
+    hours = params[:hours].to_i
+    @users_challenge = UsersChallenge.find_by(challenge_id: @challenge.id, user_id: current_user.id)
+    days_of_week = []
+    params.each do |key, value|
+      if key.match?(/^day/) && value == '1'
+        days_of_week << key[3, key.length]
+      end
+    end
+    authorize @challenge
+
+    counter = 0
+
+    if @challenge.time_type == 'days' && @challenge.count_type == 'total'
+      until milestone <= 0
+        days_of_week.each do |day|
+          unless milestone <= 0
+            Event.create(start_time: Date.parse(day) + counter, users_challenge_id: @users_challenge.id, user_id: current_user.id)
+            milestone -= 1
+          end
+        end
+        counter += 7
+      end
+    elsif @challenge.time_type == 'weeks' && @challenge.count_type == 'total'
+      until milestone <= 0
+        days_of_week.each do |day|
+          Event.create(start_time: Date.parse(day) + counter, users_challenge_id: @users_challenge.id, user_id: current_user.id)
+        end
+        milestone -= 1
+        counter += 7
+      end
+    elsif @challenge.time_type == 'weeks' && @challenge.count_type == 'in a row'
+      milestone.times do
+        days_of_week.each do |day|
+          Event.create(start_time: Date.parse(day) + counter, users_challenge_id: @users_challenge.id, user_id: current_user.id)
+        end
+        milestone -= 1
+        counter += 7
+      end
+    elsif @challenge.time_type == 'hours' && @challenge.count_type == 'total'
+      until milestone <= 0
+        days_of_week.each do |day|
+          unless milestone <= 0
+            Event.create(start_time: Date.parse(day) + counter, users_challenge_id: @users_challenge.id, user_id: current_user.id)
+            milestone -= hours
+          end
+        end
+        counter += 7
+      end
+    end
+
+    redirect_to events_path
   end
 
   private

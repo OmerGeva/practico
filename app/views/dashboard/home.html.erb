@@ -1,4 +1,5 @@
 <div class="dashboard-container">
+
   <div class="col-4">
 
       <!-- USER INFO -->
@@ -57,9 +58,9 @@
   </div>
 
     <!-- CHALLENGES -->
-  <% unless current_user.challenges.empty? %>
 
-    <div class="col-8 challenges-index pl-0">
+  <div class="col-8 challenges-index pl-0">
+    <% unless current_user.challenges.empty? %>
       <% @users_challenges.each do |user_challenge| %>
       <!-- CHALLENGE CARD -->
         <div class="challenge-card">
@@ -77,10 +78,11 @@
           <p>Start Date: <%= challenge.starting_date.strftime('%B %e at %l:%M %p') %></p>
           <p><%= challenge.description %></p>
           <% if user_challenge.accepted %>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
               Check in
             </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -97,12 +99,8 @@
             </div>
           <% end %>
         </div>
-
       <% end %>
-    </div>
-
-  <% else %>
-    <div class="col-8 challenges-index pl-0">
+    <% else %>
       <div class="challenge-card">
         <h2 class="text-center">You have no challenges</h2>
         <div class="d-flex justify-content-center">
@@ -113,19 +111,18 @@
               <image xlink:href="https://media.giphy.com/media/3o85xyj0M45c9MkXhS/giphy.gif"
               height="100%"
               width="100%"/>
-            </mask>
-          </defs>
+              </mask>
+            </defs>
 
-          <image mask="url(#MASK)" x="0" y="-20%" class="space" xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/space.jpg"
-          height="198%" width="200%"/>
-        </svg>
+            <image mask="url(#MASK)" x="0" y="-20%" class="space" xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/space.jpg"
+            height="198%" width="200%"/>
+          </svg>
+        </div>
+        <div class="d-flex justify-content-around">
+          <%= link_to "Make a new Challenge!", new_challenge_path, class: 'btn btn-primary'  %>
+        </div>
       </div>
-      <div class="d-flex justify-content-around">
-        <%= link_to "Make a new Challenge!", new_challenge_path, class: 'btn btn-primary'  %>
-      </div>
-    </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
-
 

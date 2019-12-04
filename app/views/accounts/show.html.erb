@@ -1,68 +1,65 @@
 <div class="container">
-  <div class="d-flex justify-content-center align-items-center mb-4">
 
-    <h2 class="mr-2"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h2>
-  </div>
-    <div class="text-right">
+  <!-- MAIN HEADER -->
+  <h2 class="text-center mb-4 mr-2"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h2>
+
+  <div class="text-right">
     <% unless @user == current_user && !current_user.friends_with?(@user)%>
-    <%= link_to "Add Friend", request_friend_account_path(@user), method: :post, class: "btn btn-primary" %>
-    </div>
-  <% end %>
+      <%= link_to "Add Friend", request_friend_account_path(@user), method: :post, class: "btn btn-primary" %>
+    <% end %>
+  </div>
 
-
-
-
-</div>
-<div class="container">
-  <div class="grid">
-    <div class="row mt-2">
-      <div class="col">
-
-        <div class="challenge-page-card">
-        <!-- <div class="user-info"> -->
-          <%= cl_image_tag @user.photo, alt: "user avatar", class: "avatar-huge" %>
-          <p><strong>Username: </strong><%= current_user.username %></p>
-          <p><strong>Email: </strong><%= current_user.email %></p>
-        </div>
-
-
+  <div class="row">
+    <div class="col-6">
+      <!-- USER INFO -->
+      <div class="challenge-page-card">
+      <!-- <div class="user-info"> -->
+        <%= cl_image_tag current_user.photo, alt: "user avatar", class: "avatar-huge" %>
+        <p><strong>Username: </strong><%= current_user.username %></p>
+        <p><strong>Email: </strong><%= current_user.email %></p>
       </div>
-      <div class="col">
-        <div class="challenge-page-card">
-          <ul>
-          <h2> Current Challenges</h2>
-          <% @user.challenges.each do |challenge| %>
-           <li><%= link_to challenge.skill.title.capitalize, challenge_path(challenge) %> </li>
+    </div>
+
+    <div class="col-6">
+      <!-- FRIENDS -->
+      <div class="challenge-page-card">
+        <h2>Friends</h2>
+        <div class="mt-2 d-flex">
+            <% @user.friends.each do |friend| %>
+              <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar-small mr-2" %>
+            <p><%= friend.username %></p>
+            <% if @user == current_user %>
+              <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, class: "btn btn-primary btn-sm ml-auto" %>
+            <% elsif !friend.friends_with?(current_user) %>
+              <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary btn-sm ml-auto" %>
+            <% end %>
           <% end %>
-          </ul>
         </div>
       </div>
     </div>
-    <div class="row mt-2">
-      <div class="col">
-        <div class="challenge-page-card">
-          <h2> Friends</h2>
-          <ul class="mt-2">
-          <% @user.friends.each do |friend| %>
-            <li>
-              <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar-small" %>
-              <span class="mr-5"><%= friend.username %></span>
-              <% if @user == current_user %>
-                <button class="btn btn-primary btn-sm ml-5" id="remove-friend-btn" data-friendId="<%= friend.id %>">Remove Friend</button>
-                <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;" %>
-              <% elsif !friend.friends_with?(current_user) %>
-                <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
-              <% end %>
-              </li>
-              <% end %>
-        </div>
-      </div>
-      <div class="col">
-        <div class="challenge-page-card">
-          <h2> Trophy Case</h2>
-        </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <!-- CURRENT CHALLENGES -->
+      <div class="challenge-page-card">
+        <h2>Current Challenges</h2>
+        <% @user.challenges.each do |challenge| %>
+         <p><%= link_to challenge.skill.title.capitalize, challenge_path(challenge) %></p>
+        <% end %>
+
       </div>
     </div>
+
+    <div class="col-6">
+      <!-- ACHIEVEMENTS -->
+      <div class="challenge-page-card">
+        <h2>Achievements</h2>
+      </div>
+    </div>
+  </div>
+
   </div>
 </div>
 

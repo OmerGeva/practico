@@ -1,6 +1,6 @@
 .vertical-nav {
-  min-width: 16rem;
-  width: 16rem;
+  min-width: 15.5rem;
+  width: 15.5rem;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -11,10 +11,10 @@
 }
 
 .nav-item {
-  margin: 16px;
+  margin: 16px 28px;
   img {
     width: 30px;
-    margin-right: 12px;
+    margin-right: 14px;
     filter: opacity(.9) invert(100%) grayscale(100%) brightness(50%) sepia(100%) hue-rotate(140deg) saturate(300%) contrast(0.6);
   }
   a {
@@ -37,10 +37,10 @@
 .nav-item-active {
     background-color: $turq;
     color: white;
-    padding: 12px 16px;
+    padding: 16px 28px;
     img {
       width: 30px;
-      margin-right: 12px;
+      margin-right: 14px;
       filter: opacity(.9) invert(100%);
     }
     a {
@@ -94,10 +94,3 @@
     width: calc(100% - 17rem);
   }
 }
-// body {
-//   background: #599fd9;
-//   background: -webkit-linear-gradient(to right, #599fd9, #c2e59c);
-//   background: linear-gradient(to right, #599fd9, #c2e59c);
-//   min-height: 100vh;
-//   overflow-x: hidden;
-// }

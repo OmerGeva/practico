@@ -6,3 +6,14 @@
   background: #296DA1;
   border-radius: 2px;
 }
+
+.btn-primary {
+  background: #f26d52;
+  border: none;
+  border-radius: 16px;
+  padding: 8px 20px;
+  transition: .4s;
+  &:hover {
+    background: #ed462d;
+  }
+}

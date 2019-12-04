@@ -1,14 +1,5 @@
-<% link_to 'New challenge', new_challenge_path, class: 'btn btn-primary' %>
-<div style="width: 200px">
-  <%= form_tag account_path(current_user), method: :get do %>
-  <%= text_field_tag :query,
-  params[:query],
-  class: "form-control",
-    placeholder: "Enter Username"
-    %>
-    <% end %>
-  </div>
-  <div class="dashboard-container">
+<div class="dashboard-container">
+
     <div class="col-4">
 
       <!-- USER INFO -->
@@ -66,7 +57,7 @@
       <p>Start Date: <%= challenge.starting_date.strftime('%B %e at %l:%M %p') %></p>
       <p><%= challenge.description %></p>
       <% if user_challenge.accepted %>
-      <%= link_to "Check in", new_challenge_check_in_path(user_challenge.challenge), class: 'btn btn-secondary' %>
+      <%= link_to "Check in", new_challenge_check_in_path(user_challenge.challenge), class: 'btn btn-primary' %>
       <% end %>
     </div>
     <% end %>

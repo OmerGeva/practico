@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+
   def show
     if params[:query]
       @user = User.find_by(username: params[:query])

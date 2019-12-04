@@ -6,5 +6,5 @@ class Challenge < ApplicationRecord
 
   TIME_TYPE = ['hours', 'days', 'weeks']
   COUNT_TYPE = ['in a row', 'total']
-  VALIDATION_TYPE = ['photo, checkbox', 'checkbox', 'photo, duration', 'duration']
+  VALIDATION_TYPE = ['checkbox', 'photo', 'duration']
 end

@@ -59,10 +59,9 @@
     <!-- Hidden -->
     <%= f.input :users, label: false, as: :check_boxes, collection: @friends, label_method: :first_name %>
 
-    <!-- SET CHECKINS -->
-    <%=  f.input :validation_type, as: :radio_buttons, collection: Challenge::VALIDATION_TYPE, label: 'How will you check in?' %>
+        <!-- ADD PROOF -->
+        <%=  f.input :validation_type, as: :check_boxes, collection: Challenge::VALIDATION_TYPE, label: 'How will you check in?' %>
 
-    <!-- SET STAKES -->
 
     <div class='skill-input'>
       <%= f.input :first_place, label: 'First place will', placeholder: 'get free lunch' %>

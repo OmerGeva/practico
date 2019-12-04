@@ -40,16 +40,17 @@
       <div class="col">
         <div class="challenge-page-card">
           <h2> Friends</h2>
-          <% @user.friends.each do |friend| %>
           <ul class="mt-2">
+          <% @user.friends.each do |friend| %>
             <li>
               <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar-small" %>
               <span class="mr-5"><%= friend.username %></span>
               <% if @user == current_user %>
-                <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, class: "btn btn-primary btn-sm ml-5" %></li>
+                <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, class: "btn btn-primary btn-sm ml-5" %>
               <% elsif !friend.friends_with?(current_user) %>
                 <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
               <% end %>
+              </li>
               <% end %>
         </div>
       </div>

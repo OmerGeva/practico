@@ -118,6 +118,10 @@ $color-primary: $orange;
   display: none;
 }
 
+.challenge_users {
+  display: none;
+}
+
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -133,6 +137,24 @@ textarea:focus {
 }
 
 #challenge_skill {
+  border: none;
+  border-bottom: 4px solid;
+  background: transparent;
+  &:hover {
+    border-bottom: 0;
+  }
+}
+
+#challenge_last_place {
+  border: none;
+  border-bottom: 4px solid;
+  background: transparent;
+  &:hover {
+    border-bottom: 0;
+  }
+}
+
+#challenge_first_place {
   border: none;
   border-bottom: 4px solid;
   background: transparent;

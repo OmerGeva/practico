@@ -1,20 +1,18 @@
 <div class="container text-center p-0">
   <h1 style="color: white;">New Challenge</h1>
 
-
   <%= simple_form_for [@challenge] do |f| %>
-    <div class='new-challenge-card'>
-
-        <!-- SET SKILL -->
-
+  <div class='new-challenge-card'>
+    
+      <!-- SET SKILL -->
       <div class='skill-input'>
         <%= f.input :skill, label: 'What do you want to work on?', placeholder: 'quit smoking' %>
         <div class='underline'></div>
       </div>
         <p>Need some ideas? <a href="">Browse Challenges</a></p>
 
-        <!-- Data Picker -->
-        <div class="wrapper typo">I want to work on this for<br>
+       <!-- Data Picker -->
+       <div class="wrapper typo">I want to work on this for<br>
 
           <div class='milestone-input'>
             <input type="number" id="milestone" placeholder="10" size="4" class="milestone_input", min='0'>
@@ -36,34 +34,54 @@
             </ul>
           </div>
         </div>
-
-        <!-- SET GOAL - hidden -->
+      
+         <!-- SET GOAL - hidden -->
         <%= f.input :milestone, label: false, value: '10' %>
         <%= f.input :time_type, label: false, value: 'hours', collection: Challenge::TIME_TYPE %>
         <%= f.input :count_type, label: false, value: 'in a row', collection: Challenge::COUNT_TYPE %>
 
-        <!-- ADD USERS -->
+    <!-- ADD FRIENDS -->
 
-        <%= f.input :users, as: :check_boxes, collection: @friends, label_method: :first_name %>
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Add Friends
+      </button>
+      <div class="dropdown-menu">
+        <ul class="friend_list">
+        <% @friends.each do |friend| %>
+          <li class="dropdown-item" id="friend"><%= cl_image_tag friend.photo, alt: "Friend avatar", class: "avatar-small" %>
+            <%= friend.first_name %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
 
-        <!-- ADD SPONSORS -->
-        <p>Invite friends and family to sponsor this challenge</p>
-        <a href="#">Share</a><br>
+    <!-- Hidden -->
+    <%= f.input :users, label: false, as: :check_boxes, collection: @friends, label_method: :first_name %>
 
         <!-- ADD PROOF -->
         <%=  f.input :validation_type, as: :check_boxes, collection: Challenge::VALIDATION_TYPE, label: 'How will you check in?' %>
 
-        <!-- SET STAKES -->
-        <%= f.input :first_place %> <p></p>
-        <%= f.input :last_place %>
 
-        <!-- START DATE -->
-        <%= f.input :starting_date, label: 'When should we start?', placeholder: Date.today, as: :string, input_html: {class: "datepicker" } %>
+    <div class='skill-input'>
+      <%= f.input :first_place, label: 'First place will', placeholder: 'get free lunch' %>
+      <div class='underline'></div>
+    </div>
 
-      </div>
+    <div class='skill-input'>
+      <%= f.input :last_place, label: 'Last place will', placeholder: 'buy the lunch' %>
+      <div class='underline'></div>
+    </div>
+
+     <p></p>
+
+       <!-- START DATE -->
+       <%= f.input :starting_date, label: 'When should we start?', placeholder: Date.today, as: :string, input_html: {class: "datepicker" } %>
+
+    
 
       <!-- SUBMIT -->
       <%= f.submit "New Challenge", class: "btn btn-primary ml-3", id:"new-challenge-button" %>
     <% end %>
-
+    </div>
 </div>

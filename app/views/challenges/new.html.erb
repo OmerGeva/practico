@@ -51,7 +51,7 @@
         <a href="#">Share</a><br>
 
         <!-- ADD PROOF -->
-        <%=  f.input :validation_type, as: :radio_buttons, collection: Challenge::VALIDATION_TYPE, label: 'How will you check in?' %>
+        <%=  f.input :validation_type, as: :check_boxes, collection: Challenge::VALIDATION_TYPE, label: 'How will you check in?' %>
 
         <!-- SET STAKES -->
         <%= f.input :first_place %> <p></p>

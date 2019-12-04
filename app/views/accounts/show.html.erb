@@ -2,7 +2,6 @@
   <div class="d-flex justify-content-center align-items-center mb-4">
 
     <h2 class="mr-2"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h2>
-    <%= cl_image_tag @user.photo, alt: "user avatar", class: "avatar-huge" %>
   </div>
     <div class="text-right">
     <% unless @user == current_user && !current_user.friends_with?(@user)%>
@@ -18,12 +17,15 @@
   <div class="grid">
     <div class="row mt-2">
       <div class="col">
+
         <div class="challenge-page-card">
-          <h2>Info:</h2>
-          <p><strong>Username:</strong> <%= @user.username %></p>
-          <p><strong>Email:</strong> <%= @user.email %></p>
-          <h4></h4>
+        <!-- <div class="user-info"> -->
+          <%= cl_image_tag current_user.photo, alt: "user avatar", class: "avatar-huge" %>
+          <p><strong>Username: </strong><%= current_user.username %></p>
+          <p><strong>Email: </strong><%= current_user.email %></p>
         </div>
+
+
       </div>
       <div class="col">
         <div class="challenge-page-card">

@@ -1,24 +1,16 @@
-
-
-
-
 <div class="container">
   <div class="grid">
 
-    <div style="width: 200px">
-      <%= form_tag account_path(current_user), method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-        placeholder: "Enter Username"
-        %>
+    <div class='friends-search'>
+      <%= form_tag account_path(current_user), method: :get, html: { autocomplete: "off" } do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Enter Username" %>
       <% end %>
     </div>
 
     <div class="row mt-2">
       <div class="col">
         <div class="challenge-page-card">
-          <h2>Pending Requests:</h2>
+          <h2>Pending Requests</h2>
           <% @user.pending_friends.each do |friend| %>
           <ul>
             <li><%= friend.username %> - Pending</li>
@@ -28,7 +20,7 @@
       </div>
       <div class="col">
         <div class="challenge-page-card">
-          <h2>Friend Requests:</h2>
+          <h2>Friend Requests</h2>
           <% @user.requested_friends.each do |friend| %>
           <ul>
             <%= friend.username %> <%= link_to "Accept Friend Request", accept_friend_account_path(friend), method: :post %>
@@ -38,31 +30,24 @@
       </div>
     </div>
 
-    <div class="row mt-2">
+    <div class="row">
       <div class="col">
         <div class="challenge-page-card">
 
-          <div style="width: 200px">
-          <%= form_tag account_path(current_user), method: :get do %>
-                <%= text_field_tag :query,
-                  params[:query],
-                  class: "form-control",
-                  placeholder: "Enter Username"
-                %>
-                <% end %>
-          </div>
-
-          <h2> Friends</h2>
+          <h2>Friends</h2>
           <% @user.friends.each do |friend| %>
-          <ul class="mt-2">
+          <ul class="mt-2 pl-0">
             <li>
-              <img class="avatar-small" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
+              <img class="avatar-small mr-2" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
               <span class="mr-5"><%= friend.username %></span>
+
               <% if @user == current_user %>
-                <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, class: "btn btn-primary btn-sm ml-5" %></li>
+              <button class="btn btn-primary btn-sm ml-5" id="remove-friend-btn" data-friendId="<%= friend.id %>">Remove Friend</button>
+                <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;" %>
               <% elsif !friend.friends_with?(current_user) %>
                 <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
               <% end %>
+              </li>
               <% end %>
             </ul>
         </div>

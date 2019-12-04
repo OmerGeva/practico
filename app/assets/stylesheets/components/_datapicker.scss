@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
 
-$dark: #555;
-$color--primary: hsla(269, 100%, 50%, 1);
+$dark: #1a393df7;
+$color-primary: $orange;
 
 .typo {
   font-size: 50px;
   font-weight: 700;
   font-family: 'Playfair Display', serif;
-  color: #585858;
+  color: $dark;
   text-decoration: none;
   option {
     font-size: 30px;
@@ -42,13 +42,13 @@ $color--primary: hsla(269, 100%, 50%, 1);
   li {
     list-style:none;
     &:first-child a {
-      color: desaturate($color--primary, 50%);
+      color: desaturate($color-primary, 50%);
     }
   }
   a {
     @extend .typo;
     transition: all .4s;
-    color: $color--primary;
+    color: $color-primary;
     position: relative;
     &:after {
       position: absolute;
@@ -56,13 +56,13 @@ $color--primary: hsla(269, 100%, 50%, 1);
       height: 5px;
       width: 0;
       left: 0;
-      background: lighten($color--primary, 20%);
+      background: lighten($color-primary, 20%);
       bottom: 0;
       transition: all .4s ease-out;
     }
     &:hover {
       cursor: pointer;
-      color: lighten($color--primary, 20%);
+      color: lighten($color-primary, 20%);
       &:after {
         width: 100%;
       }
@@ -79,7 +79,7 @@ $color--primary: hsla(269, 100%, 50%, 1);
 //   -webkit-appearance: none;
 //   -moz-appearance: none;
 //   border-bottom: 2px solid $dark;
-//   color: $color--primary;
+//   color: $color-primary;
 //   transition: all .4s ease-in-out;
 
 //   &:hover {
@@ -133,7 +133,7 @@ input:focus,
 textarea:focus {
   outline: 0;
   border: 0;
-  border-bottom: 4px solid $color--primary;
+  border-bottom: 4px solid $color-primary;
 }
 
 #challenge_skill {
@@ -171,16 +171,19 @@ textarea:focus {
   input {
     font-weight: 700;
     font-family: 'Playfair Display', serif;
-    color: #585858;
+    color: $dark;
     font-size: 30px;
     text-align: center;
+    &::placeholder {
+      color: rgba(26, 57, 61, .5);
+    }
   }
   .underline {
     width: 0;
     height: 4px;
     position: absolute;
     bottom: 0;
-    background: $color--primary;
+    background: $color-primary;
     transition: all 1s ease-out;
   }
   &:hover {
@@ -195,7 +198,7 @@ textarea:focus {
   font-weight: 700;
   font-family: 'Playfair Display', serif;
   line-height: 1;
-  color: #585858;
+  color: $dark;
   text-decoration: none;
   width: 100px;
   background: transparent;
@@ -203,6 +206,9 @@ textarea:focus {
   border-bottom: 4px solid $dark;
   &:hover {
     border: 0;
+  }
+  &::placeholder {
+    color: rgba(26, 57, 61, .5);
   }
 }
 
@@ -217,7 +223,7 @@ textarea:focus {
     position: absolute;
     bottom: 0;
     left: 0;
-    background: $color--primary;
+    background: $color-primary;
     transition: all .4s ease-out;
   }
   &:hover {
@@ -226,3 +232,8 @@ textarea:focus {
     }
   }
 }
+
+// ! MAKE ANIMATION ALIKE !
+
+
+

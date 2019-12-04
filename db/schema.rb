@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_140733) do
+ActiveRecord::Schema.define(version: 2019_12_04_092552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,14 @@ ActiveRecord::Schema.define(version: 2019_12_03_140733) do
     t.boolean "unread", default: false
     t.index ["challenge_id"], name: "index_users_challenges_on_challenge_id"
     t.index ["user_id"], name: "index_users_challenges_on_user_id"
+  end
+
+  create_table "wins", force: :cascade do |t|
+    t.string "challenge"
+    t.string "user"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date"
   end
 
   add_foreign_key "challenges", "skills"

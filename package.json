@@ -4,9 +4,11 @@
   "dependencies": {
     "@rails/webpacker": "^4.2.0",
     "bootstrap": "^4.4.1",
+    "flatpickr": "^4.6.3",
     "jquery": "^3.4.1",
-    "tippy.js": "^5.1.2",
-    "select2": "^4.0.12"
+    "select2": "^4.0.12",
+    "sweetalert": "^2.1.2",
+    "tippy.js": "^5.1.2"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.9.0"

@@ -1,51 +1,44 @@
-<div class="container text-center">
-  <h1>New Challenge</h1>
+<div class="container text-center p-0">
+  <h1 style="color: white;">New Challenge</h1>
 
   <%= simple_form_for [@challenge] do |f| %>
-
-    <!-- SET SKILL -->
-
-<!-- <form>
-  <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
-  <label for="nme"><span>What's your name?</span></label>
-  <textarea name="message" rows="2" class="question" id="msg" required autocomplete="off"></textarea>
-  <label for="msg"><span>What's your message?</span></label>
-  <input type="submit" value="Submit!" />
-</form> -->
-  <div class='skill-input'>
-    <%= f.input :skill, label: 'What do you want to work on?', placeholder: 'quit smoking' %>
-    <div class='underline'></div>
-  </div>
-    <p>Need some ideas? <a href="">Browse Challenges</a></p>
-
-    <!-- Data Picker -->
-    <div class="wrapper typo">I want to work on this for<br>
-
-      <div class='milestone-input'>
-        <input type="number" id="milestone" placeholder="10" size="4" class="milestone_input", min='0'>
+  <div class='new-challenge-card'>
+    
+      <!-- SET SKILL -->
+      <div class='skill-input'>
+        <%= f.input :skill, label: 'What do you want to work on?', placeholder: 'quit smoking' %>
         <div class='underline'></div>
       </div>
+        <p>Need some ideas? <a href="">Browse Challenges</a></p>
+
+       <!-- Data Picker -->
+       <div class="wrapper typo">I want to work on this for<br>
+
+          <div class='milestone-input'>
+            <input type="number" id="milestone" placeholder="10" size="4" class="milestone_input", min='0'>
+            <div class='underline'></div>
+          </div>
 
 
-      <div class="list"><span class="time_type_placeholder">hours</span>
-        <ul class="time_type_list">
-          <li><a href="">hours</a></li>
-          <li><a href="">days</a></li>
-          <li><a href="">weeks</a></li>
-        </ul>
-      </div>
-      <div class="list"><span class="count_type_placeholder">in a row</span>.
-        <ul class="count_type_list">
-          <li><a href="">in a row</a></li>
-          <li><a href="">total</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- SET GOAL - hidden -->
-    <%= f.input :milestone, label: false, value: '10' %>
-    <%= f.input :time_type, label: false, value: 'hours', collection: Challenge::TIME_TYPE %>
-    <%= f.input :count_type, label: false, value: 'in a row', collection: Challenge::COUNT_TYPE %>
+          <div class="list"><span class="time_type_placeholder">hours</span>
+            <ul class="time_type_list">
+              <li><a href="">hours</a></li>
+              <li><a href="">days</a></li>
+              <li><a href="">weeks</a></li>
+            </ul>
+          </div>
+          <div class="list"><span class="count_type_placeholder">in a row</span>.
+            <ul class="count_type_list">
+              <li><a href="">in a row</a></li>
+              <li><a href="">total</a></li>
+            </ul>
+          </div>
+        </div>
+      
+         <!-- SET GOAL - hidden -->
+        <%= f.input :milestone, label: false, value: '10' %>
+        <%= f.input :time_type, label: false, value: 'hours', collection: Challenge::TIME_TYPE %>
+        <%= f.input :count_type, label: false, value: 'in a row', collection: Challenge::COUNT_TYPE %>
 
     <!-- ADD FRIENDS -->
 
@@ -66,10 +59,6 @@
     <!-- Hidden -->
     <%= f.input :users, label: false, as: :check_boxes, collection: @friends, label_method: :first_name %>
 
-    <!-- ADD SPONSORS -->
-    <p>Invite friends and family to sponsor this challenge</p>
-    <a href="#">Share</a><br>
-
     <!-- SET CHECKINS -->
     <%=  f.input :validation_type, as: :radio_buttons, collection: Challenge::VALIDATION_TYPE, label: 'How will you check in?' %>
 
@@ -87,11 +76,13 @@
 
      <p></p>
 
+       <!-- START DATE -->
+       <%= f.input :starting_date, label: 'When should we start?', placeholder: Date.today, as: :string, input_html: {class: "datepicker" } %>
 
-    <!-- START DATE -->
-    <%= f.input :starting_date, label: 'When should we start?' %>
+    
 
-    <!-- SUBMIT -->
-    <%= f.submit "New Challenge", class: "btn btn-primary ml-3", id:"new-challenge-button" %>
-  <% end %>
+      <!-- SUBMIT -->
+      <%= f.submit "New Challenge", class: "btn btn-primary ml-3", id:"new-challenge-button" %>
+    <% end %>
+    </div>
 </div>

@@ -1,23 +1,75 @@
+// --- DASHBOARD ---
+
 .challenge-card {
-  background: #fff;
   padding: 16px;
   margin: 16px 0;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, .85);
+  // backdrop-filter: blur(6px);
 }
 
 .user-info {
   background: #fff;
   padding: 16px;
   margin: 16px 0;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, .85);
+  i {
+    font-size: 20px;
+    color: $turq;
+  }
 }
 
 .achievements {
   background: #fff;
   padding: 16px;
   margin: 16px 0;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, .85);
 }
 
 .notifications {
   background: #fff;
   padding: 16px;
   margin: 16px 0;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, .85);
 }
+
+// --- NEW CHALLENGE ---
+
+.new-challenge-card {
+  background-color: rgba(255, 255, 255, .7);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+// --- CHALLENGE PAGE ---
+
+.challenge-page-card {
+  background: #fff;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, .85);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+  min-height: 180px;
+  h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  }
+  p {
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: .8;
+  margin-bottom: 0;
+  margin-top: 8px;
+  }
+}
+
+
+

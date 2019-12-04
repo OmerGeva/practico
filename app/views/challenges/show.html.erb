@@ -1,17 +1,39 @@
 <h1 class="text-center"><%= @challenge.skill.title %></h1>
-<%= link_to "Check in", new_challenge_check_in_path(@challenge), class: 'btn btn-secondary' %>
+<%#= link_to "Check in", new_challenge_check_in_path(@challenge), class: 'btn btn-secondary' %>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Check in
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Check In</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'check_in', challenge: @challenge, check_in: CheckIn.new %>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="grid">
     <div class="row mt-2">
       <div class="col-4">
         <div class="challenge-page-card">
+          <% counter = 1 %>
           <h2> Challenge Leaderboard</h2>
-          <ol>
-            <% @challenge.users.order(:user_progress).each do |user| %>
-            <div>
-              <li><%= cl_image_tag user.photo, class: 'avatar-small', alt: "avatar" %>
-                <p><%= user.username %></p></li>
-              </div>
+          <ol class="mt-2">
+            <% @challenge.users.order(user_progress: :desc).each do |user| %>
+              <li class="mb-1">
+                <div class="d-flex align-items-center">
+                  <h6 class="mr-3"><%= counter%></h6><%= cl_image_tag user.photo, class: 'avatar-small mr-2', alt: "avatar" %>
+                  <p class="mt-0"><%= user.username %></p>
+                </div>
+              </li>
+              <% counter +=1 %>
               <% end %>
             </ol>
           </div>
@@ -19,11 +41,11 @@
         <div class="col-8">
           <div class="challenge-page-card">
             <h2> Challenge Group Stats</h2>
-            <% @challenge.users.order(:user_progress).each do |user| %>
+            <% @challenge.users.order(user_progress: :desc).each do |user| %>
             <% @progress = ((UsersChallenge.find_by(challenge_id: @challenge.id, user_id: user.id).user_progress/@challenge.milestone)*100).round %>
             <div class="row">
               <div class="col-4">
-            <p><%= user.username %> - <%= @challenge.users_challenges.find_by(user: user).user_progress %></p>
+            <p><strong><%= user.username %></strong>: <%= @challenge.users_challenges.find_by(user: user).user_progress.round %> <%= @challenge.time_type %></p>
 
               </div>
               <div class="col-8">
@@ -48,11 +70,11 @@
             <div>
 
             <h2> Challenge Personal Stats</h2>
-            <p><%= current_user.username %> - <%= @challenge.users_challenges.find_by(user: current_user).user_progress %></p>
+            <p><strong>Your progress:</strong> <%= @challenge.users_challenges.find_by(user: current_user).user_progress.round %> <%= @challenge.time_type %></p>
             </div>
             <div class="set-size charts-container">
               <div class="pie-wrapper">
-                <span class="label"><%= ((@users_challenge.user_progress/@challenge.milestone)*100).round %><span class="smaller">%</span></span>
+                <span class="label"><%= ((@users_challenge.user_progress/@challenge.milestone)*100).round %> <span class="smaller">%</span></span>
                 <div class="pie">
                   <div class="left-side half-circle"></div>
                   <div class="right-side half-circle"></div>
@@ -74,7 +96,7 @@
           <div id="create-message">
             <%= simple_form_for [@chat_room, Message.new], remote: true do |f| %>
             <%= f.input :content, label: false, id: "messsage-content" %>
-            <%= f.submit %>
+            <%= f.submit class:'btn btn-primary' %>
             <% end %>
           </div>
         </div>

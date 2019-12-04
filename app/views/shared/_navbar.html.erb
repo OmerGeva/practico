@@ -1,7 +1,7 @@
-
 <% unless current_user.nil? %>
+
 <!-- Vertical navbar -->
-<div class="vertical-nav bg-white" id="sidebar">
+<div class="vertical-nav" id="sidebar">
   <div class="py-4 px-3 mb-4 bg-light">
     <div class="media d-flex align-items-center">
       <%= cl_image_tag current_user.photo, alt: "user avatar", class: "avatar-large" %>
@@ -19,55 +19,104 @@
 
   <ul class="nav flex-column bg-white mb-0">
 
+  <!-- DASHBOARD -->
+  <% if current_page?(root_url) %>
+    <li class="nav-item-active">
+      <%= link_to root_path do %>
+      <img src="https://image.flaticon.com/icons/svg/1828/1828791.svg" alt="dashboard">
+      <p>Dashboard</p>
+      <% end %>
+    </li>
+  <% else %>
     <li class="nav-item">
+      <%= link_to root_path do %>
+      <img src="https://image.flaticon.com/icons/svg/1828/1828791.svg" alt="dashboard">
+      <p>Dashboard</p>
+      <% end %>
+    </li>
+  <% end %>
+
+  <!-- NEW CHALLENGE -->
+  <% if current_page?('/challenges/new') %>
+    <li class="nav-item-active">
       <%= link_to new_challenge_path do %>
       <img class='navbar-icons' src="https://image.flaticon.com/icons/svg/561/561169.svg" alt="new challenge">
       <p>New Challenge</p>
       <% end %>
     </li>
 
+  <% else %>
     <li class="nav-item">
-      <%= link_to root_path do %>
-      <img src="https://image.flaticon.com/icons/svg/1828/1828791.svg" alt="dashboard">
-      <p>Dashboard</p>
-      <!-- ! Make active ! -->
+      <%= link_to new_challenge_path do %>
+      <img class='navbar-icons' src="https://image.flaticon.com/icons/svg/561/561169.svg" alt="new challenge">
+      <p>New Challenge</p>
       <% end %>
     </li>
+  <% end %>
 
-    <li class="nav-item">
-      <%= link_to '#' do %>
-      <img src="https://image.flaticon.com/icons/svg/1170/1170667.svg" alt="charts">
-      <p>Charts</p>
+  <!-- SCHEDULE -->
+  <% if current_page?('/events') %>
+    <li class="nav-item-active">
+      <%= link_to events_path do %>
+      <img src="https://image.flaticon.com/icons/svg/61/61469.svg" alt="schedule">
+      <p>Schedule</p>
       <% end %>
     </li>
-
-    <li class="nav-item">
-      <%= link_to friends_account_path(current_user) do %>
-      <img src="https://image.flaticon.com/icons/svg/59/59293.svg" alt="friends">
-      <p>Friends</p>
-      <% end %>
-    </li>
-    <% if current_user %>
-    <li class="nav-item">
-      <%= link_to account_path(current_user) do %>
-      <img src="https://image.flaticon.com/icons/svg/860/860733.svg" alt="user profile">
-      <p>User Profile</p>
-      <% end %>
-    </li>
-    <% else %>
-    <li class="nav-item">
-      <%= link_to new_user_session_path do %>
-      <img src="https://image.flaticon.com/icons/svg/860/860733.svg" alt="user profile">
-      <p>User Profile</p>
-      <% end %>
-    </li>
-    <% end %>
+  <% else %>
     <li class="nav-item">
       <%= link_to events_path do %>
       <img src="https://image.flaticon.com/icons/svg/61/61469.svg" alt="schedule">
       <p>Schedule</p>
       <% end %>
     </li>
+  <% end %>
+
+  <!-- FRIENDS -->
+  <% if current_page?(controller: 'accounts', action: 'friends', id: params[:id] || 0) %>
+    <li class="nav-item-active">
+      <%= link_to friends_account_path(current_user) do %>
+      <img src="https://image.flaticon.com/icons/svg/59/59293.svg" alt="friends">
+      <p>Friends</p>
+      <% end %>
+    </li>
+
+  <% else %>
+    <li class="nav-item">
+      <%= link_to friends_account_path(current_user) do %>
+      <img src="https://image.flaticon.com/icons/svg/59/59293.svg" alt="friends">
+      <p>Friends</p>
+      <% end %>
+    </li>
+  <% end %>
+
+  <!-- USER PROFILE -->
+  <% if current_page?(controller: 'accounts', action: 'show', id: params[:id] || 0) %>
+    <li class="nav-item-active">
+      <%= link_to account_path(current_user) do %>
+      <img src="https://image.flaticon.com/icons/svg/860/860733.svg" alt="user profile">
+      <p>User Profile</p>
+      <% end %>
+    </li>
+
+  <% else %>
+    <% if current_user %>
+      <li class="nav-item">
+        <%= link_to account_path(current_user) do %>
+        <img src="https://image.flaticon.com/icons/svg/860/860733.svg" alt="user profile">
+        <p>User Profile</p>
+        <% end %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to new_user_session_path do %>
+        <img src="https://image.flaticon.com/icons/svg/860/860733.svg" alt="user profile">
+        <p>User Profile</p>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+
+  <!-- LOG OUT -->
     <li class="nav-item">
       <%= link_to destroy_user_session_path, method: :delete do %>
       <img src="https://image.flaticon.com/icons/svg/126/126467.svg" alt="log out">
@@ -83,8 +132,9 @@
 
 <!-- Page content holder -->
 <div class="page-content p-5" id="content">
+
   <!-- Toggle button -->
-  <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
+  <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm ml-3"><i class="fa fa-bars"></i><small class="text-uppercase font-weight-bold"></small></button>
 
 
   <% end %>

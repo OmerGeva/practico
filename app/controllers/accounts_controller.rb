@@ -9,6 +9,8 @@ class AccountsController < ApplicationController
     skip_authorization
   end
 
+
+
   def friends
     @user = User.find(params[:id])
     skip_authorization

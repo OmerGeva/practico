@@ -32,9 +32,10 @@ class ChallengesController < ApplicationController
     authorize @challenge
 
     if @challenge.save
+
       @chat_room = ChatRoom.create(challenge_id: @challenge.id, name: @skill.title)
-      # raise
-      redirect_to challenge_path(@challenge)
+      redirect_to challenge_schedule_path(@challenge)
+      # redirect_to challenge_path(@challenge)
     else
       redirect_to new_challenge_path
     end
@@ -80,7 +81,6 @@ class ChallengesController < ApplicationController
     end
     authorize @challenge
 
-
     redirect_to challenge_path(@challenge)
   end
 
@@ -93,6 +93,7 @@ class ChallengesController < ApplicationController
     authorize @challenge
     redirect_to challenge_path(@challenge)
   end
+
   def decline
     @challenge = Challenge.find(params[:challenge_id])
     @user_challenge = UsersChallenge.where(user: @user, challenge: @challenge).first
@@ -112,6 +113,18 @@ class ChallengesController < ApplicationController
 
     authorize @challenge
   end
+
+  def schedule
+    @challenge = Challenge.find(params[:challenge_id])
+
+    authorize @challenge
+  end
+
+  def update_schedule
+    binding.pry
+    #####events made here
+  end
+
   private
 
   def set_user

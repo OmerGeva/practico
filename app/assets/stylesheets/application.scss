@@ -19,6 +19,8 @@
 
 body {
   background-image: url(asset-path('background1.png'));
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 li {

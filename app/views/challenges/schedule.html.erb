@@ -1,0 +1,39 @@
+<h2>Let's schedule!</h2>
+
+<%= @challenge.skill.title %>
+
+<!-- Material unchecked -->
+<div class="form-check">
+    <input type="checkbox" class="form-check-input" id="materialUnchecked">
+    <label class="form-check-label" for="materialUnchecked">Monday</label>
+</div>
+
+<%= UsersChallenge.find_by(challenge_id: @challenge.id, user_id: current_user.id) %>
+<% if @challenge.time_type == 'days' && @challenge.count_type == 'total' %>
+
+<% elsif @challenge.time_type == 'weeks' && @challenge.count_type == 'total'%>
+
+
+<% elsif @challenge.time_type == 'weeks' && @challenge.count_type == 'in a row'%>
+
+
+
+<% elsif @challenge.time_type == 'hours' && @challenge.count_type == 'total'%>
+
+
+
+<% end %>
+
+<% counter = 0 %>
+<%= form_with  url: challenge_schedule_path(@challenge) do%>
+
+<%= check_box_tag "daysunday" %>
+<%= check_box_tag "daymonday" %>
+<%= check_box_tag "daytuesday" %>
+<%= check_box_tag "daywednesday" %>
+<%= check_box_tag "daythursday" %>
+<%= check_box_tag "dayfriday" %>
+<%= check_box_tag "daysaturday" %>
+
+<%= submit_tag %>
+<% end %>

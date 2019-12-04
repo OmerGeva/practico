@@ -14,6 +14,8 @@ class AccountPolicy < ApplicationPolicy
 
 
 
+
+
   def accept_friend?
     record.users.include? user
   end

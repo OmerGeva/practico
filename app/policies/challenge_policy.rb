@@ -25,6 +25,10 @@ class ChallengePolicy < ApplicationPolicy
     record.users.include? user
   end
 
+  def schedule?
+    record.users.include? user
+  end
+
   def update?
     record.users.include? user
   end

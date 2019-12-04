@@ -99,4 +99,18 @@ friendsSelect.addEventListener('click', (e) => {
   e.target.classList.toggle('active')
 })
 
+// PROOF CHECKBOXES
+
+document.querySelector('.fa-check-circle').addEventListener("click", (e) => {
+  document.querySelector("#challenge_validation_type_checkbox").checked = !document.querySelector("#challenge_validation_type_checkbox").checked
+})
+
+document.querySelector('.fa-camera-retro').addEventListener("click", (e) => {
+  document.querySelector("#challenge_validation_type_photo").checked = !document.querySelector("#challenge_validation_type_photo").checked
+})
+
+document.querySelector('.fa-hourglass-half').addEventListener("click", (e) => {
+  document.querySelector("#challenge_validation_type_duration").checked = !document.querySelector("#challenge_validation_type_duration").checked
+})
+
 export { dataPickerHomepage };

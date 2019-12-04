@@ -1,0 +1,22 @@
+.proofs {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 24px auto;
+  width: 500px;
+  a {
+  font-size: 20px;
+  color: lighten($dark, 20%);
+    i {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+  }
+
+  a:hover, a:active, a:focus {
+    color: $orange;
+  }
+}
+
+.challenge_validation_type {
+  display: none;
+}

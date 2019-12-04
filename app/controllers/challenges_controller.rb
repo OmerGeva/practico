@@ -121,6 +121,7 @@ class ChallengesController < ApplicationController
   end
 
   def update_schedule
+    
     @challenge = Challenge.find(params[:challenge_id])
     @challenge.update(scheduled: true)
     milestone = @challenge.milestone
@@ -175,6 +176,7 @@ class ChallengesController < ApplicationController
     end
 
     redirect_to events_path
+
   end
 
   private
@@ -198,4 +200,5 @@ class ChallengesController < ApplicationController
   def check_in_params
     params.require(:challenge).permit(:check_in)
   end
+
 end

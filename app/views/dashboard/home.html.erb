@@ -31,12 +31,12 @@
 
       <!----------------------------------------- ACHIEVEMENTS -------------------------------------------------------->
     <div class="achievements">
-      <h4 class='marker' data-content=" Achievements ">Achievements</h4>
+      <h4 class='marker' data-content="Achievements">Achievements</h4>
     </div>
 
       <!------------------------------------------ NOTIFICATIONS ------------------------------------------------------>
     <div class="notifications">
-      <h4 class="border-bottom pb-1">Notifications</h4>
+      <h4 class="marker border-bottom pb-1" data-content="Notifications">Notifications</h4>
       <div class="border-bottom">
         <p><strong>Finished Challenges:</strong></p>
         <% current_user.users_challenges.each do |users_challenge| %>
@@ -91,7 +91,7 @@
             <%= link_to "Decline", challenge_decline_path(challenge), method: :delete, class: 'btn btn-primary' %>
           <% end %>
           <p>Milestone: <%= challenge.milestone %></p>
-          <p>Start Date: <%= challenge.starting_date.strftime('%B %e at %l:%M %p') %></p>
+          <p>Start Date: <%= challenge.starting_date.strftime('%e %B %Y') %></p>
           <p><%= challenge.description %></p>
           <% if user_challenge.accepted %>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">

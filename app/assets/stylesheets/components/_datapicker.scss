@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
-
-$dark: #1a393df7;
 $color-primary: $orange;
 
 .typo {
-  font-size: 50px;
-  font-weight: 700;
-  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 500;
   color: $dark;
   text-decoration: none;
   option {
     font-size: 30px;
   }
+}
+
+.wrapper.typo.wager {
+  font-size: 24px;
 }
 
 .transition {
@@ -20,7 +20,7 @@ $color-primary: $orange;
 
 .wrapper {
   margin: 32px 0;
-  font-size: 50px;
+  font-size: 38px;
 }
 
 .list {
@@ -98,27 +98,15 @@ $color-primary: $orange;
 .time_type_placeholder, .count_type_placeholder {
   //visibility: hidden;
   //position: fixed;
-  border-bottom: 4px solid;
+  border-bottom: 4px solid lighten($dark, 30%);
   cursor: pointer;
   &:hover {
-    color: lighten($dark, 20%);
+    color: lighten($dark, 30%);
   }
 }
 
 
-#challenge_time_type {
-  display: none;
-}
-
-#challenge_count_type {
-  display: none;
-}
-
-#challenge_milestone {
-  display: none;
-}
-
-.challenge_users {
+#challenge_time_type, #challenge_count_type, #challenge_milestone, .challenge_users {
   display: none;
 }
 
@@ -136,27 +124,9 @@ textarea:focus {
   border-bottom: 4px solid $color-primary;
 }
 
-#challenge_skill {
+#challenge_skill, #challenge_last_place, #challenge_first_place {
   border: none;
-  border-bottom: 4px solid;
-  background: transparent;
-  &:hover {
-    border-bottom: 0;
-  }
-}
-
-#challenge_last_place {
-  border: none;
-  border-bottom: 4px solid;
-  background: transparent;
-  &:hover {
-    border-bottom: 0;
-  }
-}
-
-#challenge_first_place {
-  border: none;
-  border-bottom: 4px solid;
+  border-bottom: 4px solid lighten($dark, 30%);
   background: transparent;
   &:hover {
     border-bottom: 0;
@@ -169,12 +139,12 @@ textarea:focus {
   width: 500px;
   position: relative;
   input {
-    font-weight: 700;
-    font-family: 'Playfair Display', serif;
+    font-weight: 500;
     color: $dark;
     font-size: 30px;
     text-align: center;
     &::placeholder {
+      font-size: 24px;
       color: rgba(26, 57, 61, .5);
     }
   }
@@ -195,15 +165,14 @@ textarea:focus {
 
 .milestone_input {
   text-align: center;
-  font-weight: 700;
-  font-family: 'Playfair Display', serif;
+  font-weight: 500;
   line-height: 1;
   color: $dark;
   text-decoration: none;
-  width: 100px;
+  width: 90px;
   background: transparent;
   border: none;
-  border-bottom: 4px solid $dark;
+  border-bottom: 4px solid lighten($dark, 30%);
   &:hover {
     border: 0;
   }
@@ -234,6 +203,3 @@ textarea:focus {
 }
 
 // ! MAKE ANIMATION ALIKE !
-
-
-

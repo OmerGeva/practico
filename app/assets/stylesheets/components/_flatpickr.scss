@@ -1,14 +1,15 @@
-.datepicker {
-
-}
-
-.flatpickr-calendar {
-
-}
-
 #challenge_starting_date {
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 24px;
   width: 200px;
+  height: 40px;
+  border-radius: 8px;
   background: rgba(255,255,255,0.8);
+  text-align: center;
+  font-size: 16px;
+}
+
+label[for='challenge_starting_date'] {
+  margin-top: 18px;
 }

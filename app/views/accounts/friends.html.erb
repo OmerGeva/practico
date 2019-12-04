@@ -1,8 +1,4 @@
-
-
-
-
-<div class="container">
+<div class="container mt-2">
   <div class="grid">
 
     <div style="width: 200px">
@@ -42,6 +38,9 @@
       <div class="col">
         <div class="challenge-page-card">
 
+          <div class="d-flex align-items-center mb-2">
+
+          <h4 class="mr-2 mb-0">Search for users: </h4>
           <div style="width: 200px">
           <%= form_tag account_path(current_user), method: :get do %>
                 <%= text_field_tag :query,
@@ -50,19 +49,24 @@
                   placeholder: "Enter Username"
                 %>
                 <% end %>
+            </div>
           </div>
 
           <h2> Friends</h2>
+            <ul class="mt-2">
           <% @user.friends.each do |friend| %>
-          <ul class="mt-2">
-            <li>
-              <img class="avatar-small" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
-              <span class="mr-5"><%= friend.username %></span>
+            <li class="mb-2 border-bottom d-flex justify-content-between pb-1 align-items-center">
+              <div class="d-flex align-items-center">
+                <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar mr-2" %>
+                <span class="mr-5"><%= friend.username %></span>
+              </div>
               <% if @user == current_user %>
-                <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, class: "btn btn-primary btn-sm ml-5" %></li>
+              <button class="btn btn-primary btn-sm ml-5" id="remove-friend-btn" data-friendId="<%= friend.id %>">Remove Friend</button>
+                <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;" %>
               <% elsif !friend.friends_with?(current_user) %>
                 <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
               <% end %>
+              </li>
               <% end %>
             </ul>
         </div>

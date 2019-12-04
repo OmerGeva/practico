@@ -90,4 +90,13 @@ countList3.addEventListener('click', (e) => {
 })
 }
 
+// FRIENDS DROPDOWN
+
+const friendsSelect = document.querySelector(".friend_list")
+const selectedFriend = document.getElementById('friend')
+
+friendsSelect.addEventListener('click', (e) => {
+  e.target.classList.toggle('active')
+})
+
 export { dataPickerHomepage };

@@ -122,6 +122,11 @@ class ChallengesController < ApplicationController
 
   def update_schedule
     binding.pry
+    params.each do |key, value|
+      if key.match?(/^day/) && value == 1
+        Event.create(daydsf)
+      end
+    end
     #####events made here
   end
 
@@ -146,4 +151,5 @@ class ChallengesController < ApplicationController
   def check_in_params
     params.require(:challenge).permit(:check_in)
   end
+
 end

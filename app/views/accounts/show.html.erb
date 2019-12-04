@@ -37,6 +37,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
   <div class="row">
@@ -47,6 +48,7 @@
         <% @user.challenges.each do |challenge| %>
          <p><%= link_to challenge.skill.title.capitalize, challenge_path(challenge) %></p>
         <% end %>
+
       </div>
     </div>
 

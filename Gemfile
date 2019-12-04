@@ -21,6 +21,7 @@ gem 'has_friendship'
 gem "simple_calendar", "~> 2.0"
 gem 'redis', '~> 3.3'
 gem 'carrierwave', '~> 1.2'
+gem 'social-share-button'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

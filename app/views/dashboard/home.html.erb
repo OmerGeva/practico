@@ -32,6 +32,11 @@
       <!----------------------------------------- ACHIEVEMENTS -------------------------------------------------------->
     <div class="achievements">
       <h4 class='marker' data-content="Achievements">Achievements</h4>
+      <% unless current_user.wins.count.zero? %>
+      <% current_user.wins.count.times do %>
+        <i class="fas fa-trophy" style="font-size: 32px; color: #F3B61F"></i>
+      <% end %>
+      <% end %>
     </div>
 
       <!------------------------------------------ NOTIFICATIONS ------------------------------------------------------>
@@ -94,19 +99,20 @@
           <p>Start Date: <%= challenge.starting_date.strftime('%e %B %Y') %></p>
           <p><%= challenge.description %></p>
           <% if user_challenge.accepted %>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<%= user_challenge.challenge.id%>">
               Check in
             </button>
 
-            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal<%= user_challenge.challenge.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title text-center" id="exampleModalLabel">Check In</h5>
+                    <h5 class="modal-title text-center" id="exampleModalLabel">  <h5>Check in</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
+
                   <div class="modal-body">
                     <%= render 'challenges/check_in', challenge: user_challenge.challenge, check_in: CheckIn.new %>
                   </div>

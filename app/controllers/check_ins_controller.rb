@@ -22,6 +22,8 @@ class CheckInsController < ApplicationController
     end
     authorize @check_in
     if @users_challenge.user_progress >= @users_challenge.challenge.milestone
+      win = Win.create(challenge_id: @users_challenge.challenge.id, user_id: @users_challenge.user.id)
+      @users_challenge.user
       @users_challenge.challenge.update(completed: true)
       @users_challenge.challenge.users_challenges.each do |users_challenge|
         unless users_challenge.user == current_user

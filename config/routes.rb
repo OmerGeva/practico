@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     patch 'accept', to: 'challenges#accept'
     get 'schedule', to: 'challenges#schedule'
     post 'schedule', to: 'challenges#update_schedule'
+    patch 'read', to: 'challenges#read'
     delete 'decline', to: 'challenges#decline'
+
     resources :check_ins, only: [:new, :create]
   end
 

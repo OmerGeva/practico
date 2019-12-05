@@ -6,7 +6,7 @@
 <% if @challenge.time_type == 'days' && @challenge.count_type == 'total' %>
 
   <% counter = 0 %>
-  <%= form_with  url: challenge_schedule_path(@challenge) do%>
+  <%= form_with  url: challenge_schedule_path(@challenge), local: true do%>
   <div class="d-flex align-items-center">
     <h2>Sunday:</h2>
   <%= check_box_tag "daysunday" %>
@@ -42,7 +42,7 @@
   <% end %>
 <% elsif @challenge.time_type == 'weeks' && @challenge.count_type == 'total'%>
   <% counter = 0 %>
-  <%= form_with  url: challenge_schedule_path(@challenge) do%>
+  <%= form_with  url: challenge_schedule_path(@challenge), local: true do%>
   <div class="d-flex align-items-center">
     <h2>Sunday:</h2>
   <%= check_box_tag "daysunday" %>
@@ -79,7 +79,7 @@
 
 <% elsif @challenge.time_type == 'weeks' && @challenge.count_type == 'in a row'%>
   <% counter = 0 %>
-  <%= form_with  url: challenge_schedule_path(@challenge) do%>
+  <%= form_with  url: challenge_schedule_path(@challenge), local: true do%>
   <div class="d-flex align-items-center">
     <h2>Sunday:</h2>
   <%= check_box_tag "daysunday" %>
@@ -119,7 +119,7 @@
 <% elsif @challenge.time_type == 'hours' && @challenge.count_type == 'total'%>
 
   <% counter = 0 %>
-  <%= form_with  url: challenge_schedule_path(@challenge) do%>
+  <%= form_with  url: challenge_schedule_path(@challenge), local: true do%>
   <div class="d-flex align-items-center">
     <h2>Sunday:</h2>
   <%= check_box_tag "daysunday" %>

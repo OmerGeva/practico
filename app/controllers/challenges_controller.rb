@@ -190,7 +190,7 @@ class ChallengesController < ApplicationController
           counter += 7
         end
     end
-    redirect_to root_path unless @challenge.time_type == 'days' && @challenge.count_type == 'in a row'
+    redirect_to events_path unless @challenge.time_type == 'days' && @challenge.count_type == 'in a row'
     end
 
   private

@@ -99,7 +99,6 @@
           <% end %>
           <p>Goal: <%= challenge.milestone %> <%= challenge.time_type %> <%= challenge.count_type %></p>
           <p>Start Date: <%= challenge.starting_date.strftime('%e %B %Y') %></p>
-          <p><%= challenge.description %></p>
           <% if user_challenge.accepted %>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
               Check in

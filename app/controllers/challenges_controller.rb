@@ -32,7 +32,6 @@ class ChallengesController < ApplicationController
     authorize @challenge
 
     if @challenge.save
-
       @chat_room = ChatRoom.create(challenge_id: @challenge.id, name: @skill.title)
 
       redirect_to challenge_path(@challenge)
@@ -63,6 +62,10 @@ class ChallengesController < ApplicationController
     end
     if counter == @challenge.users_challenges.count
       @challenge.update(starting_date: Date.today)
+      @challenge.users_challenges.each do |users_challenge|
+        users_challenge.events.destroy_all
+        update_schedule(users_challenge.user)
+      end
     end
 
     redirect_to root_path
@@ -97,6 +100,7 @@ class ChallengesController < ApplicationController
   def decline
     @challenge = Challenge.find(params[:challenge_id])
     @user_challenge = UsersChallenge.where(user: @user, challenge: @challenge).first
+    @user_challenge.events.destroy_all
     authorize @user_challenge
     @user_challenge.destroy
     redirect_to root_path
@@ -120,7 +124,7 @@ class ChallengesController < ApplicationController
     authorize @challenge
   end
 
-  def update_schedule
+  def update_schedule(user = current_user)
 
     @challenge = Challenge.find(params[:challenge_id])
     @users_challenge = UsersChallenge.find_by(challenge_id: @challenge.id, user_id: current_user.id)
@@ -173,10 +177,21 @@ class ChallengesController < ApplicationController
         end
         counter += 7
       end
+      elsif @challenge.time_type == 'days' && @challenge.count_type == 'in a row'
+        @users_challenge = UsersChallenge.find_by(challenge_id: @challenge.id, user_id: user.id)
+        days_of_week = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+        until milestone <= 0
+          days_of_week.each do |day|
+            unless milestone <= 0
+              Event.create(start_time: Date.parse(day) + counter, users_challenge_id: @users_challenge.id, user_id: user.id)
+            end
+              milestone -= 1
+          end
+          counter += 7
+        end
     end
 
-    redirect_to events_path
-  end
+    end
 
   private
 

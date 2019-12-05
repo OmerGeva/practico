@@ -1,43 +1,20 @@
-<%= challenge.skill.title %>
-<%= challenge.skill.title %>
-<% if challenge.validation_type == 'photo, checkbox' %>
-  <h2>Upload a photo and check off today!</h2>
-  <%= simple_form_for [challenge, check_in] do |f| %>
 
-  <%= f.input :completed, as: :radio_buttons %>
-    <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-      <%= f.input :photo, input_html: { class: 'hidden d-none', id: 'photo-input'}, label_html: { class: 'upload-photo btn btn-primary btn-custom'}, label: '📷 Upload a photo' %>
-      <%= f.input :photo_cache, as: :hidden %>
-    <%= f.submit "Check In", class: "btn btn-primary" %>
-  <% end %>
+<h2>Check off today!</h2>
+<%= simple_form_for [challenge, check_in] do |f| %>
 
-<% elsif challenge.validation_type == 'checkbox' %>
-  <h2>Check off today!</h2>
-  <%= simple_form_for [challenge,check_in] do |f| %>
 
+  <% if challenge.validation_type == 'checkbox' %>
     <%= f.input :completed, as: :radio_buttons %>
-    <%= f.submit "Check In", class: "btn btn-primary" %>
+  <% else %>
+    <%= f.input :duration %>
   <% end %>
 
-<% elsif challenge.validation_type == 'photo, duration' %>
-  <h2>Upload a photo and let your group know your progress!</h2>
-  <%= simple_form_for [challenge,check_in] do |f| %>
-    <%= f.input :duration %>
-
-      <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-      <%= f.input :photo, input_html: { class: 'hidden d-none', id: 'photo-input'}, label_html: { class: 'upload-photo btn btn-primary btn-custom'}, label: '📷 Upload a photo' %>
-      <%= f.input :photo_cache, as: :hidden %>
-      <%= f.submit "Check In", class: "btn btn-primary" %>
-    <% end %>
-
-<% elsif challenge.validation_type == 'duration' %>
-  <h2>Let your group know your progress!</h2>
-  <%= simple_form_for [challenge,check_in] do |f| %>
-    <%= f.input :duration %>
-    <%= f.submit "Check In", class: "btn btn-primary" %>
+  <% if challenge.photo_proof %>
+    <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+    <%= f.input :photo, input_html: { class: 'hidden d-none', id: 'photo-input'}, label_html: { class: 'upload-photo btn btn-primary btn-custom'}, label: '📷 Upload a photo' %>
+    <%= f.input :photo_cache, as: :hidden %>
   <% end %>
+
+  <%= f.submit "Check In", class: "btn btn-primary" %>
 <% end %>
-
-
-
 

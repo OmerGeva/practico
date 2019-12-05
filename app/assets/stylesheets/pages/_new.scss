@@ -12,11 +12,24 @@
     }
   }
 
-  a:hover, a:active, a:focus {
+  a:hover, a:active, a:focus, .selected {
     color: $orange;
   }
 }
 
 .challenge_validation_type {
   display: none;
+}
+
+input[type=checkbox]:checked + label {
+  color: orange;
+  font-style: normal;
+}
+
+.photo-proof {
+  i {
+    color: lighten($dark, 20%);
+    font-size: 24px;
+    margin-right: 10px;
+  }
 }

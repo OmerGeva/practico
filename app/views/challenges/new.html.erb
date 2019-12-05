@@ -1,7 +1,7 @@
 <div class="container text-center p-0">
   <h1 style="color: white;">New Challenge</h1>
 
-  <%= simple_form_for [@challenge] do |f| %>
+  <%= simple_form_for [@challenge], html: { autocomplete: 'off' } do |f| %>
   <div class='new-challenge-card'>
 
       <!-- SET SKILL -->
@@ -44,21 +44,28 @@
     <!-- ADD PROOF -->
     <p>How will you check in?</p>
     <div class='proofs'>
-      <a href="#" onClick="return false;"><i class="fas fa-check-circle"></i>checkbox</a>
-      <a href="#" onClick="return false;"><i class="fas fa-camera-retro"></i>photo</a>
-      <a href="#" onClick="return false;"><i class="fas fa-hourglass-half"></i>duration</a>
+      <a href="#" class='proof checkbox'><i class="fas fa-check-circle"></i>checkbox</a>
+      <!-- <a href="#" class='proof photo'><i class="fas fa-camera-retro"></i>photo</a> -->
+      <a href="#" class='proof duration'><i class="fas fa-hourglass-half"></i>duration</a>
     </div>
 
-    <%=  f.input :validation_type, as: :check_boxes, collection: Challenge::VALIDATION_TYPE, label: 'How will you check in?' %>
+    <!-- PHOTO PROOF -->
+    <div class='photo-proof mb-4'>
+      <label class="form-check-label" for="challenge_photo_proof"><i class="fas fa-camera-retro"></i>Do you want a photo proof?</label>
+      <input class="form-check-input boolean optional ml-2 p-0" type="checkbox" value="1" name="challenge[photo_proof]" id="challenge_photo_proof">
+    </div>
+
+    <%=  f.input :validation_type, label: false, as: :radio_buttons, collection: Challenge::VALIDATION_TYPE %>
 
     <div class="wagers">
-      <div class='skill-input'>Winner will
+      <div class='skill-input'>First place will
         <%= f.input :first_place, label: false, placeholder: 'get free lunch' %>
-        <div class='underline'></div>
+      <div class='underline'></div>
       </div>
 
-      <div class='skill-input'>Looser will
-        <%= f.input :last_place, label: false, placeholder: 'buy winner the lunch' %>
+      <div class='skill-input'>Last place will
+        <%= f.input :last_place, label: false, placeholder: 'buy the winner lunch' %>
+
         <div class='underline'></div>
       </div>
     </div>
@@ -76,15 +83,17 @@
         <div class="dropdown-menu">
           <ul class="friend_list">
           <% @friends.each do |friend| %>
-            <li class="dropdown-item" id="friend"><%= cl_image_tag friend.photo, alt: "Friend avatar", class: "avatar-small" %>
-              <%= friend.first_name %></li>
+            <li class="dropdown-item" data-friend-id="<%= friend.id %>">
+              <%= cl_image_tag friend.photo, alt: "Friend avatar", class: "avatar-small" %>
+              <%= friend.first_name %>
+            </li>
           <% end %>
           </ul>
         </div>
       </div>
 
       <!-- Hidden -->
-      <%= f.input :users, label: false, as: :check_boxes, collection: @friends, label_method: :first_name %>
+      <%= f.input :users, label: false, as: :check_boxes, collection: @friends, label_method: :first_name, input_html: {class: 'friend-checkbox'} %>
 
       <!-- SUBMIT -->
       <%= f.submit "Create Challenge", class: "btn btn-primary ml-3", id:"new-challenge-button" %>

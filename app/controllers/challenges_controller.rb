@@ -211,7 +211,7 @@ class ChallengesController < ApplicationController
   end
 
   def challenge_params
-    params.require(:challenge).permit(:milestone, :time_type, :count_type, :first_place, :last_place, :starting_date, :validation_type)
+    params.require(:challenge).permit(:milestone, :time_type, :count_type, :first_place, :last_place, :starting_date, :validation_type, :photo_proof)
   end
 
   def skill_params
@@ -225,5 +225,4 @@ class ChallengesController < ApplicationController
   def check_in_params
     params.require(:challenge).permit(:check_in)
   end
-
 end

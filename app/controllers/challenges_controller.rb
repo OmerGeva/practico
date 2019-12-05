@@ -62,10 +62,10 @@ class ChallengesController < ApplicationController
     end
     if counter == @challenge.users_challenges.count
       @challenge.update(starting_date: Date.today)
-      @challenge.users_challenges.each do |users_challenge|
-        users_challenge.events.destroy_all
-        update_schedule(users_challenge.user)
-      end
+      # @challenge.users_challenges.each do |users_challenge|
+      #   users_challenge.events.destroy_all
+      #   update_schedule(users_challenge.user)
+      # end
     end
 
     redirect_to root_path
@@ -106,9 +106,19 @@ class ChallengesController < ApplicationController
     redirect_to root_path
   end
 
-  def finished
+  def read
     @challenge = Challenge.find(params[:challenge_id])
     @users_challenge =  UsersChallenge.find_by(user_id: current_user.id, challenge_id: @challenge.id)
+    @users_challenge.update(unread: false)
+    raise
+    authorize @challenge
+
+    redirect_to challenge_path(@challenge)
+  end
+
+  def finished
+    @challenge = Challenge.find(params[:challenge_id])
+    @users_challenge = UsersChallenge.find_by(user_id: current_user.id, challenge_id: @challenge.id)
     @challenge.users_challenges.each do |users_challenge|
       if users_challenge.user == current_user
         users_challenge.update(unread: false)
@@ -190,7 +200,9 @@ class ChallengesController < ApplicationController
           counter += 7
         end
     end
+
     redirect_to events_path unless @challenge.time_type == 'days' && @challenge.count_type == 'in a row'
+
     end
 
   private

@@ -60,7 +60,17 @@
     <div class="col-6">
       <!-- ACHIEVEMENTS -->
       <div class="challenge-page-card">
-        <h2>Achievements</h2>
+        <h2 class="mb-3">Achievements</h2>
+        <% unless @user.wins.count.zero? %>
+        <ul class="pl-1 ">
+        <% @user.wins.each do |win|%>
+          <li class="d-flex align-items-center mb-2 pb-1 border-bottom">
+
+        <i class="fas fa-trophy mr-3" style="font-size: 32px; color: #F3B61F"></i><h5 class="mb-0"><%= win.challenge.skill.title %></h5>
+          </li>
+      <% end %>
+        </ul>
+      <% end %>
       </div>
     </div>
   </div>

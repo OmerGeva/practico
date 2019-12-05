@@ -41,196 +41,201 @@ user3 = User.create(
 user3.remote_photo_url = 'https://res.cloudinary.com/dv2x1zvtu/image/upload/v1574846398/Users/LevyHenry_kk3qiu.jpg'
 user3.save
 
-user4 = User.create(
+omer = User.create(
   email: 'omer@geva.com',
   password: '123456',
   first_name: 'Omer',
   last_name: 'Geva',
   username: 'omergeva'
   )
-user4.remote_photo_url = 'https://avatars2.githubusercontent.com/u/54701359?v=4'
-user4.save
+omer.remote_photo_url = 'https://avatars2.githubusercontent.com/u/54701359?v=4'
+omer.save
 
-user5 = User.create(
+brad = User.create(
   email: 'brad@korman.com',
   password: '123456',
   first_name: 'Brad',
   last_name: 'Korman',
   username: 'bradkorman'
   )
-user5.remote_photo_url = 'https://avatars2.githubusercontent.com/u/54051432?v=4'
-user5.save
+brad.remote_photo_url = 'https://avatars2.githubusercontent.com/u/54051432?v=4'
+brad.save
 
-user6 = User.create(
+alisa = User.create(
   email: 'alisa@silina.com',
   password: '123456',
   first_name: 'Alisa',
   last_name: 'Silina',
   username: 'alisasilina'
   )
-user6.remote_photo_url = 'https://avatars0.githubusercontent.com/u/54353429?v=4'
-user6.save
+alisa.remote_photo_url = 'https://avatars0.githubusercontent.com/u/54353429?v=4'
+alisa.save
 
-user7 = User.create(
+david = User.create(
   email: 'david@sellam.com',
   password: '123456',
   first_name: 'David',
   last_name: 'Sellam',
   username: 'davidsellam'
   )
-user7.remote_photo_url = 'https://avatars1.githubusercontent.com/u/37403593?v=4'
-user7.save
+david.remote_photo_url = 'https://avatars1.githubusercontent.com/u/37403593?v=4'
+david.save
 
-user8 = User.create(
+dean = User.create(
   email: 'dean@wheeler.com',
   password: '123456',
-  first_name: 'Alisa',
-  last_name: 'Silina',
-  username: 'alisasilina'
+  first_name: 'Dean',
+  last_name: 'Wheeler',
+  username: 'deanwheeler'
   )
-user8.remote_photo_url = 'https://avatars2.githubusercontent.com/u/35640022?v=4'
-user8.save
+dean.remote_photo_url = 'https://avatars2.githubusercontent.com/u/35640022?v=4'
+dean.save
 
 ############# Friendships ##################################
 
 puts 'Making friends...'
 
-user1.friend_request(user2)
-user2.accept_request(user1)
+brad.friend_request(alisa)
+alisa.accept_request(brad)
 
-user2.friend_request(user3)
-user3.accept_request(user2)
+brad.friend_request(omer)
+omer.accept_request(brad)
 
-user3.friend_request(user4)
-user4.accept_request(user3)
+brad.friend_request(dean)
+dean.accept_request(brad)
 
-user4.friend_request(user5)
-user5.accept_request(user4)
+brad.friend_request(david)
+david.accept_request(brad)
 
-user4.friend_request(user6)
-user6.accept_request(user4)
+brad.friend_request(user1)
 
-user4.friend_request(user7)
-user7.accept_request(user4)
-
-user4.friend_request(user8)
-user8.accept_request(user4)
-
-user5.friend_request(user6)
-user6.accept_request(user5)
-
-user6.friend_request(user7)
-user7.accept_request(user6)
-
-user7.friend_request(user8)
-user8.accept_request(user7)
-
+user2.friend_request(brad)
 
 ############# Skills ##################################
 puts 'Creating skills...'
 
-skill1 = Skill.create(
+quit_smoking = Skill.create(
   title: 'Quit Smoking'
   )
-skill2 = Skill.create(
-  title: 'Learn Japanese'
+guitar = Skill.create(
+  title: 'Practice Guitar'
   )
-skill3 = Skill.create(
-  title: 'Learn to do a handstand'
+code = Skill.create(
+  title: 'Code Practico'
   )
 ############# Challenges ##################################
 puts 'Creating challenges...'
 
 challenge1 = Challenge.create(
-  skill: skill1,
-  milestone: 100,
+  skill: quit_smoking,
+  milestone: 30,
   starting_date: Date.parse('31-12-2019'),
-  first_place: "Gets lunch from loser",
-  last_place: "Buys winner lunch",
+  first_place: "Gets drinks from loser",
+  last_place: "Buys winner drinks",
   description: "Not Smoking for consecutive days",
   time_type: 'days',
   count_type: 'in a row',
-  validation_type: 'checkbox'
+  validation_type: 'checkbox',
+  photo_proof: false
   )
 chatroom1 = ChatRoom.create(
   challenge_id: challenge1.id,
-  name: skill1.title,
+  name: quit_smoking.title,
   )
 challenge2 = Challenge.create(
-  skill: skill2,
-  milestone: 500,
+  skill: guitar,
+  milestone: 50,
   starting_date: Date.parse('31-12-2019'),
-  first_place: "Gets a trip to Japan paid for by loser",
-  last_place: "Pays for the winner's trip to Japan",
-  description: "Learning Japanese for a certain amount of hours",
+  first_place: "Gets new guitar strings",
+  last_place: "Buys winner guitar strings",
+  description: "Practice guitar for a certain amount of hours",
   time_type: 'hours',
   count_type: 'total',
-  validation_type: 'duration'
+  validation_type: 'duration',
+  photo_proof: true
   )
 chatroom2 = ChatRoom.create(
   challenge_id: challenge2.id,
-  name: skill2.title,
+  name: guitar.title,
   )
 challenge3 = Challenge.create(
-  skill: skill3,
-  milestone: 100,
+  skill: code,
+  milestone: 14,
   starting_date: Date.parse('31-12-2019'),
-  first_place: "Gets lunch from loser",
-  last_place: "Buys winner lunch",
-  description: "Working on doing a handstand for consecutive days, winner has to be able to do it for 10 seconds without moving.",
+  first_place: "Gets a job at Google",
+  last_place: "Has to TA the next batch",
+  description: "Work on Practico, the app.",
   time_type: 'days',
   count_type: 'in a row',
-  validation_type: 'photo, checkbox'
+  validation_type: 'checkbox',
+  photo_proof: true
   )
 chatroom3 = ChatRoom.create(
   challenge_id: challenge3.id,
-  name: skill3.title,
+  name: code.title,
   )
-
-
 
 ############# For Chat Rooms ##################################
 puts 'Creating ChatRooms...'
 
 ############# For Challenge One ##################################
 
-users_challenge4 = UsersChallenge.create(
-  user: user2,
+users_challenge1 = UsersChallenge.create(
+  user: brad,
   challenge: challenge1,
-  user_progress: 112
+  user_progress: 29
   )
-users_challenge5 = UsersChallenge.create(
-  user: user3,
+users_challenge2 = UsersChallenge.create(
+  user: dean,
   challenge: challenge1,
-  user_progress: 93
+  user_progress: 17
+  )
+users_challenge3 = UsersChallenge.create(
+  user: alisa,
+  challenge: challenge1,
+  user_progress: 3
   )
 
 ############# For Challenge Two ##################################
 puts 'Creating UsersChallenges...'
 
-users_challenge1 = UsersChallenge.create(
-  user: user1,
+users_challenge4 = UsersChallenge.create(
+  user: brad,
   challenge: challenge2,
-  user_progress: 20
+  user_progress: 35
   )
-users_challenge2 = UsersChallenge.create(
-  user: user2,
+users_challenge5 = UsersChallenge.create(
+  user: omer,
   challenge: challenge2,
-  user_progress: 12
+  user_progress: 48
   )
-users_challenge3 = UsersChallenge.create(
-  user: user3,
-  challenge: challenge2,
-  user_progress: 43
-  )
+
 ############# For Challenge Three ##################################
 users_challenge6 = UsersChallenge.create(
-  user: user1,
+  user: brad,
   challenge: challenge3,
-  user_progress: 34
+  user_progress: 3
   )
 users_challenge7 = UsersChallenge.create(
-  user: user3,
+  user: omer,
   challenge: challenge3,
-  user_progress: 56
+  user_progress: 4
   )
+users_challenge8 = UsersChallenge.create(
+  user: alisa,
+  challenge: challenge3,
+  user_progress: 4
+  )
+users_challenge9 = UsersChallenge.create(
+  user: dean,
+  challenge: challenge3,
+  user_progress: 3
+  )
+############# Achievements ##################################
+puts 'Creating Wins...'
+Win.create(challenge_id: challenge3.id, user_id: brad.id)
+Win.create(challenge_id: challenge2.id, user_id: brad.id)
+
+
+
+

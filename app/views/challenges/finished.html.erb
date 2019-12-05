@@ -1,4 +1,4 @@
-<% unless _users_challenge.unread %>
+<% unless @users_challenge.unread %>
   <div class="container">
     <div class="row">
       <div class="col-8 text-center">
@@ -18,13 +18,15 @@
   <div class="container">
     <div class="row">
       <div class="col-8 text-center">
+        <% UsersChallenge.find_by(challenge_id: @challenge.id, user_id: current_user.id).update(unread: false) %>
+
         <h1>Sorry, <%= current_user.first_name %>.</h1>
         <h4>You have lost <strong><%= @challenge.skill.title %></strong></h4>
         <h2>Better luck next time!</h2>
         <h6>Your penalty: <%= @challenge.last_place %></h6>
         <div class="d-flex justify-content-around">
           <%= link_to "Home" , root_path, class:"btn btn-primary" %>
-          <%= link_to "Challenge Page", challenge_path(@challenge), class:"btn btn-primary" %>
+          <%= link_to "Challenge Page", challenge_read(@challenge), class:"btn btn-primary" %>
         </div>
       </div>
     </div>

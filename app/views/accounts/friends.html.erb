@@ -10,10 +10,13 @@
     <div class="row mt-2">
       <div class="col">
         <div class="challenge-page-card">
-          <h2>Pending Requests</h2>
+          <h2 class='mb-2'>Pending Requests</h2>
           <% @user.pending_friends.each do |friend| %>
           <ul>
-            <li><%= friend.username %> - Pending</li>
+            <li class='d-flex align-items-center'>
+            <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar mr-3" %>
+            <span class="mr-5"><%= friend.username %></span>
+            </li>
           </ul>
           <% end %>
         </div>
@@ -23,7 +26,13 @@
           <h2>Friend Requests</h2>
           <% @user.requested_friends.each do |friend| %>
           <ul>
-            <%= friend.username %> <%= link_to "Accept Friend Request", accept_friend_account_path(friend), method: :post %>
+            <li class='d-flex justify-content-between mb-2'>
+              <div class="d-flex align-items-center">
+                <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar mr-3" %>
+                <span class="mr-5"><%= friend.username %></span>
+                <%= link_to "Accept Friend Request", accept_friend_account_path(friend), method: :post, class: "btn btn-primary btn-sm" %>
+              </div>
+            </li>
           </ul>
           <% end %>
         </div>
@@ -35,21 +44,26 @@
         <div class="challenge-page-card">
 
           <h2>Friends</h2>
-          <% @user.friends.each do |friend| %>
             <ul class="mt-2 pl-0">
-              <li>
-                <%= cl_image_tag friend.photo, alt: "friend avatar", class: "avatar-small" %>
+
+          <% @user.friends.each do |friend| %>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="d-flex align-items-center">
+
+                <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar-large mr-3" %>
+                  
                 <span class="mr-5"><%= friend.username %></span>
+                </div>
 
                 <% if @user == current_user %>
-                <button class="btn btn-primary btn-sm ml-5" id="remove-friend-btn" data-friendId="<%= friend.id %>">Remove Friend</button>
+                <button class="btn btn-primary btn-sm" id="remove-friend-btn" data-friendId="<%= friend.id %>">Remove Friend</button>
                   <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;" %>
                 <% elsif !friend.friends_with?(current_user) %>
                   <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
                 <% end %>
               </li>
-            </ul>
           <% end %>
+            </ul>
         </div>
       </div>
     </div>

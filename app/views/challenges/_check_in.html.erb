@@ -1,5 +1,7 @@
+
 <h2>Check off today!</h2>
 <%= simple_form_for [challenge, check_in] do |f| %>
+
 
   <% if challenge.validation_type == 'checkbox' %>
     <%= f.input :completed, as: :radio_buttons %>

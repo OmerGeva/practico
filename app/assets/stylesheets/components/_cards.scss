@@ -5,6 +5,7 @@
   margin: 16px 0;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, .85);
+  position: relative;
   // backdrop-filter: blur(6px);
 }
 
@@ -69,6 +70,12 @@
   margin-bottom: 0;
   margin-top: 8px;
   }
+}
+
+.dashboard-avatars {
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
 
 

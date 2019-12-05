@@ -38,7 +38,7 @@
           <% @user.friends.each do |friend| %>
             <ul class="mt-2 pl-0">
               <li>
-                <img class="avatar-small mr-2" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
+                <%= cl_image_tag friend.photo, alt: "friend avatar", class: "avatar-small" %>
                 <span class="mr-5"><%= friend.username %></span>
 
                 <% if @user == current_user %>

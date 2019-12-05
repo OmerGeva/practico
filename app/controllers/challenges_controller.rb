@@ -201,7 +201,8 @@ class ChallengesController < ApplicationController
         end
     end
 
-    redirect_to root_path
+    redirect_to events_path unless @challenge.time_type == 'days' && @challenge.count_type == 'in a row'
+
     end
 
   private

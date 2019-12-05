@@ -1,159 +1,56 @@
-<h2>Let's schedule!</h2>
+<div class='schedule-card'>
 
-<%= @challenge.skill.title %>
+  <h2>Let's schedule!</h2>
+  <h4 class='text-center'><strong><%= @challenge.skill.title %></strong></h3>
 
+<center>
+  <div class='d-flex justify-content-center'>
+  <div class='weekdays'>
+    <% unless @challenge.time_type == 'days' && @challenge.count_type == 'in a row' %>
 
-<% if @challenge.time_type == 'days' && @challenge.count_type == 'total' %>
+      <% counter = 0 %>
+      <%= form_with  url: challenge_schedule_path(@challenge), local: true do |f| %>
+      <div class="d-flex align-items-center mb-3">
+        <input type="checkbox" name="daysunday" id="daysunday" value="1" class='mr-2'>
+        <h4 class='mb-0'>Sunday </h4>
+      </div>
+      <div class="d-flex align-items-center mb-3">
+        <input type="checkbox" name="daymonday" id="daymonday" value="1" class='mr-2'>
+        <h4 class='mb-0'>Monday </h4>
+      </div>
+      <div class="d-flex align-items-center mb-3">
+        <input type="checkbox" name="daytuesday" id="daytuesday" value="1" class='mr-2'>
+        <h4 class='mb-0'>Tuesday </h4>
+      </div>
+      <div class="d-flex align-items-center mb-3">
+        <input type="checkbox" name="daywednesday" id="daywednesday" value="1" class='mr-2'>
+        <h4 class='mb-0'>Wednesday </h4>
+      </div>
+      <div class="d-flex align-items-center mb-3">
+        <input type="checkbox" name="daythursday" id="daythursday" value="1" class='mr-2'>
+        <h4 class='mb-0'>Thursday </h4>
+      </div>
+      <div class="d-flex align-items-center mb-3">
+        <input type="checkbox" name="dayfriday" id="dayfriday" value="1" class='mr-2'>
+        <h4 class='mb-0'>Friday </h4>
+      <% check_box_tag "dayfriday" %>
+      </div>
+      <div class="d-flex align-items-center">
+        <input type="checkbox" name="daysaturday" id="daysaturday" value="1" class='mr-2'>
+        <h4 class='mb-0'>Saturday </h4>
+      </div>
+    </div>
 
-  <% counter = 0 %>
-  <%= form_with  url: challenge_schedule_path(@challenge), local: true do%>
-  <div class="d-flex align-items-center">
-    <h2>Sunday:</h2>
-  <%= check_box_tag "daysunday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Monday:</h2>
-  <%= check_box_tag "daymonday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Tuesday:</h2>
-  <%= check_box_tag "daytuesday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Wednesday:</h2>
-  <%= check_box_tag "daywednesday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Thursday:</h2>
-  <%= check_box_tag "daythursday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Friday:</h2>
-  <%= check_box_tag "dayfriday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Saturday:</h2>
-  <%= check_box_tag "daysaturday" %>
-  </div>
-  <h2>Hours per day?</h2>
-  <%= text_field_tag :hours %>
-
-  <%= submit_tag %>
-  <% end %>
-<% elsif @challenge.time_type == 'weeks' && @challenge.count_type == 'total'%>
-  <% counter = 0 %>
-  <%= form_with  url: challenge_schedule_path(@challenge), local: true do%>
-  <div class="d-flex align-items-center">
-    <h2>Sunday:</h2>
-  <%= check_box_tag "daysunday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Monday:</h2>
-  <%= check_box_tag "daymonday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Tuesday:</h2>
-  <%= check_box_tag "daytuesday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Wednesday:</h2>
-  <%= check_box_tag "daywednesday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Thursday:</h2>
-  <%= check_box_tag "daythursday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Friday:</h2>
-  <%= check_box_tag "dayfriday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Saturday:</h2>
-  <%= check_box_tag "daysaturday" %>
-  </div>
-  <h2>Hours per day?</h2>
-  <%= text_field_tag :hours %>
-
-  <%= submit_tag %>
-  <% end %>
-
-<% elsif @challenge.time_type == 'weeks' && @challenge.count_type == 'in a row'%>
-  <% counter = 0 %>
-  <%= form_with  url: challenge_schedule_path(@challenge), local: true do%>
-  <div class="d-flex align-items-center">
-    <h2>Sunday:</h2>
-  <%= check_box_tag "daysunday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Monday:</h2>
-  <%= check_box_tag "daymonday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Tuesday:</h2>
-  <%= check_box_tag "daytuesday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Wednesday:</h2>
-  <%= check_box_tag "daywednesday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Thursday:</h2>
-  <%= check_box_tag "daythursday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Friday:</h2>
-  <%= check_box_tag "dayfriday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Saturday:</h2>
-  <%= check_box_tag "daysaturday" %>
-  </div>
-  <h2>Hours per day?</h2>
-  <%= text_field_tag :hours %>
-
-  <%= submit_tag %>
-<% end %>
+      <div>
+        <h4>Hours per day?</h4>
+        <%= number_field_tag :hours %>
+        <br>
+      </div>
+    </div>
+      <%= submit_tag 'Schedule', class: "btn btn-primary mt-2" %>
+      <% end %>
+    </center>
 
 
-
-<% elsif @challenge.time_type == 'hours' && @challenge.count_type == 'total'%>
-
-  <% counter = 0 %>
-  <%= form_with  url: challenge_schedule_path(@challenge), local: true do%>
-  <div class="d-flex align-items-center">
-    <h2>Sunday:</h2>
-  <%= check_box_tag "daysunday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Monday:</h2>
-  <%= check_box_tag "daymonday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Tuesday:</h2>
-  <%= check_box_tag "daytuesday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Wednesday:</h2>
-  <%= check_box_tag "daywednesday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Thursday:</h2>
-  <%= check_box_tag "daythursday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Friday:</h2>
-  <%= check_box_tag "dayfriday" %>
-  </div>
-  <div class="d-flex align-items-center">
-    <h2>Saturday:</h2>
-  <%= check_box_tag "daysaturday" %>
-  </div>
-  <h2>Hours per day?</h2>
-  <%= text_field_tag :hours %>
-
-  <%= submit_tag %>
-<% end %>
-
-
-<% end %>
-
+    <% end %>
+</div>

@@ -7,7 +7,7 @@
 </button>
 
 <% unless @users_challenge.scheduled %>
-  <%= link_to "Schedule Your Challenge!", challenge_schedule_path(@challenge), class: "btn btn-primary"  %>
+  <%= link_to "Let's Schedule!", challenge_schedule_path(@challenge), class: "btn btn-primary"  %>
 <% end %>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -32,17 +32,17 @@
         <div class="challenge-page-card">
           <% counter = 1 %>
           <h2> Challenge Leaderboard</h2>
-          <ol class="mt-2">
+          <div class="mt-2">
             <% @challenge.users.order(user_progress: :desc).each do |user| %>
-              <li class="mb-1">
+              <div class="mb-1">
                 <div class="d-flex align-items-center">
                   <h6 class="mr-3"><%= counter%></h6><%= cl_image_tag user.photo, class: 'avatar-small mr-2', alt: "avatar" %>
                   <p class="mt-0"><%= user.username %></p>
                 </div>
-              </li>
+              </div>
               <% counter +=1 %>
               <% end %>
-            </ol>
+            </div>
           </div>
         </div>
         <div class="col-8">
@@ -50,13 +50,13 @@
             <h2> Challenge Group Stats</h2>
             <% @challenge.users.order(user_progress: :desc).each do |user| %>
             <% @progress = ((UsersChallenge.find_by(challenge_id: @challenge.id, user_id: user.id).user_progress/@challenge.milestone)*100).round %>
-            <div class="row">
+            <div class="row d-flex align-items-center">
               <div class="col-4">
-            <p><strong><%= user.username %></strong>: <%= @challenge.users_challenges.find_by(user: user).user_progress.round %> <%= @challenge.time_type %></p>
+            <p class='mt-0'><strong>@<%= user.username %> </strong>: <%= @challenge.users_challenges.find_by(user: user).user_progress.round %> <%= @challenge.time_type %></p>
 
               </div>
               <div class="col-8">
-            <progress class="skill-1" max="100" value="<%= @progress %>">
+            <progress class="skill-1 mb-0 mt-2" max="100" value="<%= @progress %>">
               <strong>Progress <%= @progress %>%</strong>
 
               </div>
@@ -95,7 +95,7 @@
       </div>
 
       <div class="row">
-        <div class="col">
+        <div class="col chat-board">
           <div class="chat-header text-center" style="width: 100%"><h4>Trash Talk Board</h4></div>
           <div class="messages" style="height: 200px">
             <% @chat_room.messages.each do |message| %>
@@ -104,8 +104,8 @@
           </div>
           <div id="create-message">
             <%= simple_form_for [@chat_room, Message.new], remote: true do |f| %>
-            <%= f.input :content, label: false, id: "messsage-content" %>
-            <%= f.submit class:'btn btn-primary' %>
+            <%= f.input :content, label: false, id: "message-content" %>
+            <%= f.submit value: 'Send Message', class:'btn btn-outline-primary' %>
             <% end %>
           </div>
         </div>

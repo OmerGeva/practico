@@ -1,0 +1,27 @@
+.chat-board {
+  border-radius: 10px;
+}
+
+.messages {
+  padding: 16px;
+  background-color: rgba(255, 255, 255, .85);
+}
+
+.chat-header {
+  background-color: #f26d52;
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+}
+
+#create-message {
+  background-color: rgba(255, 255, 255, .85);
+  border-radius: 0 0 10px 10px;
+
+  .text {
+    margin-bottom: 16px;
+  }
+}
+
+.messsage-content {
+  margin: 0 8px;
+}

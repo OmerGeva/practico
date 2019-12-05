@@ -51,7 +51,7 @@
       <div class="challenge-page-card">
         <h2 class="mb-2">Current Challenges</h2>
         <% @user.challenges.each do |challenge| %>
-         <h4><%= link_to challenge.skill.title, challenge_path(challenge) %></h4>
+         <h6><%= link_to challenge.skill.title, challenge_path(challenge) %></h6>
         <% end %>
 
       </div>

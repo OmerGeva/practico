@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-evenly;
   margin: 24px auto;
-  width: 500px;
+  width: 400px;
   a {
   font-size: 20px;
   color: lighten($dark, 20%);
@@ -32,4 +32,54 @@ input[type=checkbox]:checked + label {
     font-size: 24px;
     margin-right: 10px;
   }
+}
+
+// CHECKBOX STYLING
+
+/* Import FontAwesome for the checkmark icon */
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+/* hide the regular checkbox */
+.pd-checkbox input {
+    // opacity: 0;
+    position: absolute;
+}
+/* position the label */
+.pd-checkbox input, .pd-checkbox label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.pd-checkbox label {
+    position: relative;
+}
+/* style the unchecked checkbox */
+.pd-checkbox input + label:before {
+    content: '';
+    background: #fff;
+    border: 2px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+    height:18px;
+    padding: 5px;
+    margin-right: 10px;
+    text-align: center;
+    font-size:15px;
+    line-height:18px;
+}
+/* style the checked checkbox */
+.pd-checkbox input:checked + label:before {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    background: #56CFD2;
+    color: #fff;
+    border-color:#3eb9bc;
+}
+
+#challenge_photo_proof {
+  width: 30px;
+  height: 30px
 }

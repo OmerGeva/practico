@@ -24,17 +24,22 @@
       <!-- FRIENDS -->
       <div class="challenge-page-card">
         <h2>Friends</h2>
-        <div class="mt-2 d-flex">
-            <% @user.friends.each do |friend| %>
-              <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar-small mr-2" %>
-            <p><%= friend.username %></p>
-            <% if @user == current_user %>
-              <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, class: "btn btn-primary btn-sm ml-auto" %>
-            <% elsif !friend.friends_with?(current_user) %>
-              <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary btn-sm ml-auto" %>
-            <% end %>
-          <% end %>
-        </div>
+        <ul>
+          <% @user.friends.each do |friend| %>
+          <li class='mb-2'>
+            <div class="d-flex justify-content-between">
+                <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar-small mr-2" %>
+                <p><%= friend.username %></p>
+              <% if @user == current_user %>
+                <button class="btn btn-primary btn-sm ml-5" id="remove-friend-btn" data-friendId="<%= friend.id %>">Remove Friend</button>
+                  <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;" %>
+                <% elsif !friend.friends_with?(current_user) %>
+                  <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
+                <% end %>
+            </div>
+          </li>
+        <% end %>
+        </ul>
       </div>
     </div>
 

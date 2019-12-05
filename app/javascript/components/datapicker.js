@@ -1,6 +1,6 @@
 // TIME TYPE PICKER
-
 const dataPickerHomepage = () => {
+if (document.URL.match('/challenges/new')) {
 
 var el = {};
 
@@ -112,5 +112,5 @@ document.querySelector('.fa-camera-retro').addEventListener("click", (e) => {
 document.querySelector('.fa-hourglass-half').addEventListener("click", (e) => {
   document.querySelector("#challenge_validation_type_duration").checked = !document.querySelector("#challenge_validation_type_duration").checked
 })
-
+}
 export { dataPickerHomepage };

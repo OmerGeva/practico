@@ -1,12 +1,12 @@
 
-<h2>Check off today!</h2>
+<h2>Great Work!</h2>
 <%= simple_form_for [challenge, check_in] do |f| %>
 
 
   <% if challenge.validation_type == 'checkbox' %>
-    <%= f.input :completed, as: :radio_buttons %>
+    <%= f.input :completed, as: :radio_buttons, label: "I worked toward this goal today!" %>
   <% else %>
-    <%= f.input :duration %>
+    <%= f.input :duration, label: "How many hours did you work today?".html_safe, class: "duration", input_html: { min: '0.5', step: '0.5' }, placeholder: "1.0" %>
   <% end %>
 
   <% if challenge.photo_proof %>
@@ -17,4 +17,3 @@
 
   <%= f.submit "Check In", class: "btn btn-primary" %>
 <% end %>
-

@@ -11,9 +11,10 @@ days.forEach((day) => {
   const children = Array.from(day.lastElementChild.children)
   children.forEach((child) => {
     const title = child.dataset.eventTitle
-    const time = child.dataset.eventTime
-    buffer += `<p>
-${time} - ${title}</p>`;
+    const badgeColor = child.dataset.eventColor
+    buffer += `<div class='d-flex align-center'>
+    <div class="event-badge" style="background-color: ${badgeColor}"></div>
+    <p>${title}</p></div>`;
   })
 tippy(`#${day.id}`, {
     placement: 'bottom',

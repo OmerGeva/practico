@@ -10,12 +10,13 @@ class UsersChallenge < ApplicationRecord
   private
 
   def create_events
+    challenge = self.challenge
     if challenge.count_type == 'in a row' && challenge.time_type == 'days'
-      self.scheduled = true
+      self.update(scheduled: true)
       date = challenge.starting_date
       challenge.milestone.times do
         Event.create(start_time: date, users_challenge: self, user: user)
-        date += 1.days
+        date += 1
       end
     end
   end

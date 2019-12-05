@@ -4,7 +4,18 @@
 
       <!-- USER INFO -->
     <div class="user-info">
-
+      <h4 class='marker' data-content='Average Progress'>Average Progress</h4>
+      <!-- User Progress Average -->
+      <% unless current_user.users_challenges.size == 0 %>
+        <% sum = 0 %>
+        <% current_user.users_challenges.each do |user| %>
+          <% sum += user.user_progress %>
+          <% sum %>
+        <% end %>
+        <% average_progress = sum / current_user.users_challenges.size %>
+      <% else %>
+        <% average_progress = 0 %>
+      <% end %>
       <div class="single-chart">
           <svg viewBox="0 0 36 36" class="circular-chart green">
             <path class="circle-bg"
@@ -13,12 +24,12 @@
                 a 15.9155 15.9155 0 0 1 0 -31.831"
             />
             <path class="circle"
-              stroke-dasharray="60, 100"
+              stroke-dasharray="<%= average_progress %>, 100"
               d="M18 2.0845
                 a 15.9155 15.9155 0 0 1 0 31.831
                 a 15.9155 15.9155 0 0 1 0 -31.831"
             />
-            <text x="18" y="20.35" class="percentage">60%</text>
+            <text x="18" y="20.35" class="percentage"><%= average_progress.to_i %>%</text>
           </svg>
         </div>
       <p class='m-0'><i class="far fa-user-circle"></i> <%= current_user.username %></p>
@@ -85,13 +96,17 @@
             <%= link_to "Accept", challenge_accept_path(challenge), method: :patch, class: 'btn btn-primary' %>
             <%= link_to "Decline", challenge_decline_path(challenge), method: :delete, class: 'btn btn-primary' %>
           <% end %>
-          <p>Milestone: <%= challenge.milestone %></p>
+          <p>Goal: <%= challenge.milestone %> <%= challenge.time_type %> <%= challenge.count_type %></p>
           <p>Start Date: <%= challenge.starting_date.strftime('%e %B %Y') %></p>
-          <p><%= challenge.description %></p>
           <% if user_challenge.accepted %>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
               Check in
             </button>
+            <div class="dashboard-avatars">
+              <% challenge.users.each do |user| %>
+              <%= cl_image_tag user.photo, alt: "user avatar", class: 'avatar-small' %>
+              <% end %>
+            </div>
 
             <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">

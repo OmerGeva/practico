@@ -33,6 +33,10 @@ class ChallengePolicy < ApplicationPolicy
     record.users.include? user
   end
 
+  def accept?
+    record.users.include? user
+  end
+
   def update?
     record.users.include? user
   end

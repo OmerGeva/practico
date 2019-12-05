@@ -14,7 +14,7 @@
       <!-- USER INFO -->
       <div class="challenge-page-card">
       <!-- <div class="user-info"> -->
-        <%= cl_image_tag current_user.photo, alt: "user avatar", class: "avatar-huge" %>
+        <%= cl_image_tag @user.photo, alt: "user avatar", class: "avatar-huge" %>
         <p><strong>Username: </strong><%= current_user.username %></p>
         <p><strong>Email: </strong><%= current_user.email %></p>
       </div>
@@ -49,9 +49,9 @@
     <div class="col-6">
       <!-- CURRENT CHALLENGES -->
       <div class="challenge-page-card">
-        <h2>Current Challenges</h2>
+        <h2 class="mb-2">Current Challenges</h2>
         <% @user.challenges.each do |challenge| %>
-         <p><%= link_to challenge.skill.title.capitalize, challenge_path(challenge) %></p>
+         <h4><%= link_to challenge.skill.title, challenge_path(challenge) %></h4>
         <% end %>
 
       </div>

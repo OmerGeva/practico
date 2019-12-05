@@ -92,25 +92,41 @@ countList3.addEventListener('click', (e) => {
 
 // FRIENDS DROPDOWN
 
-const friendsSelect = document.querySelector(".friend_list")
-const selectedFriend = document.getElementById('friend')
+const friendsSelectItems = document.querySelectorAll(".friend_list .dropdown-item")
+const selectedFriends = document.querySelectorAll('.friend-checkbox')
 
-friendsSelect.addEventListener('click', (e) => {
-  e.target.classList.toggle('active')
+friendsSelectItems.forEach((fse) => {
+  fse.addEventListener('click', (e) => {
+    // 1. get the id of which friend was clicked
+    const friendId = e.target.dataset.friendId
+    // 2. find the corresponding checkbox
+    const cb = document.getElementById(`challenge_users_${friendId}`)
+    // 3. toggle its checked value
+    cb.checked = !cb.checked
+  })
 })
 
 // PROOF CHECKBOXES
 
-document.querySelector('.fa-check-circle').addEventListener("click", (e) => {
-  document.querySelector("#challenge_validation_type_checkbox").checked = !document.querySelector("#challenge_validation_type_checkbox").checked
+document.querySelector('.checkbox').addEventListener("click", (e) => {
+  document.querySelector("#challenge_validation_type_checkbox").checked = !document.querySelector("#challenge_validation_type_checkbox").checked;
 })
 
-document.querySelector('.fa-camera-retro').addEventListener("click", (e) => {
-  document.querySelector("#challenge_validation_type_photo").checked = !document.querySelector("#challenge_validation_type_photo").checked
+// document.querySelector('.photo').addEventListener("click", (e) => {
+//   document.querySelector("#challenge_validation_type_photo").checked = !document.querySelector("#challenge_validation_type_photo").checked;
+// })
+
+document.querySelector('.duration').addEventListener("click", (e) => {
+  document.querySelector("#challenge_validation_type_duration").checked = !document.querySelector("#challenge_validation_type_duration").checked;
 })
 
-document.querySelector('.fa-hourglass-half').addEventListener("click", (e) => {
-  document.querySelector("#challenge_validation_type_duration").checked = !document.querySelector("#challenge_validation_type_duration").checked
+// change proof color when selected
+const proofs = document.querySelectorAll('.proofs .proof')
+proofs.forEach((proof) => {
+  proof.addEventListener('click', (e) => {
+    e.preventDefault()
+  })
 })
+
 }
 export { dataPickerHomepage };

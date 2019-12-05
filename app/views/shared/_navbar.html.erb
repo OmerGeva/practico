@@ -4,14 +4,14 @@
 <div class="vertical-nav" id="sidebar">
   <div class="py-4 px-3 mb-4 bg-light">
     <div class="media d-flex align-items-center">
-      <%= cl_image_tag current_user.photo, alt: "user avatar", class: "avatar-large" %>
+      <%= cl_image_tag current_user.photo, alt: "user avatar", class: "avatar-large mr-2" %>
       <div class="media-body">
         <h4 class="m-0">
           <%= current_user.first_name %>
           <%= current_user.last_name %>
         </h4>
         <p class="font-weight-light text-muted mb-0">
-          <%= current_user.username  %>
+          @<%= current_user.username  %>
         </p>
       </div>
     </div>

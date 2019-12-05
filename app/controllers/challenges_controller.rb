@@ -121,12 +121,12 @@ class ChallengesController < ApplicationController
   end
 
   def update_schedule
-    
+
     @challenge = Challenge.find(params[:challenge_id])
-    @challenge.update(scheduled: true)
+    @users_challenge = UsersChallenge.find_by(challenge_id: @challenge.id, user_id: current_user.id)
+    @users_challenge.update(scheduled: true)
     milestone = @challenge.milestone
     hours = params[:hours].to_i
-    @users_challenge = UsersChallenge.find_by(challenge_id: @challenge.id, user_id: current_user.id)
     days_of_week = []
     params.each do |key, value|
       if key.match?(/^day/) && value == '1'
@@ -176,7 +176,6 @@ class ChallengesController < ApplicationController
     end
 
     redirect_to events_path
-
   end
 
   private

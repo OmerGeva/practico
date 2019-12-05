@@ -36,20 +36,20 @@
 
           <h2>Friends</h2>
           <% @user.friends.each do |friend| %>
-          <ul class="mt-2 pl-0">
-            <li>
-              <img class="avatar-small mr-2" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
-              <span class="mr-5"><%= friend.username %></span>
+            <ul class="mt-2 pl-0">
+              <li>
+                <img class="avatar-small mr-2" src="https://kitt.lewagon.com/placeholder/users/dfwheeler394" alt="avatar">
+                <span class="mr-5"><%= friend.username %></span>
 
-              <% if @user == current_user %>
-              <button class="btn btn-primary btn-sm ml-5" id="remove-friend-btn" data-friendId="<%= friend.id %>">Remove Friend</button>
-                <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;" %>
-              <% elsif !friend.friends_with?(current_user) %>
-                <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
-              <% end %>
+                <% if @user == current_user %>
+                <button class="btn btn-primary btn-sm ml-5" id="remove-friend-btn" data-friendId="<%= friend.id %>">Remove Friend</button>
+                  <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;" %>
+                <% elsif !friend.friends_with?(current_user) %>
+                  <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
+                <% end %>
               </li>
-              <% end %>
             </ul>
+          <% end %>
         </div>
       </div>
     </div>

@@ -93,7 +93,24 @@
           </div>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col">
+          <div class="challenge-page-card border-bottom">
+          <h2>Recent Check-ins:</h2>
+          <% @challenge.check_ins.last(3).each do |check_in|%>
+            <div class="d-flex justify-content-between mb-2" >
+              <div>
+              <h5><%= "#{check_in.users_challenge.user.first_name} #{check_in.users_challenge.user.last_name}" %></h5>
+                <% if check_in.duration %>
+                  <p><%= check_in.duration %> hours</p>
+                <% end %>
+              </div>
+              <%= cl_image_tag check_in.photo, style:"height: 100px"%>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col chat-board">
           <div class="chat-header text-center" style="width: 100%"><h4>Trash Talk Board</h4></div>

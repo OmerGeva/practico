@@ -51,7 +51,6 @@
                 </button>
               </div>
               <div class="modal-body">
-                <h4>Winner: </h4><p><%= "#{win.user.first_name} #{win.user.last_name}" %></p>
                 <% unless win.date.nil? %>
                 <h4>Date Won: </h4><p><%= win.date.strftime('%e %B %Y') %></p>
                 <% end %>

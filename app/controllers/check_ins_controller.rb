@@ -10,6 +10,7 @@ class CheckInsController < ApplicationController
 
   def create
     @check_in = CheckIn.new(check_in_params)
+    @check_in.date = Date.today
     @users_challenge = UsersChallenge.find_by(challenge_id: params[:challenge_id], user_id: current_user.id)
     @check_in.users_challenge = @users_challenge
     @check_in.save

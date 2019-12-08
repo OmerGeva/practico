@@ -1,12 +1,42 @@
 
-<h2>Great Work!</h2>
+<h2>Check In!</h2>
 <%= simple_form_for [challenge, check_in] do |f| %>
-
 
   <% if challenge.validation_type == 'checkbox' %>
     <%= f.input :completed, as: :radio_buttons, label: "I worked toward this goal today!" %>
   <% else %>
-    <%= f.input :duration, label: "How many hours did you work today?".html_safe, class: "duration", input_html: { min: '0.5', step: '0.5' }, placeholder: "1.0" %>
+    <div>
+      <p>Set a timer (hours)</p>
+      <div class="pb-5">
+        <input type="number" id="numHours">
+        <div class="d-flex">
+          <div id="hider">
+            <p id="start" class="d-inline-block btn btn-primary m-2">start</p>
+          </div>
+            <p id="stop" class="d-inline-block btn btn-primary m-2">stop</p>
+        </div>
+      </div>
+      <div class="d-none">
+        <%= f.input :duration %>
+      </div>
+    </div>
+
+    <div class="single-chart">
+          <svg viewBox="0 0 36 36" class="circular-chart green">
+            <path class="circle-bg"
+              d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+            <path class="circle" id="timer-circle"
+              stroke-dasharray="0, 100"
+              d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+            <text x="18" y="20.35" class="percentage" id= "timer"></text>
+          </svg>
+        </div>
   <% end %>
 
   <% if challenge.photo_proof %>

@@ -44,6 +44,22 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
     @users_challenge = UsersChallenge.find_by(challenge_id: @challenge.id, user_id: current_user.id)
     @chat_room = @challenge.chat_room.first
+    @weekly_user_check_ins = {}
+    @monthly_user_check_ins = {}
+    @yearly_user_check_ins = {}
+
+
+    @challenge.users.each do |user|
+      @weekly_user_check_ins[user] = user.check_ins.select { |check_in|
+        check_in.users_challenge.challenge == @challenge && check_in.date > Date.today - 7
+      }
+      @monthly_user_check_ins[user] = user.check_ins.select { |check_in|
+        check_in.users_challenge.challenge == @challenge && check_in.date > Date.today - 30
+      }
+      @yearly_user_check_ins[user] = user.check_ins.select { |check_in|
+        check_in.users_challenge.challenge == @challenge && check_in.date > Date.today - 365
+      }
+    end
     authorize @challenge
   end
 

@@ -1,12 +1,11 @@
+if (document.URL.match(/challenges\/\d+$/)) {
 const week_button = document.querySelector("#week_button")
 const month_button = document.querySelector("#month_button")
 const year_button = document.querySelector("#year_button")
 
 // const num_of_check_ins = week_button.dataset['week'];
 
-console.log(week_button.dataset);
-console.log(month_button.dataset);
-console.log(year_button.dataset);
+
 
 var data1 = []
 var data2 = []
@@ -77,7 +76,7 @@ const update = (data) => {
   .attr("y", function(d) { return y(d.value); })
   .attr("width", x.bandwidth())
   .attr("height", function(d) { return height - y(d.value); })
-  .attr("fill", "#69b3a2")
+  .attr("fill", "#F26D52")
 }
 
 
@@ -87,3 +86,4 @@ week_button.addEventListener(("click"), (event) => {update(data1)});
 month_button.addEventListener(("click"), (event) => {update(data2)});
 year_button.addEventListener(("click"), (event) => {update(data3)});
 
+}

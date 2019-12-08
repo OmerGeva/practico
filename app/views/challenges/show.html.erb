@@ -112,13 +112,14 @@
             <div id="week_month_year"></div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-6">
           <div class="challenge-page-card border-bottom">
-          <h2>Recent Check-ins:</h2>
+          <h2 class="mb-2">Recent Check-ins:</h2>
           <% @challenge.check_ins.last(3).each do |check_in|%>
             <div class="d-flex justify-content-between mb-2" >
               <div>
               <h5><%= "#{check_in.users_challenge.user.first_name} #{check_in.users_challenge.user.last_name}" %></h5>
+              <h6><%= check_in.date.strftime('%e %B %Y') %></h6>
                 <% if check_in.duration %>
                   <p><%= check_in.duration %> hours</p>
                 <% end %>

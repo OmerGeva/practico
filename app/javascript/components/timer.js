@@ -7,11 +7,14 @@ Date.prototype.addHours = function(h) {
 // Update the count down every 1 second
 const timer = () => {
   // Start Timer
+  if (document.getElementById('start') !== null) {
+
   const start = document.getElementById('start');
   start.addEventListener('click', getTime)
   // Stop Timer
   const stop = document.getElementById('stop')
   stop.addEventListener('click', stopTimer)
+  }
 }
 
 // 1st. click hourglass and grab input
@@ -35,8 +38,10 @@ const countDown = (startTime, endTime) => {
 const timerInterval = (startTime, endTime) => {
   const now = new Date().getTime();
   const distance = endTime - now;
-  const totalTime = endTime - startTime
+  const totalTime = endTime - startTime;
+
   const timer = document.getElementById('timer');
+
 
   if (distance <= 0) {
     stopTimer();

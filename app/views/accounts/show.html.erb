@@ -15,8 +15,8 @@
       <div class="challenge-page-card">
       <!-- <div class="user-info"> -->
         <%= cl_image_tag @user.photo, alt: "user avatar", class: "avatar-huge" %>
-        <p><strong>Username: </strong><%= current_user.username %></p>
-        <p><strong>Email: </strong><%= current_user.email %></p>
+        <p><strong>Username: </strong><%= @user.username %></p>
+        <p><strong>Email: </strong><%= @user.email %></p>
       </div>
     </div>
 

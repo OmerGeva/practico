@@ -14,7 +14,9 @@ class AccountPolicy < ApplicationPolicy
 
 
 
-
+  def update_avatar?
+    record == user
+  end
 
   def accept_friend?
     record.users.include? user

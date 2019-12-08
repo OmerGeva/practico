@@ -134,7 +134,6 @@ class ChallengesController < ApplicationController
   end
 
   def update_schedule(user = current_user)
-
     @challenge = Challenge.find(params[:challenge_id])
     @users_challenge = UsersChallenge.find_by(challenge_id: @challenge.id, user_id: current_user.id)
     @users_challenge.update(scheduled: true)

@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def update_avatar
+    raise
+  end
 end

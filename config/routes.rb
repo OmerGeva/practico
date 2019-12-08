@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :events, only: [:index]
   devise_for :users
   root to: 'dashboard#home'
+
+  post 'update_avatar/:id', to: 'pages#update_avatar', as: 'avatar'
+
   resources :challenges do
     get 'renew', to: 'challenges#renew'
     get 'finished', to: 'challenges#finished'
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
       post 'request-friend', to: "accounts#request_friend"
       delete 'delete-friend', to: "accounts#delete_friend"
       post 'accept-friend', to: "accounts#accept_friend"
+      post 'update_avatar'
     end
   end
 

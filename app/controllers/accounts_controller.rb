@@ -10,6 +10,12 @@ class AccountsController < ApplicationController
   end
 
 
+  def update_avatar
+    authorize current_user
+    current_user.photo = params[:avatar][:image]
+    current_user.save
+    redirect_to account_path(current_user)
+  end
 
   def friends
     @user = User.find(params[:id])

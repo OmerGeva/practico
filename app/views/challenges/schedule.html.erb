@@ -46,23 +46,11 @@
 
     <h4 class='mb-4'>Hours per day?</h4>
 
-      <!-- MAKE SLIDER WORK! -->
-      <div class='range-slider'>
-    <div class="range">
-      <input type="range" name="hours" id="hours" min="0.0" max="5.0" steps="0.5" value="1.0">
-    </div>
+    <!-- Range Slider -->
+    <input type="text" class="js-range-slider" name="hours" value="" />
 
-    <ul class="range-labels">
-      <li class="active selected">0</li>
-      <li>1 hour</li>
-      <li>2 hours</li>
-      <li>3 hours</li>
-      <li>4 hours</li>
-      <li>5 hours</li>
-    </ul>
-  </div>
 
-    </div>
+
       <%= submit_tag 'Schedule', class: "btn btn-primary mt-4" %>
       <% end %>
     </center>
@@ -70,3 +58,5 @@
 
     <% end %>
 </div>
+
+<%= javascript_pack_tag 'range_slider' %>

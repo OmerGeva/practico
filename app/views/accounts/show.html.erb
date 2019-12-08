@@ -16,8 +16,12 @@
       <!-- <div class="user-info"> -->
         <div class="avatar-upload">
           <div class="avatar-edit">
-              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+            <% if current_user == @user %>
+            <%= form_for(:avatar, url: update_avatar_account_path(@user), method: :post, html: { id: 'avatar-uploader', multipart: true}) do |f| %>
+              <%= file_field(:avatar, :image,  id: 'imageUpload') %>
               <label for="imageUpload"></label>
+            <% end %>
+            <% end %>
           </div>
           <div class="avatar-preview">
             <div id="imagePreview" style="background-image: url(<%= @user.photo %>);">

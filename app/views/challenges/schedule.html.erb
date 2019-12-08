@@ -1,53 +1,69 @@
 <div class='schedule-card'>
 
   <h2>Let's schedule!</h2>
-  <h4 class='text-center'><strong><%= @challenge.skill.title %></strong></h3>
-
+  <h4 class='text-center' style="color: #f26d52"><strong><%= @challenge.skill.title %></strong></h3>
+  <p class='text-center'>Goal: <%= @challenge.milestone %> <%= @challenge.time_type %> <%= @challenge.count_type %></p>
 <center>
-  <div class='d-flex justify-content-center'>
+  <div class='d-table justify-content-center'>
   <div class='weekdays'>
+    <h4 class='mb-4'>Choose weekdays:</h4>
     <% unless @challenge.time_type == 'days' && @challenge.count_type == 'in a row' %>
 
       <% counter = 0 %>
       <%= form_with  url: challenge_schedule_path(@challenge), local: true do |f| %>
-      <div class="d-flex align-items-center mb-3">
-        <input type="checkbox" name="daysunday" id="daysunday" value="1" class='mr-2'>
-        <h4 class='mb-0'>Sunday </h4>
+
+
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="daysunday" id="daysunday" value="1" class='mr-2'>
+        <label for="daysunday"><h4 class="mb-0">Sun</h4></label>
       </div>
-      <div class="d-flex align-items-center mb-3">
-        <input type="checkbox" name="daymonday" id="daymonday" value="1" class='mr-2'>
-        <h4 class='mb-0'>Monday </h4>
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="daymonday" id="daymonday" value="1" class='mr-2'>
+        <label for="daymonday"><h4 class='mb-0'>Mon</h4></label>
       </div>
-      <div class="d-flex align-items-center mb-3">
-        <input type="checkbox" name="daytuesday" id="daytuesday" value="1" class='mr-2'>
-        <h4 class='mb-0'>Tuesday </h4>
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="daytuesday" id="daytuesday" value="1" class='mr-2'>
+        <label for="daytuesday"><h4 class='mb-0'>Tue</h4></label>
       </div>
-      <div class="d-flex align-items-center mb-3">
-        <input type="checkbox" name="daywednesday" id="daywednesday" value="1" class='mr-2'>
-        <h4 class='mb-0'>Wednesday </h4>
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="daywednesday" id="daywednesday" value="1" class='mr-2'>
+        <label for="daywednesday"><h4 class='mb-0'>Wed</h4></label>
       </div>
-      <div class="d-flex align-items-center mb-3">
-        <input type="checkbox" name="daythursday" id="daythursday" value="1" class='mr-2'>
-        <h4 class='mb-0'>Thursday </h4>
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="daythursday" id="daythursday" value="1" class='mr-2'>
+        <label for="daythursday"><h4 class='mb-0'>Thu</h4></label>
       </div>
-      <div class="d-flex align-items-center mb-3">
-        <input type="checkbox" name="dayfriday" id="dayfriday" value="1" class='mr-2'>
-        <h4 class='mb-0'>Friday </h4>
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="dayfriday" id="dayfriday" value="1" class='mr-2'>
+        <label for="dayfriday"><h4 class='mb-0'>Fri</h4></label>
       <% check_box_tag "dayfriday" %>
       </div>
       <div class="d-flex align-items-center">
-        <input type="checkbox" name="daysaturday" id="daysaturday" value="1" class='mr-2'>
-        <h4 class='mb-0'>Saturday </h4>
+        <input type="checkbox" class="hidden" name="daysaturday" id="daysaturday" value="1" class='mr-2'>
+        <label for="daysaturday"><h4 class='mb-0'>Sat</h4></label>
       </div>
     </div>
 
-      <div>
-        <h4>Hours per day?</h4>
-        <%= number_field_tag :hours %>
-        <br>
-      </div>
+    <h4 class='mb-4'>Hours per day?</h4>
+
+      <!-- MAKE SLIDER WORK! -->
+      <div class='range-slider'>
+    <div class="range">
+      <input type="range" name="hours" id="hours" min="0.0" max="5.0" steps="0.5" value="1.0">
     </div>
-      <%= submit_tag 'Schedule', class: "btn btn-primary mt-2" %>
+
+    <ul class="range-labels">
+      <li class="active selected">0</li>
+      <li>1 hour</li>
+      <li>2 hours</li>
+      <li>3 hours</li>
+      <li>4 hours</li>
+      <li>5 hours</li>
+    </ul>
+  </div>
+
+    </div>
+      <%= submit_tag 'Schedule', class: "btn btn-primary mt-4" %>
       <% end %>
     </center>
 

@@ -44,7 +44,6 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
     @users_challenge = UsersChallenge.find_by(challenge_id: @challenge.id, user_id: current_user.id)
     @chat_room = @challenge.chat_room.first
-    # raise
     authorize @challenge
   end
 

@@ -1,7 +1,7 @@
 <div class="container">
 
   <!-- MAIN HEADER -->
-  <h2 class="text-center mb-4 mr-2"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h2>
+  <h1 class="text-center tw"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h2>
 
   <div class="text-right">
     <% unless @user == current_user && !current_user.friends_with?(@user)%>
@@ -12,9 +12,18 @@
   <div class="row">
     <div class="col-6">
       <!-- USER INFO -->
-      <div class="challenge-page-card">
+      <div class="challenge-page-card text-center">
       <!-- <div class="user-info"> -->
-        <%= cl_image_tag @user.photo, alt: "user avatar", class: "avatar-huge" %>
+        <div class="avatar-upload">
+          <div class="avatar-edit">
+              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+              <label for="imageUpload"></label>
+          </div>
+          <div class="avatar-preview">
+            <div id="imagePreview" style="background-image: url(<%= @user.photo %>);">
+            </div>
+          </div>
+        </div>
         <p><strong>Username: </strong><%= @user.username %></p>
         <p><strong>Email: </strong><%= @user.email %></p>
       </div>
@@ -89,4 +98,6 @@
 
   </div>
 </div>
+
+<%= javascript_pack_tag 'avatar_uploader' %>
 

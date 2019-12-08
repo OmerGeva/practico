@@ -12,5 +12,3 @@ function readURL(input) {
 $("#imageUpload").change(function() {
     readURL(this);
 });
-
-// Change @user.photo everywhere!

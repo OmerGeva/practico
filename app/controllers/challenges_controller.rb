@@ -154,7 +154,7 @@ class ChallengesController < ApplicationController
     @users_challenge = UsersChallenge.find_by(challenge_id: @challenge.id, user_id: current_user.id)
     @users_challenge.update(scheduled: true)
     milestone = @challenge.milestone
-    hours = params[:hours].to_i
+    hours = params[:hours].to_f
     days_of_week = []
     params.each do |key, value|
       if key.match?(/^day/) && value == '1'
@@ -164,7 +164,6 @@ class ChallengesController < ApplicationController
     authorize @challenge
 
     counter = 0
-
     if @challenge.time_type == 'days' && @challenge.count_type == 'total'
       until milestone <= 0
         days_of_week.each do |day|
@@ -201,18 +200,18 @@ class ChallengesController < ApplicationController
         end
         counter += 7
       end
-      elsif @challenge.time_type == 'days' && @challenge.count_type == 'in a row'
-        @users_challenge = UsersChallenge.find_by(challenge_id: @challenge.id, user_id: user.id)
-        days_of_week = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-        until milestone <= 0
-          days_of_week.each do |day|
-            unless milestone <= 0
-              Event.create(start_time: Date.parse(day) + counter, users_challenge_id: @users_challenge.id, user_id: user.id)
-            end
-              milestone -= 1
+    elsif @challenge.time_type == 'days' && @challenge.count_type == 'in a row'
+      @users_challenge = UsersChallenge.find_by(challenge_id: @challenge.id, user_id: user.id)
+      days_of_week = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+      until milestone <= 0
+        days_of_week.each do |day|
+          unless milestone <= 0
+            Event.create(start_time: Date.parse(day) + counter, users_challenge_id: @users_challenge.id, user_id: user.id)
           end
-          counter += 7
+            milestone -= 1
         end
+        counter += 7
+      end
     end
 
     redirect_to events_path unless @challenge.time_type == 'days' && @challenge.count_type == 'in a row'

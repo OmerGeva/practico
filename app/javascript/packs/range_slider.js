@@ -1,5 +1,4 @@
 import {ionRangeSlider} from 'ion-rangeslider';
-import  'ion-rangeslider/css/ion.rangeSlider.css';
 import $ from 'jquery'
 
 

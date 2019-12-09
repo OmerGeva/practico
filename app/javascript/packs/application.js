@@ -23,3 +23,4 @@ if (document.URL.match('/challenges/new')) {
 previewImageOnFileSelect();
 
 timer();
+

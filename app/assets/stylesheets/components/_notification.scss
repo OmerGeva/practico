@@ -1,0 +1,33 @@
+.notification-card {
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  background: #FFFFFF;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  border-left: 5px solid #F26D52;
+}
+
+
+.notification-card h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.notification-card p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.friend-request-button {
+
+}

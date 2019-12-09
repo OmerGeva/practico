@@ -246,9 +246,12 @@ CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duratio
 CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 52)
 CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 22)
 CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 46)
-check_in1 = CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 146)
-check_in2 = CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 170)
-check_in3 = CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 43)
+CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 146)
+CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 170)
+CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 43)
+check_in1 = CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 1)
+check_in2 = CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 2)
+check_in3 = CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 5)
 check_in1.remote_photo_url = 'https://www.uberchord.com/wp-content/uploads/2015/04/Songwriters-Paradise-Songwriting-1024x720.jpg'
 check_in1.save
 check_in2.remote_photo_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR79KfmmPPz7Iz7rJsg_eOv29x4LkUPGELAsGUDDipONAi1PbCy&s'
@@ -271,9 +274,13 @@ CheckIn.create(users_challenge_id: users_challenge7.id, completed: true, duratio
 CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 59)
 CheckIn.create(users_challenge_id: users_challenge7.id, completed: true, duration: nil, date: Date.today - 146)
 CheckIn.create(users_challenge_id: users_challenge9.id, completed: true, duration: nil, date: Date.today - 170)
-check_in4 = CheckIn.create(users_challenge_id: users_challenge8.id, completed: true, duration: nil, date: Date.today - 43)
-check_in5 = CheckIn.create(users_challenge_id: users_challenge7.id, completed: true, duration: nil, date: Date.today - 46)
-check_in6 = CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 21)
+CheckIn.create(users_challenge_id: users_challenge8.id, completed: true, duration: nil, date: Date.today - 43)
+CheckIn.create(users_challenge_id: users_challenge7.id, completed: true, duration: nil, date: Date.today - 46)
+CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 21)
+
+check_in4 = CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 1)
+check_in5 = CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 2)
+check_in6 = CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 3)
 
 check_in4.remote_photo_url = 'https://cortexitrecruitment.com/wp-content/uploads/2015/08/laptop-guy.jpg'
 check_in4.save
@@ -286,6 +293,8 @@ check_in6.save
 puts 'Creating Wins...'
 Win.create(challenge_id: challenge3.id, user_id: brad.id)
 Win.create(challenge_id: challenge2.id, user_id: brad.id)
+Win.create(challenge_id: challenge3.id, user_id: brad.id)
+Win.create(challenge_id: challenge1.id, user_id: brad.id)
 
 
 

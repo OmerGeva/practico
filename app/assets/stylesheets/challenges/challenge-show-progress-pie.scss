@@ -5,7 +5,7 @@ cursor: hand;
 
 
 // -- vars
-$bg-color: #34495e;
+$bg-color: transparent;
 $default-size: 1em;
 $label-font-size: $default-size / 4;
 $label-font-size-redo: $default-size * 4;
@@ -18,6 +18,7 @@ $label-font-size-redo: $default-size * 4;
 
 @mixin draw-progress($progress, $color) {
   .pie {
+
     .half-circle {
       border-color: $color;
     }
@@ -63,6 +64,7 @@ $label-font-size-redo: $default-size * 4;
 
 
 .set-size {
+  color: black;
   font-size: 5em;
 }
 
@@ -86,19 +88,20 @@ $label-font-size-redo: $default-size * 4;
 
   .pie {
     @include size(100%, 100%);
-    clip: rect(0, $default-size, $default-size, $default-size / 2);
+    clip: rect(1, $default-size, $default-size, $default-size / 2);
     left: 0;
     position: absolute;
     top: 0;
 
     .half-circle {
       @include size(100%, 100%);
-      border: ($default-size / 10) solid #3498db;
+      border: ($default-size / 10) solid $orange;
       border-radius: 50%;
       clip: rect(0, $default-size / 2, $default-size, 0);
       left: 0;
       position: absolute;
       top: 0;
+            color: black;
     }
   }
   // Progress Bars

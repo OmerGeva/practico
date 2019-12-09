@@ -10,9 +10,14 @@
   overflow: scroll;
 }
 
+.avatar-chat {
+  margin: 2px;
+}
+
 .message {
   display: flex;
   margin-bottom: 10px;
+  align-items: center;
   &.right {
     flex-direction: row-reverse;
     .message-content {
@@ -20,7 +25,7 @@
     }
   }
 }
-.message-content {
+.messsage-content {
   background-color: #F7F7F7;
   border-radius: 3px;
   margin: 0 10px;

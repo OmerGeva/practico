@@ -44,6 +44,19 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
     @users_challenge = UsersChallenge.find_by(challenge_id: @challenge.id, user_id: current_user.id)
     @chat_room = @challenge.chat_room.first
+#######################################streak (days)################################################
+    in_a_row = true
+    date = Date.today
+    @streak = 0
+    @users_challenge.check_ins.reverse.each do |check_in|
+       if check_in.date == date && in_a_row
+        @streak += 1
+      else
+        in_a_row = false
+      end
+      date -= 1
+    end
+#####################################################################################################
     @weekly_user_check_ins = {}
     @monthly_user_check_ins = {}
     @yearly_user_check_ins = {}

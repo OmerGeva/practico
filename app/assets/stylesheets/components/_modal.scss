@@ -6,8 +6,8 @@
   border-radius: 10px;
   border: none;
   background: whitesmoke;
-  background: rgba(255,255,255,0.8);
-  backdrop-filter: blur(4px);
+  // background: rgba(255,255,255,0.85);
+  // backdrop-filter: blur(4px);
   .modal-header {
     display: inline;
     font-family: $headers-font;
@@ -48,10 +48,10 @@
     justify-content: space-between;
     align-items: center;
     // border: 1px solid $light-turq;
-    color: $turq;
+    color: #44b5bf;
     border-radius: 14px;
     padding: 8px 18px;
-    opacity: 0.8;
+    // opacity: 0.8;
     transition: .3s;
     &:hover {
       color: $turq;

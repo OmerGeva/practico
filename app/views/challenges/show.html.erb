@@ -1,32 +1,34 @@
 <h1 class="text-center"><%= @challenge.skill.title %></h1>
 <%#= link_to "Check in", new_challenge_check_in_path(@challenge), class: 'btn btn-secondary' %>
 <div class="d-flex justify-content-between align-items-center">
+<div class="container">
+  <div class="grid">
+<div class="row d-flex justify-content-between">
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Check in
-</button>
+  <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#exampleModal">
+    Check in
+  </button>
 
-<% unless @users_challenge.scheduled %>
-  <%= link_to "Let's Schedule!", challenge_schedule_path(@challenge), class: "btn btn-primary"  %>
-<% end %>
-</div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLabel">Check In</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render 'check_in', challenge: @challenge, check_in: CheckIn.new %>
+  <% unless @users_challenge.scheduled %>
+    <%= link_to "Let's Schedule!", challenge_schedule_path(@challenge), class: "btn btn-primary mr-3"  %>
+  <% end %>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="exampleModalLabel">Check In</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render 'check_in', challenge: @challenge, check_in: CheckIn.new %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="grid">
     <div class="row mt-2">
       <div class="col-4">
         <div class="challenge-page-card">
@@ -77,9 +79,9 @@
         <div class="col-8">
           <div class="challenge-page-card d-flex justify-content-between">
             <div>
-
-            <h2> Challenge Personal Stats</h2>
-            <p><strong>Your progress:</strong> <%= @challenge.users_challenges.find_by(user: current_user).user_progress.round %> <%= @challenge.time_type %></p>
+              <h2> Challenge Personal Stats</h2>
+              <p><strong>Your progress:</strong> <%= @challenge.users_challenges.find_by(user: current_user).user_progress.round %> <%= @challenge.time_type %></p>
+              <p><strong>Current Streak:</strong> <%= @streak %> days</p>
             </div>
             <div class="set-size charts-container">
               <div class="pie-wrapper">

@@ -66,14 +66,12 @@
     <div class="notifications">
       <h4 class="marker border-bottom pb-1" data-content="Notifications">Notifications</h4>
       <div class="border-bottom">
-        <p><strong>Finished Challenges:</strong></p>
+        <p class="mb-2"><strong>Finished Challenges:</strong></p>
         <% current_user.users_challenges.each do |users_challenge| %>
           <% if users_challenge.unread %>
-            <div class="d-flex mb-2" style="height: 30px; font-size: 16px">
-              <p>Challenge has ended</p>
-              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                Check Challenge
-              </button>
+          <div class="notification-card">
+              <h6 class="mb-0"><strong><%= users_challenge.challenge.skill.title.capitalize %></strong>  has ended</h6>
+              <h6 data-toggle="modal" data-target="#exampleModal" class="mt-0 mb-0 mouse-hover" style="color: #ED462D;">Check Challenge</h6>
             </div>
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -96,7 +94,13 @@
 
       <p><strong>Friend Requests:</strong></p>
       <% current_user.requested_friends.each do |friend| %>
-        <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}"  %> <%= link_to "Accept", accept_friend_account_path(friend), method: :post, class: "btn btn-primary btn-sm" %>
+      <div class="notification-card">
+        <div class="d-flex align-items-center">
+          <%= cl_image_tag friend.photo, alt: "user avatar", class: 'avatar-small mr-2' %>
+          <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}"  %>
+        </div>
+        <%= link_to "Accept", accept_friend_account_path(friend), method: :post, class: "friend-request-button" %>
+      </div>
       <% end %>
     </div>
   </div>

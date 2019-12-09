@@ -23,6 +23,13 @@ $color-primary: $orange;
   font-size: 38px;
 }
 
+.blur {
+  top: 65px;
+  z-index: -1;
+  filter: blur(8px);
+  background: #C4E3E6;
+  position: absolute;
+}
 .list {
   display: inline-block;
   position: relative;
@@ -72,33 +79,8 @@ $color-primary: $orange;
 }
 
 .list.time_type {
-    margin-right: 6px;
+    margin-right: 10px;
   }
-
-// select {
-//   display: inline;
-//   border: 0;
-//   width: auto;
-//   margin-left: 10px;
-//   outline: none;
-//   -webkit-appearance: none;
-//   -moz-appearance: none;
-//   border-bottom: 2px solid $dark;
-//   color: $color-primary;
-//   transition: all .4s ease-in-out;
-
-//   &:hover {
-//     cursor: pointer;
-//   }
-
-//   option {
-//     border: 0;
-//     border-bottom: 1px solid $dark;
-//     padding: 10px;
-//     -webkit-appearance: none;
-//     -moz-appearance: none;
-//   }
-// }
 
 .time_type_placeholder, .count_type_placeholder {
   //visibility: hidden;
@@ -110,6 +92,13 @@ $color-primary: $orange;
   }
 }
 
+.time_type {
+  width: 90px;
+}
+
+.count_type_list, .time_type_list {
+  width: 150px;
+}
 
 #challenge_time_type, #challenge_count_type, #challenge_milestone {
   display: none;

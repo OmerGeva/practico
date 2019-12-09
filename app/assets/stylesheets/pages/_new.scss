@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-evenly;
   margin: 24px auto;
-  width: 400px;
+  width: 380px;
   a {
   font-size: 20px;
   color: lighten($dark, 20%);
@@ -23,7 +23,7 @@
     }
   }
 
-  a:hover, a:active, a:focus, .selected {
+  a:hover {
     color: $orange;
   }
 }
@@ -33,7 +33,7 @@
 }
 
 input[type=checkbox]:checked + label {
-  color: orange;
+  color: $orange;
   font-style: normal;
 }
 
@@ -43,6 +43,13 @@ input[type=checkbox]:checked + label {
     font-size: 24px;
     margin-right: 10px;
   }
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    label {
+      margin-left: 12px;
+    }
+
 }
 
 // CHECKBOX STYLING
@@ -93,4 +100,8 @@ input[type=checkbox]:checked + label {
 #challenge_photo_proof {
   width: 30px;
   height: 30px
+}
+
+.orange {
+  color: $orange !important;
 }

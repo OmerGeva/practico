@@ -49,3 +49,9 @@
     border: 0;
   }
 }
+
+#week_button, #month_button, #year_button   {
+  &:hover, &:active, &:focus {
+    border-bottom: 3px solid $orange !important;
+  }
+}

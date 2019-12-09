@@ -1,4 +1,4 @@
-<h1 class="text-center"><%= @challenge.skill.title %></h1>
+<h1 class="text-center tw"><%= @challenge.skill.title %></h1>
 <%#= link_to "Check in", new_challenge_check_in_path(@challenge), class: 'btn btn-secondary' %>
 <div class="d-flex justify-content-between align-items-center">
 <div class="container">
@@ -30,98 +30,100 @@
   </div>
 </div>
     <div class="row mt-2">
-      <div class="col-4">
-        <div class="challenge-page-card">
+      <div class="col-5">
+
+      <!-- CHALLENGE LEADERBOARD -->
+
+        <div class="challenge-page-card mb-4" style='position: relative;'>
           <% counter = 1 %>
-          <h2> Challenge Leaderboard</h2>
+          <h2>Challenge Leaderboard</h2>
           <div class="mt-2">
             <% @challenge.users.order(user_progress: :desc).each do |user| %>
-              <div class="mb-1">
-                <div class="d-flex align-items-center">
-                  <h6 class="mr-3"><%= counter%></h6><%= cl_image_tag user.photo, class: 'avatar-small mr-2', alt: "avatar" %>
-                  <p class="mt-0"><%= user.username %></p>
-                </div>
-              </div>
-              <% counter +=1 %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <div class="col-8">
-          <div class="challenge-page-card">
-            <h2> Challenge Group Stats</h2>
-            <% @challenge.users.order(user_progress: :desc).each do |user| %>
             <% @progress = ((UsersChallenge.find_by(challenge_id: @challenge.id, user_id: user.id).user_progress/@challenge.milestone)*100).round %>
-            <div class="row d-flex align-items-center">
-              <div class="col-4">
-            <p class='mt-0'><strong>@<%= user.username %> </strong>: <%= @challenge.users_challenges.find_by(user: user).user_progress.round %> <%= @challenge.time_type %></p>
+            <div class="row d-flex align-items-center mb-2">
+              <h6 class="my-0 mx-2"><%= counter%></h6>
+              <%= cl_image_tag user.photo, class: 'avatar-small mr-2', alt: "avatar" %>
+              <% counter +=1 %>
+              <p class='mt-0'><strong>@<%= user.username %> </strong>: <%= @challenge.users_challenges.find_by(user: user).user_progress.round %> <%= @challenge.time_type %></p>
+
+              <div style='position: absolute; right: 16px;'>
+                <progress class="skill-1 mb-0 mt-2" style='width: 180px;' max="100" value="<%= @progress %>">
+                </progress>
+              </div>
 
               </div>
-              <div class="col-8">
-            <progress class="skill-1 mb-0 mt-2" max="100" value="<%= @progress %>">
-              <strong>Progress <%= @progress %>%</strong>
-
-              </div>
-            </progress>
-            </div>
             <% end %>
           </div>
         </div>
+
+        <!-- PERSONAL STATS -->
+
+        <div class="challenge-page-card d-flex justify-content-between mb-4">
+          <div>
+            <h2>Challenge Personal Stats</h2>
+            <p><strong>Your progress:</strong> <%= @challenge.users_challenges.find_by(user: current_user).user_progress.round %> <%= @challenge.time_type %></p>
+            <p><strong>Current Streak:</strong> <%= @streak %> days</p>
+          </div>
+
+          <% @user_progress = ((@users_challenge.user_progress/@challenge.milestone)*100).round %>
+
+          <div class="single-chart-small" style='z-index: 100; width: 150px;'>
+              <svg viewBox="0 0 36 36" class="circular-chart blue">
+                <path class="circle-bg"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <path class="circle"
+                  stroke-dasharray="<%= @user_progress %>, 100"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <text x="18" y="20.35" class="percentage"><%= @user_progress %>%</text>
+              </svg>
+            </div>
+        </div>
+
+        <!-- THE STAKES -->
+
+        <div class="challenge-page-card">
+          <h2> The Stakes</h2>
+            <p><strong>First place:</strong> <%= @challenge.first_place %></p>
+            <p><strong>Last place:</strong> <%= @challenge.last_place %></p>
+        </div>
+
       </div>
-      <div class="row mt-2">
-        <div class="col-4">
-          <div class="challenge-page-card">
-            <h2> The Stakes</h2>
-              <p><strong>First place:</strong> <%= @challenge.first_place %></p>
-              <p><strong>Last place:</strong> <%= @challenge.last_place %></p>
+
+      <div class="col-7">
+
+        <!-- WEEK MONTH YEAR STATS -->
+
+        <div class="challenge-page-card mb-4" id="graph-challenge-card">
+          <script src="https://d3js.org/d3.v4.js"></script>
+          <div class="d-flex justify-content-around mouse-hover" style="height: 32px;">
+          <h4 id="week_button" <% @weekly_user_check_ins.each do |user, value| %>
+          data-week-<%= user.first_name %>="<%= value.count %>"
+          <% end %>>Week</h4>
+          <h4 id="month_button" class="mouse-hover" <% @monthly_user_check_ins.each do |user, value| %>
+          data-month-<%= user.first_name %>="<%= value.count %>"
+          <% end %>>Month</h4>
+          <h4 id="year_button" class="mouse-hover" <% @yearly_user_check_ins.each do |user, value| %>
+          data-year-<%= user.first_name %>="<%= value.count %>"
+          <% end %>>Year</h4>
           </div>
+          <h2 class="text-center mt-2">Number of check ins</h2>
+          <div id="week_month_year"></div>
         </div>
-        <div class="col-8">
-          <div class="challenge-page-card d-flex justify-content-between">
-            <div>
-              <h2> Challenge Personal Stats</h2>
-              <p><strong>Your progress:</strong> <%= @challenge.users_challenges.find_by(user: current_user).user_progress.round %> <%= @challenge.time_type %></p>
-              <p><strong>Current Streak:</strong> <%= @streak %> days</p>
-            </div>
-            <div class="set-size charts-container">
-              <div class="pie-wrapper">
-                <span class="label"><%= ((@users_challenge.user_progress/@challenge.milestone)*100).round %> <span class="smaller">%</span></span>
-                <div class="pie">
-                  <div class="left-side half-circle"></div>
-                  <div class="right-side half-circle"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-6">
-          <div class="challenge-page-card" id="graph-challenge-card">
-            <script src="https://d3js.org/d3.v4.js"></script>
-            <div class="d-flex justify-content-around mouse-hover">
-            <h4 id="week_button" class="border-bottom" <% @weekly_user_check_ins.each do |user, value| %>
-            data-week-<%= user.first_name %>="<%= value.count %>"
-            <% end %>>Week</h4>
-            <h4 id="month_button" class="border-bottom mouse-hover" <% @monthly_user_check_ins.each do |user, value| %>
-            data-month-<%= user.first_name %>="<%= value.count %>"
-            <% end %>>Month</h4>
-            <h4 id="year_button" class="border-bottom mouse-hover" <% @yearly_user_check_ins.each do |user, value| %>
-            data-year-<%= user.first_name %>="<%= value.count %>"
-            <% end %>>Year</h4>
-            </div>
-            <h2 class="text-center mt-2">Number of check ins</h2>
-            <div id="week_month_year"></div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="challenge-page-card border-bottom">
+
+        <!-- RECENT CHECK-INS -->
+        <div class="challenge-page-card">
           <h2 class="mb-2">Recent Check-ins:</h2>
           <% @challenge.check_ins.last(3).each do |check_in|%>
             <div class="d-flex justify-content-between mb-2" >
               <div>
-              <h5><%= "#{check_in.users_challenge.user.first_name} #{check_in.users_challenge.user.last_name}" %></h5>
-              <h6><%= check_in.date.strftime('%e %B %Y') %></h6>
+                <h5><%= "#{check_in.users_challenge.user.first_name} #{check_in.users_challenge.user.last_name}" %></h5>
+                <h6><%= check_in.date.strftime('%e %B %Y') %></h6>
                 <% if check_in.duration %>
                   <p><%= check_in.duration %> hours</p>
                 <% end %>
@@ -129,25 +131,27 @@
               <%= cl_image_tag check_in.photo, style:"height: 100px"%>
             </div>
           <% end %>
+        </div>
+
+
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col chat-board chat-sticky">
-          <div class="chat-header text-center" style="width: 100%"><h4>Trash Talk Board</h4></div>
-          <div class="messages" style="height: 200px">
-            <% @chat_room.messages.each do |message| %>
-            <%= render 'message', message: message, user_is_messages_author: message.user == current_user %>
-            <% end %>
+        <div class="row">
+          <div class="col chat-board chat-sticky">
+            <div class="chat-header text-center" style="width: 100%"><h4>Trash Talk Board</h4></div>
+            <div class="messages" style="height: 200px">
+              <% @chat_room.messages.each do |message| %>
+              <%= render 'message', message: message, user_is_messages_author: message.user == current_user %>
+              <% end %>
+            </div>
+            <div id="create-message">
+              <%= simple_form_for [@chat_room, Message.new], remote: true do |f| %>
+              <%= f.input :content, label: false, id: "message-content" %>
+              <%= f.submit value: 'Send Message', class:'btn btn-outline-primary' %>
+              <% end %>
           </div>
-          <div id="create-message">
-            <%= simple_form_for [@chat_room, Message.new], remote: true do |f| %>
-            <%= f.input :content, label: false, id: "message-content" %>
-            <%= f.submit value: 'Send Message', class:'btn btn-outline-primary' %>
-            <% end %>
-          </div>
-        </div>
       </div>
+
     </div>
   </div>
 

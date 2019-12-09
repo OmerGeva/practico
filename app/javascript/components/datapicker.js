@@ -112,10 +112,6 @@ document.querySelector('.checkbox').addEventListener("click", (e) => {
   document.querySelector("#challenge_validation_type_checkbox").checked = !document.querySelector("#challenge_validation_type_checkbox").checked;
 })
 
-// document.querySelector('.photo').addEventListener("click", (e) => {
-//   document.querySelector("#challenge_validation_type_photo").checked = !document.querySelector("#challenge_validation_type_photo").checked;
-// })
-
 document.querySelector('.duration').addEventListener("click", (e) => {
   document.querySelector("#challenge_validation_type_duration").checked = !document.querySelector("#challenge_validation_type_duration").checked;
 })

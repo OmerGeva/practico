@@ -41,4 +41,12 @@
   display: flex;
   justify-content: center;
   text-align: center;
+
+.single-chart-small {
+  .circle {
+    stroke: $orange;
+  }
+  .circle-bg {
+    stroke: rgba(255,255,255,0.7);
+  }
 }

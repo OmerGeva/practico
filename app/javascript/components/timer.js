@@ -4,6 +4,12 @@ Date.prototype.addHours = function(h) {
   return this;
 }
 
+const doubleDigit = (num) => {
+  if (num < 10) {
+    return '0' + num
+  }
+}
+
 // Update the count down every 1 second
 const timer = () => {
   // Start Timer
@@ -48,6 +54,7 @@ const timerInterval = (startTime, endTime) => {
 
     timer.innerHTML = `Done!`;
     document.getElementById('timer-circle').setAttribute("stroke-dasharray", `0, 100`);
+    postTimer();
     return console.log('done');
   }
 
@@ -57,7 +64,7 @@ const timerInterval = (startTime, endTime) => {
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   console.log(hours, minutes, seconds);
-  timer.innerHTML = `${hours}:${minutes}:${seconds}`;
+  timer.innerHTML = `${doubleDigit(hours)}:${doubleDigit(minutes)}:${doubleDigit(seconds)}`;
 
   // Circle Percentage
   const percentage = (distance / totalTime) * 100;
@@ -77,6 +84,20 @@ const stopTimer = (event) => {
   const submitTime = document.getElementById('check_in_duration');
   // setting numHours.value to elapsedTime and submitting
   submitTime.value = (elapsedTime / 3600000).toPrecision(4);
+}
+
+const postTimer = () => {
+  // Hide timer
+  document.getElementById('timer-container').setAttribute('class', 'd-none');
+
+  // Show photo uploader or submit
+  document.getElementById('photo-and-submit').setAttribute('class', '');
+
+  // if (document.querySelector('#photo-uploader').innerHTML === "") {
+  //   console.console.log("why won't do?");
+  //   document.getElementById('submit').click();
+  //   return console.log('nailed it')
+  // }
 }
 
 export { timer };

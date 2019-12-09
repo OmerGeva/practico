@@ -3,6 +3,8 @@
   margin: 10px auto;
   max-width: 80%;
   max-height: 250px;
+  width: 320px;
+  margin-bottom: 26px;
 }
 
 .circle-bg {
@@ -33,4 +35,10 @@
 
 .pie {
 
+}
+
+.timer-set {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }

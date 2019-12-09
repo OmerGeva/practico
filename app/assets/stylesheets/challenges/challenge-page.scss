@@ -1,0 +1,21 @@
+progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+
+progress[value]::-webkit-progress-bar {
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 8px;
+  color: red;
+  position: relative;
+  border: 1px solid lightgrey;
+}
+
+progress[value]::-webkit-progress-value {
+  position: absolute;
+  background: linear-gradient(to top, $orange, #f29176);
+  border-radius: 8px 0 0 8px ;
+  box-sizing: border-box;
+  box-shadow:0px 0px 0px 1px rgba(255,255,255,0.8) inset;
+}

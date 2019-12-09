@@ -20,14 +20,14 @@
           </div>
 
 
-          <div class="list"><span class="time_type_placeholder">days</span>
+          <div class="list time_type"><span class="time_type_placeholder">days</span>
             <ul class="time_type_list">
               <li><a href="">hours</a></li>
               <li><a href="">days</a></li>
               <li><a href="">weeks</a></li>
             </ul>
           </div>
-          <div class="list"><span class="count_type_placeholder">in a row</span>.
+          <div class="list count_type"><span class="count_type_placeholder">in a row</span>.
             <ul class="count_type_list">
               <li><a href="">in a row</a></li>
               <li><a href="">total</a></li>
@@ -76,19 +76,49 @@
 
       <!-- ADD FRIENDS -->
 
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Add Friends
+      <!-- Button trigger modal -->
+      <div class="invite-friends-div">
+      <div class="tooltipp">
+        <span class="tooltiptext">Invite Friends</span>
+        <button type="button" class="btn-invite-friends" data-toggle="modal" data-target="#exampleModalCenter">
+          <i class="fas fa-users"></i>
         </button>
-        <div class="dropdown-menu">
-          <ul class="friend_list">
-          <% @friends.each do |friend| %>
-            <li class="dropdown-item" data-friend-id="<%= friend.id %>">
-              <%= cl_image_tag friend.photo, alt: "Friend avatar", class: "avatar-small" %>
-              <%= friend.first_name %>
-            </li>
-          <% end %>
-          </ul>
+      </div>
+    </div>
+
+
+      <!-- Modal -->
+
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Invite friends to join the challenge!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+                  <div class="friend-list">
+                    <input type="hidden" name="post[friend_ids][]" value="">
+                    <div class="friends-choices">
+                      <% @friends.each do |friend| %>
+                        <input type="checkbox" class="hidden" value="<%= friend.id %>" name="challenge[users][]" id="challenge_users_<%= friend.id %>">
+                        <label for="challenge_users_<%= friend.id %>">
+                          <%= cl_image_tag friend.photo, alt: "Friend avatar", class: "avatar-small" %>
+                          <p><%= friend.first_name %> <%= friend.last_name %></p>
+                          <i class="fas fa-plus-circle"></i>
+                        </label>
+                      <% end %>
+                     </div>
+                  </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -96,7 +126,7 @@
       <%= f.input :users, label: false, as: :check_boxes, collection: @friends, label_method: :first_name, input_html: {class: 'friend-checkbox'} %>
 
       <!-- SUBMIT -->
-      <%= f.submit "Create Challenge", class: "btn btn-primary ml-3", id:"new-challenge-button" %>
+      <%= f.submit "Create Challenge", class: "btn btn-primary", id:"new-challenge-button" %>
     <% end %>
     </div>
 </div>

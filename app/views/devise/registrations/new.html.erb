@@ -13,14 +13,40 @@
       <div class="form-inputs">
         <%= f.input :email,
                 required: true,
+                label: false,
                 autofocus: true,
+                placeholder: 'Email',
                 input_html: { autocomplete: "email" }%>
-        <%= f.input :password,
+        <div class="d-flex">
+        <%= f.input :first_name,
+                label: false,
                 required: true,
+                autofocus: true,
+                placeholder: 'First Name',
+                input_html: { autocomplete: "email" }%>
+
+        <%= f.input :last_name,
+                label: false,
+                required: true,
+                autofocus: true,
+                placeholder: 'Last Name',
+                input_html: { autocomplete: "email" }%>
+        </div>
+        <%= f.input :username,
+                label: false,
+                required: true,
+                placeholder: 'Username',
+                input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password,
+                label: false,
+                required: true,
+                placeholder: 'Password',
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
+                label: false,
                 required: true,
+                placeholder: 'Confirm Password',
                 input_html: { autocomplete: "new-password" } %>
 
       </div>

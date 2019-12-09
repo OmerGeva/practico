@@ -1,6 +1,8 @@
 import "bootstrap";
 
 import "../plugins/flatpickr"
+import "../components/chat"
+
 import "../components/week_month_year_chart"
 import "../components/sidebar_toggle"
 import { previewImageOnFileSelect } from "../components/photo_preview"

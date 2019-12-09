@@ -4,7 +4,7 @@
 
 .messages {
   padding: 16px;
-  background-color: rgba(255, 255, 255, .85);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .chat-header {
@@ -14,7 +14,7 @@
 }
 
 #create-message {
-  background-color: rgba(255, 255, 255, .85);
+  background-color: rgba(255, 255, 255, 1);
   border-radius: 0 0 10px 10px;
 
   .text {
@@ -24,4 +24,27 @@
 
 .messsage-content {
   margin: 0 8px;
+}
+
+.chat-header:hover {
+  cursor: hand;
+  cursor: pointer;
+}
+.chat-sticky.up {
+position: fixed;
+height: 100%;
+right: 0px;
+width: 400px;
+top: 47vh;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+.chat-sticky {
+position: fixed;
+height: 100%;
+right: 0px;
+width: 400px;
+top: 92vh;
+padding-top: 10px;
+padding-bottom: 10px;
 }

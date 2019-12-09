@@ -7,11 +7,11 @@ class SendTwilioMessage
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
   end
 
-  def send_alert
-    @alert.user.responders.each do |responder|
-      next if responder.phone_number.blank?
-
-      send_message(@alert.kind, responder.phone_number, responder.name)
-    end
+  def send_message(friend)
+    @client.messages.create(
+      from: @service_number,
+      to: to,
+      body: message
+    )
   end
 end

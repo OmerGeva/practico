@@ -28,6 +28,7 @@ $color-primary: $orange;
   position: relative;
   margin-left: 6px;
   ul {
+    z-index: 100;
     text-align: left;
     position: absolute;
     padding: 0;
@@ -69,6 +70,10 @@ $color-primary: $orange;
     }
   }
 }
+
+.list.time_type {
+    margin-right: 6px;
+  }
 
 // select {
 //   display: inline;
@@ -201,5 +206,3 @@ textarea:focus {
     }
   }
 }
-
-// ! MAKE ANIMATION ALIKE !

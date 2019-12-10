@@ -5,7 +5,7 @@ class Event < ApplicationRecord
 
   before_create :set_color
 
-  COLORS = %w[#89E8C0 #64ADF2 #C7EAE4 #ECC30A #F47748 #D65F63]
+  COLORS = %w[#F47748 #E87EA1 #ECC30A #64ADF2 #D65F63]
 
   private
 

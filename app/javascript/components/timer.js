@@ -86,6 +86,8 @@ const stopTimer = (event) => {
   submitTime.value = (elapsedTime / 3600000).toPrecision(4);
 }
 
+
+
 const postTimer = () => {
   // Hide timer
   document.getElementById('timer-container').setAttribute('class', 'd-none');

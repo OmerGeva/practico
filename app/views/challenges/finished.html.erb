@@ -1,17 +1,15 @@
 <% unless @users_challenge.unread %>
-  <div class="container">
-    <div class="row">
+  <div class="challenge-page-card d-flex justify-content-around">
       <div class="col-8 text-center">
         <h1>Congrats <%= current_user.first_name %>!</h1>
         <h4>You have won <strong><%= @challenge.skill.title %></strong></h4>
         <h6>Your reward: <%= @challenge.first_place %></h6>
-        <h2>Would you like to renew challenge?</h2>
+        <h2 class="mb-2">Would you like to renew challenge?</h2>
         <div class="d-flex justify-content-around">
           <%= link_to "Renew Challenge!🤪" , challenge_renew_path(@challenge), class:"btn btn-primary" %>
           <%= link_to "Renew and edit Challenge! 😎", edit_challenge_path(@challenge), class:"btn btn-primary" %>
           <%= link_to "Don't renew 😞", root_path, class:"btn btn-primary" %>
         </div>
-      </div>
     </div>
   </div>
 <% else %>

@@ -9,8 +9,14 @@
           Check in
         </button>
 
-        <% unless @users_challenge.scheduled %>
-          <%= link_to "Let's Schedule!", challenge_schedule_path(@challenge), class: "btn btn-primary mr-3"  %>
+        <% if @users_challenge.scheduled %>
+          <%= link_to events_path do%>
+          <img src="https://image.flaticon.com/icons/svg/61/61469.svg" style="height: 32px;" class="mr-3"alt="schedule">
+          <% end %>
+        <% else %>
+          <%= link_to challenge_schedule_path(@challenge) do%>
+          <img src="https://image.flaticon.com/icons/svg/61/61469.svg" style="height: 32px;" class="mr-3"alt="schedule">
+          <% end %>
         <% end %>
       </div>
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -137,7 +143,7 @@
       </div>
       <div class="row">
         <div class="col chat-board chat-sticky">
-          <div class="chat-header text-center" style="width: 100%"><h4>Trash Talk Board</h4></div>
+          <div class="chat-header text-center" style="width: 100%"><h4>Message Board</h4></div>
           <div class="messages" style="height: 200px">
             <% @chat_room.messages.each do |message| %>
             <%= render 'message', message: message, user_is_messages_author: message.user == current_user %>

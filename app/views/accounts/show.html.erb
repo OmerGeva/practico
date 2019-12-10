@@ -1,6 +1,7 @@
 <div class="container">
   <!-- MAIN HEADER -->
-  <h1 class="text-center tw"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h2>
+
+  <h1 class="text-center tw"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
   <div class="text-right">
     <% unless @user == current_user && !current_user.friends_with?(@user)%>
     <%= link_to "Add Friend", request_friend_account_path(@user), method: :post, class: "btn btn-primary" %>
@@ -58,6 +59,7 @@
 
       <!-- ACHIEVEMENTS -->
       <div class="achievements">
+
         <h4 class='marker mb-3' data-content="Achievements">Achievements</h4>
         <% unless current_user.wins.count.zero? %>
           <% current_user.wins.each do |win|%>
@@ -67,6 +69,7 @@
               <h4 style='font-size: 16px;'><%= win.challenge.skill.title.titleize %></h4>
               <!-- <h4>Winner: </h4><p><%= "#{win.user.first_name} #{win.user.last_name}" %></p> -->
               <% unless win.date.nil? %>
+
                 <h4>Date Won: </h4><p><%= win.date.strftime('%e %B %Y') %></p>
               <% end %>
             </span>

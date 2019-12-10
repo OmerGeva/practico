@@ -39,12 +39,14 @@
     <div class="achievements">
       <h4 class='marker' data-content="Achievements">Achievements</h4>
       <% unless current_user.wins.count.zero? %>
+
         <% current_user.wins.each do |win|%>
           <div class="tooltipp">
             <span class="tooltiptext">
               <h4 style='font-size: 16px;'><%= win.challenge.skill.title.titleize %></h4>
               <!-- <h4>Winner: </h4><p><%= "#{win.user.first_name} #{win.user.last_name}" %></p> -->
               <% unless win.date.nil? %>
+
                 <h4>Date Won: </h4><p><%= win.date.strftime('%e %B %Y') %></p>
               <% end %>
             </span>

@@ -35,7 +35,7 @@ class AccountsController < ApplicationController
     current_user.accept_request(friended_user)
     skip_authorization
 
-    redirect_to account_path(current_user)
+    redirect_to friends_account_path(current_user)
   end
 
   def delete_friend

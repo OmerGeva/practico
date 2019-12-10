@@ -88,6 +88,7 @@ class ChallengesController < ApplicationController
         counter += 1
       end
     end
+
     if counter == @challenge.users_challenges.count
       @challenge.update(starting_date: Date.today)
       # @challenge.users_challenges.each do |users_challenge|

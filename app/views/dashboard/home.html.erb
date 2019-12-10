@@ -40,8 +40,8 @@
       <h4 class='marker' data-content="Achievements">Achievements</h4>
       <% unless current_user.wins.count.zero? %>
       <% current_user.wins.each do |win|%>
-        <i class="fas fa-trophy mouse-hover" style="font-size: 32px; color: #F3B61F" data-toggle="modal" data-target="#exampleModal"></i>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <i class="fas fa-trophy mouse-hover" style="font-size: 32px; color: #F3B61F" data-toggle="modal" data-target="#exampleModal<%=win.id%>"></i>
+        <div class="modal fade" id="exampleModal<%= win.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">

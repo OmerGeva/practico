@@ -292,10 +292,10 @@ check_in6.save
 
 ############# Achievements ##################################
 puts 'Creating Wins...'
-Win.create(challenge_id: challenge3.id, user_id: brad.id)
-Win.create(challenge_id: challenge2.id, user_id: brad.id)
-Win.create(challenge_id: challenge3.id, user_id: brad.id)
-Win.create(challenge_id: challenge1.id, user_id: brad.id)
+Win.create(challenge_id: challenge3.id, user_id: brad.id, date: Date.today - 21)
+Win.create(challenge_id: challenge2.id, user_id: brad.id, date: Date.today - 54)
+Win.create(challenge_id: challenge3.id, user_id: brad.id, date: Date.today - 521)
+Win.create(challenge_id: challenge1.id, user_id: brad.id, date: Date.today - 121)
 
 
 

@@ -69,6 +69,7 @@
               <h4 style='font-size: 16px;'><%= win.challenge.skill.title.titleize %></h4>
               <!-- <h4>Winner: </h4><p><%= "#{win.user.first_name} #{win.user.last_name}" %></p> -->
               <% unless win.date.nil? %>
+
                 <p><%= win.date.strftime('%e %B %Y') %></p>
               <% end %>
             </span>

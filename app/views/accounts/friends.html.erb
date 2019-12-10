@@ -43,12 +43,13 @@
           <% @user.friends.each do |friend| %>
               <li class='d-flex justify-content-between mb-2'>
                 <div class="d-flex align-items-center">
+                <%= link_to account_path(friend) do%>
 
                 <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar-large mr-3" %>
 
-                <span class="mr-5"><%= friend.username %></span>
+                <span class="mr-5" style="color: black;"><%= friend.username %></span>
+                <% end %>
                 </div>
-
                 <% if @user == current_user %>
                 <i class="fas fa-user-minus mouse-hover mt-3 mr-2" style="font-size: 16px; color: rgb(237, 70, 45);" id="remove-friend-btn" data-friendId="<%= friend.id %>"></i>
                   <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;"%>

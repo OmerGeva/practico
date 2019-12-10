@@ -112,11 +112,19 @@
           <% if user_challenge.accepted %>
             <p><%= link_to challenge.skill.title.titleize, challenge_path(challenge) %></p>
           <% else %>
-            <p><%= challenge.skill.title.titleize %></p>
+            <p style='font-size: 18px; color: #2a8a99;'><%= challenge.skill.title.titleize %></p>
           <% end %>
           <% unless user_challenge.accepted %>
-            <%= link_to "Accept", challenge_accept_path(challenge), method: :patch, class: 'btn btn-primary' %>
-            <%= link_to "Decline", challenge_decline_path(challenge), method: :delete, class: 'btn btn-primary' %>
+          <!-- ACCEPT / SUBMIT -->
+          <div class='thumbs'>
+            <%= link_to challenge_accept_path(challenge), method: :patch, class: 'thumbs-up' do %>
+              <i class="fas fa-thumbs-up"></i>Accept
+            <% end %>
+            <%= link_to challenge_decline_path(challenge), method: :delete, class: 'thumbs-down' do %>
+              <i class="fas fa-thumbs-down"></i>Decline
+            <% end %>
+          </div>
+
           <% end %>
           <p><i class="fas fa-bullseye"></i><strong>Goal: </strong><%= challenge.milestone %> <%= challenge.time_type %> <%= challenge.count_type %></p>
           <p><i class="fas fa-calendar-day"></i><strong>Start: </strong><%= challenge.starting_date.strftime('%e %B %Y') %></p>
@@ -131,10 +139,10 @@
             </div>
 
             <div class="modal fade" id="exampleModal<%= user_challenge.challenge.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
+              <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title text-center" id="exampleModalLabel">  <h5>Check in</h5>
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Check in</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>

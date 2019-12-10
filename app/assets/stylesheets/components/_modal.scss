@@ -1,7 +1,13 @@
+.modal-open .modal {
+  background: rgba(1,1,1,0.45);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .modal-backdrop {position: relative;}
 
 .modal-dialog {
-  max-width: 540px;
+  max-width: 600px;
 }
 .modal-content {
   z-index: 100;

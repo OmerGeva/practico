@@ -1,25 +1,22 @@
 <div class="container">
-
   <!-- MAIN HEADER -->
-  <h1 class="text-center tw"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
 
+  <h1 class="text-center tw"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
   <div class="text-right">
     <% unless @user == current_user && !current_user.friends_with?(@user)%>
-      <%= link_to "Add Friend", request_friend_account_path(@user), method: :post, class: "btn btn-primary" %>
+    <%= link_to "Add Friend", request_friend_account_path(@user), method: :post, class: "btn btn-primary" %>
     <% end %>
   </div>
-
   <div class="row">
-    <div class="col-6">
+    <div class="col-4">
       <!-- USER INFO -->
-      <div class="challenge-page-card text-center">
-      <!-- <div class="user-info"> -->
+      <div class="challenge-page-card text-center user-info">
         <div class="avatar-upload">
           <div class="avatar-edit">
             <% if current_user == @user %>
             <%= form_for(:avatar, url: update_avatar_account_path(@user), method: :post, html: { id: 'avatar-uploader', multipart: true}) do |f| %>
-              <%= file_field(:avatar, :image,  id: 'imageUpload') %>
-              <label for="imageUpload"></label>
+            <%= file_field(:avatar, :image,  id: 'imageUpload') %>
+            <label for="imageUpload"></label>
             <% end %>
             <% end %>
           </div>
@@ -28,81 +25,87 @@
             </div>
           </div>
         </div>
-        <p><strong>Username: </strong><%= @user.username %></p>
-        <p><strong>Email: </strong><%= @user.email %></p>
+        <p><i class="far fa-user-circle"></i> <%= @user.username %></p>
+        <p><i class="far fa-envelope"></i> <%= @user.email %></p>
       </div>
-    </div>
 
-    <div class="col-6">
-      <!-- FRIENDS -->
-      <div class="challenge-page-card">
-        <h2>Friends</h2>
-          <% @user.friends.each do |friend| %>
-          <p class='mb-2'>
-            <div class="d-flex justify-content-between">
-                  <%= link_to account_path(friend) do%>
-                <div class='d-flex align-items-center'>
+    <!-- FRIENDS -->
+    <div class="challenge-page-card">
+      <h2 class='mb-3'>Friends</h2>
+      <% @user.friends.each do |friend| %>
+        <p class='mb-2'>
+          <div class="d-flex justify-content-between">
+            <%= link_to account_path(friend) do %>
+              <div class='d-flex align-items-center'>
                 <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar-small" %>
                 <p class='m-0 pl-2' style="color: black;"><%= friend.username %></p>
-                </div>
-                <% end %>
-              <% if @user == current_user %>
-                <i class="fas fa-user-minus mouse-hover mt-1 mr-2" style="font-size: 16px; color: rgb(237, 70, 45);" id="remove-friend-btn" data-friendId="<%= friend.id %>"></i>
-                  <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;"%>
-                <% elsif !friend.friends_with?(current_user) %>
-                  <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
-                <% end %>
-            </div>
-          </p>
-        <% end %>
-      </div>
+              </div>
+            <% end %>
+            <% if @user == current_user %>
+              <i class="fas fa-user-minus mouse-hover mt-1 mr-2" style="font-size: 16px; color: rgb(237, 70, 45);" id="remove-friend-btn" data-friendId="<%= friend.id %>"></i>
+              <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;"%>
+            <% elsif !friend.friends_with?(current_user) %>
+              <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </p>
+      <% end %>
     </div>
 
   </div>
 
-  <div class="row">
-    <div class="col-6">
-      <!-- CURRENT CHALLENGES -->
-      <div class="challenge-page-card">
-        <h2 class="mb-2">Current Challenges</h2>
-        <% @user.challenges.each do |challenge| %>
-         <h6><%= link_to challenge.skill.title, challenge_path(challenge) %></h6>
-        <% end %>
 
-      </div>
-    </div>
+    <div class="col-8">
 
-    <div class="col-6">
       <!-- ACHIEVEMENTS -->
       <div class="achievements">
-      <h4 class='marker' data-content="Achievements">Achievements</h4>
-      <% unless current_user.wins.count.zero? %>
-      <% current_user.wins.each do |win|%>
-        <i class="fas fa-trophy mouse-hover" style="font-size: 32px; color: #F3B61F" data-toggle="modal" data-target="#exampleModal<%=win.id%>"></i>
-        <div class="modal fade" id="exampleModal<%=win.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title text-center" id="exampleModalLabel"><%= win.challenge.skill.title %></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <% unless win.date.nil? %>
+
+        <h4 class='marker mb-3' data-content="Achievements">Achievements</h4>
+        <% unless current_user.wins.count.zero? %>
+          <% current_user.wins.each do |win|%>
+
+          <div class="tooltipp">
+            <span class="tooltiptext">
+              <h4 style='font-size: 16px;'><%= win.challenge.skill.title.titleize %></h4>
+              <!-- <h4>Winner: </h4><p><%= "#{win.user.first_name} #{win.user.last_name}" %></p> -->
+              <% unless win.date.nil? %>
+
                 <h4>Date Won: </h4><p><%= win.date.strftime('%e %B %Y') %></p>
-                <% end %>
+              <% end %>
+            </span>
+            <button type="button" class="btn-invite-friends" style="pointer-events: none;" data-toggle="modal" data-target="#exampleModalCenter" disabled>
+              <%= image_tag('trophy.png', height: '74') %>
+
+            </button>
+          </div>
+
+          <% end %>
+        <% end %>
+
+      </div>
+
+      <!-- CURRENT CHALLENGES -->
+
+      <div class="challenge-page-card">
+          <h4 class="mb-3 marker" data-content='Current Challenges'>Current Challenges</h4>
+          <div class='row' style='justify-content: center;'>
+          <% @user.challenges.each do |challenge| %>
+            <%= link_to challenge_path(challenge) do %>
+                <div class='col-6'>
+              <div class='current-challenge'>
+                <h4><%= challenge.skill.title.titleize %></h4>
+                <p><i class="fas fa-bullseye"></i><%= challenge.milestone %> <%= challenge.time_type %> <%= challenge.count_type %></p>
+                <p><i class="fas fa-calendar-day"></i><%= challenge.starting_date.strftime('%e %B %Y') %></p>
               </div>
             </div>
-          </div>
+            <% end %>
+          <% end %>
         </div>
-      <% end %>
-      <% end %>
+      </div>
+
     </div>
-  </div>
 
-  </div>
+
 </div>
-
+</div>
 <%= javascript_pack_tag 'avatar_uploader' %>
-

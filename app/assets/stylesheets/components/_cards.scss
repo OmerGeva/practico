@@ -18,6 +18,8 @@
   i {
     font-size: 20px;
     color: $turq;
+    font-weight: bold;
+    margin-right: 6px;
   }
 }
 
@@ -27,6 +29,9 @@
   margin: 16px 0;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, .85);
+  img {
+    margin: 4px 0;
+  }
 }
 
 .notifications {
@@ -80,5 +85,29 @@
   right: 15px;
 }
 
+// USER PROFILE
 
+.current-challenge {
+  padding: 16px;
+  background: linear-gradient(to top, rgba(55, 163, 174, 0.3), rgba(55, 163, 174, 0.4));
+  color: $dark;
+  margin: 12px 0;
+  // display: inline-block;
+  border-radius: 10px;
+  width: 300px;
+  i {
+    color: $turq;
+    margin-right: 6px;
+  }
+  h4 {
+    font-size: 16px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    text-shadow: 1px 1px 6px rgba(55, 163, 174, 0.8);
+  }
+  &:hover {
+    background: rgba(55, 163, 174, 0.5);
+  }
+}
 

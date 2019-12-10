@@ -12,9 +12,9 @@ days.forEach((day) => {
   children.forEach((child) => {
     const title = child.dataset.eventTitle
     const badgeColor = child.dataset.eventColor
-    buffer += `<div class='d-flex align-center'>
+    buffer += `<div class='d-flex align-items-center style="background-color: #FFF;"'>
     <div class="event-badge" style="background-color: ${badgeColor}"></div>
-    <p>${title}</p></div>`;
+    <p class='pt-3' style='text-transform: capitalize;'>${title}</p></div>`;
   })
 tippy(`#${day.id}`, {
     placement: 'bottom',

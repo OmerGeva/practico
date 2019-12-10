@@ -7,6 +7,15 @@
   background-color: rgba(255, 255, 255, .85);
   position: relative;
   // backdrop-filter: blur(6px);
+  i {
+    font-size: 20px;
+    color: $turq;
+    font-weight: bold;
+    margin-right: 6px;
+  }
+  a {
+    font-size: 18px;
+  }
 }
 
 .user-info {

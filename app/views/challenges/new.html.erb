@@ -22,7 +22,7 @@
 
           <div class="list time_type"><span class="time_type_placeholder">days</span>
             <ul class="time_type_list">
-              <div class='blur' style='height: 125px; width: 155px; right: -25px;'></div>
+              <div class='blur' style='height: 125px; width: 155px; right: 18px;'></div>
               <li><a href="">hours</a></li>
               <li><a href="">days</a></li>
               <li><a href="">weeks</a></li>
@@ -30,7 +30,7 @@
           </div>
           <div class="list count_type"><span class="count_type_placeholder">in a row</span>.
             <ul class="count_type_list">
-              <div class='blur' style='height: 75px; width: 135px; right: 15px;'></div>
+              <div class='blur' style='height: 75px; width: 135px; right: 34px;'></div>
               <li><a href="">in a row</a></li>
               <li><a href="">total</a></li>
             </ul>
@@ -110,14 +110,18 @@
                   <div class="friend-list">
                     <input type="hidden" name="post[friend_ids][]" value="">
                     <div class="friends-choices">
+                      <div class='row'>
                       <% @friends.each do |friend| %>
+                      <div class='col-6'>
                         <input type="checkbox" class="hidden" value="<%= friend.id %>" name="challenge[users][]" id="challenge_users_<%= friend.id %>">
                         <label for="challenge_users_<%= friend.id %>">
                           <%= cl_image_tag friend.photo, alt: "Friend avatar", class: "avatar-small" %>
                           <p><%= friend.first_name %> <%= friend.last_name %></p>
                           <i class="fas fa-plus-circle"></i>
                         </label>
+                      </div>
                       <% end %>
+                    </div>
                      </div>
                   </div>
 

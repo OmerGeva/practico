@@ -35,34 +35,28 @@
       <p class='m-0'><i class="far fa-user-circle"></i> <%= current_user.username %></p>
     </div>
 
-      <!----------------------------------------- ACHIEVEMENTS -------------------------------------------------------->
+      <!-- ACHIEVEMENTS -->
     <div class="achievements">
       <h4 class='marker' data-content="Achievements">Achievements</h4>
       <% unless current_user.wins.count.zero? %>
-      <% current_user.wins.each do |win|%>
-        <i class="fas fa-trophy" style="font-size: 32px; color: #F3B61F" data-toggle="modal" data-target="#exampleModal"></i>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title text-center" id="exampleModalLabel"><%= win.challenge.skill.title %></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <% unless win.date.nil? %>
+        <% current_user.wins.each do |win|%>
+          <div class="tooltipp">
+            <span class="tooltiptext">
+              <h4 style='font-size: 16px;'><%= win.challenge.skill.title.titleize %></h4>
+              <!-- <h4>Winner: </h4><p><%= "#{win.user.first_name} #{win.user.last_name}" %></p> -->
+              <% unless win.date.nil? %>
                 <h4>Date Won: </h4><p><%= win.date.strftime('%e %B %Y') %></p>
-                <% end %>
-              </div>
-            </div>
+              <% end %>
+            </span>
+            <button type="button" class="btn-invite-friends" style="pointer-events: none;" data-toggle="modal" data-target="#exampleModalCenter" disabled>
+              <%= image_tag('trophy.png', height: '62') %>
+            </button>
           </div>
-        </div>
-      <% end %>
+        <% end %>
       <% end %>
     </div>
 
-      <!------------------------------------------ NOTIFICATIONS ------------------------------------------------------>
+    <!-- NOTIFICATIONS -->
     <div class="notifications">
       <h4 class="marker border-bottom pb-1" data-content="Notifications">Notifications</h4>
       <div class="border-bottom">
@@ -114,9 +108,9 @@
         <div class="challenge-card">
           <% challenge = user_challenge.challenge %>
           <% if user_challenge.accepted %>
-            <p><%= link_to challenge.skill.title.capitalize, challenge_path(challenge) %></p>
+            <p><%= link_to challenge.skill.title.titleize, challenge_path(challenge) %></p>
           <% else %>
-            <p><%= challenge.skill.title.capitalize %></p>
+            <p><%= challenge.skill.title.titleize %></p>
           <% end %>
           <% unless user_challenge.accepted %>
             <%= link_to "Accept", challenge_accept_path(challenge), method: :patch, class: 'btn btn-primary' %>

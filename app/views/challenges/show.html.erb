@@ -94,6 +94,7 @@
         </div>
 
       </div>
+      <div class="row">
 
       <div class="col-7">
 
@@ -102,7 +103,7 @@
         <div class="challenge-page-card mb-4" id="graph-challenge-card">
           <script src="https://d3js.org/d3.v4.js"></script>
           <div class="d-flex justify-content-around mouse-hover" style="height: 32px;">
-          <h4 id="week_button" <% @weekly_user_check_ins.each do |user, value| %>
+          <h4 id="week_button" class="mouse-hover"<% @weekly_user_check_ins.each do |user, value| %>
           data-week-<%= user.first_name %>="<%= value.count %>"
           <% end %>>Week</h4>
           <h4 id="month_button" class="mouse-hover" <% @monthly_user_check_ins.each do |user, value| %>
@@ -111,6 +112,7 @@
           <h4 id="year_button" class="mouse-hover" <% @yearly_user_check_ins.each do |user, value| %>
           data-year-<%= user.first_name %>="<%= value.count %>"
           <% end %>>Year</h4>
+
           </div>
           <h2 class="text-center mt-2">Number of check ins</h2>
           <div id="week_month_year"></div>

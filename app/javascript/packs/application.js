@@ -1,8 +1,9 @@
 import "bootstrap";
 
 import "../plugins/flatpickr"
-import "../components/chat"
+import "../plugins/confetti"
 
+import "../components/chat"
 import "../components/week_month_year_chart"
 import "../components/sidebar_toggle"
 import { previewImageOnFileSelect } from "../components/photo_preview"
@@ -12,6 +13,7 @@ import  'ion-rangeslider/css/ion.rangeSlider.css';
 
 import { timer } from '../components/timer';
 import { setupCreateChallengePage } from '../components/create-challenge'
+
 
 initSweetAlertDeleteFriend();
 

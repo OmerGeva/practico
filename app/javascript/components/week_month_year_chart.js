@@ -6,7 +6,6 @@ const year_button = document.querySelector("#year_button")
 // const num_of_check_ins = week_button.dataset['week'];
 
 
-
 var data1 = []
 var data2 = []
 var data3 = []
@@ -61,8 +60,24 @@ svg.append("g")
 .call(d3.axisLeft(y));
 
 // A function that create / update the plot for a given variable:
-const update = (data) => {
+const update = (data, target) => {
+  if (data == data1){
+    week_button.classList.add('border-bottom-stats');
+  }
+  if (target){
+      target.classList.add('border-bottom-stats');
+    if (data == data1){
+      month_button.classList.remove('border-bottom-stats');
+      year_button.classList.remove('border-bottom-stats');
+    }else if(event.target == month_button){
+      week_button.classList.remove('border-bottom-stats');
+      year_button.classList.remove('border-bottom-stats');
+    }else if(event.target == year_button){
+      week_button.classList.remove('border-bottom-stats');
+      month_button.classList.remove('border-bottom-stats');
+    }
 
+  }
   var u = svg.selectAll("rect")
   .data(data)
 
@@ -82,8 +97,8 @@ const update = (data) => {
 
 // Initialize the plot with the first dataset
 update(data1)
-week_button.addEventListener(("click"), (event) => {update(data1)});
-month_button.addEventListener(("click"), (event) => {update(data2)});
-year_button.addEventListener(("click"), (event) => {update(data3)});
+week_button.addEventListener(("click"), (event) => {update(data1, event.target)});
+month_button.addEventListener(("click"), (event) => {update(data2, event.target)});
+year_button.addEventListener(("click"), (event) => {update(data3, event.target)});
 
 }

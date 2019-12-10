@@ -214,7 +214,7 @@ users_challenge5 = UsersChallenge.create(
 users_challenge6 = UsersChallenge.create(
   user: brad,
   challenge: challenge3,
-  user_progress: 3
+  user_progress: 13
   )
 users_challenge7 = UsersChallenge.create(
   user: omer,
@@ -261,6 +261,7 @@ check_in3.save
 
 CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 80)
 CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 90)
+
 CheckIn.create(users_challenge_id: users_challenge7.id, completed: true, duration: nil, date: Date.today - 240)
 CheckIn.create(users_challenge_id: users_challenge8.id, completed: true, duration: nil, date: Date.today - 30)
 CheckIn.create(users_challenge_id: users_challenge9.id, completed: true, duration: nil, date: Date.today - 230)

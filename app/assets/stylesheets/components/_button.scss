@@ -55,3 +55,19 @@
     border-bottom: 3px solid $orange !important;
   }
 }
+
+.check-in-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-image: url(asset-path('checked-turq.svg'));
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 46px;
+  width: 46px;
+  transition: .2s;
+  &:hover {
+    cursor: pointer;
+    background-image: url(asset-path('checked-orange.svg'));
+  }
+}

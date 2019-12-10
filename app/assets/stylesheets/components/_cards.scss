@@ -98,7 +98,7 @@
 
 .current-challenge {
   padding: 16px;
-  background: linear-gradient(to top, rgba(55, 163, 174, 0.3), rgba(55, 163, 174, 0.4));
+  background: linear-gradient(to top, rgba(55, 163, 174, 0.2), rgba(55, 163, 174, 0.3));
   color: $dark;
   margin: 12px 0;
   // display: inline-block;
@@ -110,10 +110,11 @@
   }
   h4 {
     font-size: 16px;
-    color: white;
+    color: $dark-turq;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    text-shadow: 1px 1px 6px rgba(55, 163, 174, 0.8);
+    // text-shadow: 1px 1px 6px rgba(55, 163, 174, 0.8);
   }
   &:hover {
     background: rgba(55, 163, 174, 0.5);

@@ -1,10 +1,17 @@
 <%= simple_form_for [challenge, check_in] do |f| %>
 
   <% if challenge.validation_type == 'checkbox' %>
-    <%= f.input :completed, as: :radio_buttons, label: "I worked toward this goal today!" %>
+    <div style='width: 220px; margin: auto;'>
+      <div class='d-flex justify-content-center'>
+        <p class='mr-2'>I worked on this goal today!</p>
+        <%= f.input :completed, as: :boolean, checked_value: true, unchecked_value: false, label: false %>
+      </div>
+      <%= image_tag('underline.png', width: '210') %>
+    </div>
   <% else %>
 
   <!-- COUNTDOWN TIMER -->
+  <div class='d-none'>
   <div class="setters">
     <div class="minutes-set">
       <button data-setter="minutes-plus">+</button>
@@ -34,6 +41,7 @@
     <div class="display-remain-time">00:30</div>
     <button class="play" id="pause"></button>
   </div>
+</div>
 
 
 <!-- OLD TIMER -->
@@ -74,21 +82,29 @@
 
 
   <div class="d-none">
-        <%= f.input :duration %>
-      </div>
+    <%= f.input :duration %>
+  </div>
 
-  <div id="photo-and-submit" class="d-none">
-    <div class="d-flex justify-content-center">
+
+  <div id="photo-and-submit" class="">
+    <div class="d-block justify-content-center">
+
+      <!-- PHOTO UPLOADER -->
       <div id="photo-uploader">
         <% if challenge.photo_proof %>
-          <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-          <%= f.input :photo, input_html: { class: 'hidden d-none', id: 'photo-input'}, label_html: { class: 'upload-photo btn btn-primary btn-custom'}, label: '📷 Upload a photo' %>
-          <%= f.input :photo_cache, as: :hidden %>
+        <div class="wrapper">
+          <div class="box">
+            <%= image_tag "", class: "hidden", id: "photo-preview" %>
+          </div>
+            <%= f.input :photo, input_html: { class: 'hidden d-none', id: 'photo-input'}, label_html: { class: 'upload-photo' }, label: '.' %>
+            <%= f.input :photo_cache, as: :hidden %>
+        </div>
         <% end %>
       </div>
 
-      <div id= "submit" class="d-flex justify-content-center mb-3">
-        <%= f.submit "Check In", class: "btn btn-primary", id: "submit"  %>
+      <!-- CHECK-IN -->
+      <div id="submit" class="d-flex justify-content-center mb-4">
+        <%= f.submit "Check In", class: "btn btn-primary mt-4", id: "submit"  %>
       </div>
     </div>
   </div>
@@ -96,4 +112,5 @@
 <% end %>
 
 <% javascript_pack_tag 'countdown' %>
+<% javascript_pack_tag 'photo_uploader' %>
 

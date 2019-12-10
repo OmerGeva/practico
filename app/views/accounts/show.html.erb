@@ -85,20 +85,19 @@
       </div>
 
       <!-- CURRENT CHALLENGES -->
-
       <div class="challenge-page-card">
           <h4 class="mb-3 marker" data-content='Current Challenges'>Current Challenges</h4>
-          <div class='row' style='justify-content: center;'>
+          <div class='row' style='justify-content: space-between; width: 97%; margin: auto;'>
           <% @user.challenges.each do |challenge| %>
-            <%= link_to challenge_path(challenge) do %>
-                <div class='col-6'>
-              <div class='current-challenge'>
-                <h4><%= challenge.skill.title.titleize %></h4>
-                <p><i class="fas fa-bullseye"></i><%= challenge.milestone %> <%= challenge.time_type %> <%= challenge.count_type %></p>
-                <p><i class="fas fa-calendar-day"></i><%= challenge.starting_date.strftime('%e %B %Y') %></p>
-              </div>
+            <div class='col-6'>
+              <%= link_to challenge_path(challenge) do %>
+                <div class='current-challenge'>
+                  <h4><%= challenge.skill.title.titleize %></h4>
+                  <p><i class="fas fa-bullseye"></i><%= challenge.milestone %> <%= challenge.time_type %> <%= challenge.count_type %></p>
+                  <p><i class="fas fa-calendar-day"></i><%= challenge.starting_date.strftime('%e %B %Y') %></p>
+                </div>
+              <% end %>
             </div>
-            <% end %>
           <% end %>
         </div>
       </div>

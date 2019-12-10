@@ -63,3 +63,12 @@ input:-webkit-autofill {
   background-color: transparent;
 }
 
+.center {
+  transform: translate(25%, 0);
+}
+
+input.form-control:focus {
+    outline: none;
+    border: 1px solid lightgrey;
+    box-shadow: none;
+  }

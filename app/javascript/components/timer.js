@@ -101,5 +101,3 @@ const postTimer = () => {
   //   return console.log('nailed it')
   // }
 }
-
-export { timer };

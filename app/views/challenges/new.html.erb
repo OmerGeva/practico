@@ -2,14 +2,14 @@
   <h1 class='tw'>New Challenge</h1>
 
   <%= simple_form_for [@challenge], html: { autocomplete: 'off' } do |f| %>
-  <div class='new-challenge-card'>
+  <div class='new-challenge-card' style="backdrop-filter: blur(6px);">
 
       <!-- SET SKILL -->
       <div class='skill-input'>
         <%= f.input :skill, label: 'What do you want to work on?', placeholder: 'quit smoking' %>
         <div class='underline'></div>
       </div>
-        <p>Need some ideas? <a href="">Browse Challenges</a></p>
+<!--         <p>Need some ideas? <a href="">Browse Challenges</a></p> -->
 
        <!-- Data Picker -->
        <div class="wrapper typo">I want to work on this for<br>
@@ -22,6 +22,7 @@
 
           <div class="list time_type"><span class="time_type_placeholder">days</span>
             <ul class="time_type_list">
+              <div class='blur' style='height: 125px; width: 155px; right: -25px;'></div>
               <li><a href="">hours</a></li>
               <li><a href="">days</a></li>
               <li><a href="">weeks</a></li>
@@ -29,6 +30,7 @@
           </div>
           <div class="list count_type"><span class="count_type_placeholder">in a row</span>.
             <ul class="count_type_list">
+              <div class='blur' style='height: 75px; width: 135px; right: 15px;'></div>
               <li><a href="">in a row</a></li>
               <li><a href="">total</a></li>
             </ul>
@@ -50,12 +52,26 @@
     </div>
 
     <!-- PHOTO PROOF -->
-    <div class='photo-proof mb-4 pd-checkbox'>
+    <div class='photo-proof mb-4'>
       <label class="form-check-label" for="challenge_photo_proof"><i class="fas fa-camera-retro"></i>Do you want a photo proof?</label>
-      <input class="form-check-input boolean optional ml-2 p-0" type="checkbox" value="1" name="challenge[photo_proof]" id="challenge_photo_proof">
+      <!-- <input class="form-check-input boolean optional ml-2 p-0" type="checkbox" value="1" name="challenge[photo_proof]" id="challenge_photo_proof"> -->
+    <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="customSwitch1">
+      <label class="custom-control-label" for="customSwitch1"></label>
+    </div>
     </div>
 
+
+
     <%=  f.input :validation_type, label: false, as: :radio_buttons, collection: Challenge::VALIDATION_TYPE %>
+
+      <!-- Add Friends Button trigger modal -->
+      <div class="tooltipp">
+        <span class="tooltiptext">Invite Friends</span>
+        <button type="button" class="btn-invite-friends" data-toggle="modal" data-target="#exampleModalCenter">
+          <i class="fas fa-users"></i>
+        </button>
+      </div>
 
     <div class="wagers">
       <div class='skill-input'>First place will
@@ -76,15 +92,6 @@
 
       <!-- ADD FRIENDS -->
 
-      <!-- Button trigger modal -->
-      <div class="invite-friends-div">
-      <div class="tooltipp">
-        <span class="tooltiptext">Invite Friends</span>
-        <button type="button" class="btn-invite-friends" data-toggle="modal" data-target="#exampleModalCenter">
-          <i class="fas fa-users"></i>
-        </button>
-      </div>
-    </div>
 
 
       <!-- Modal -->
@@ -130,3 +137,5 @@
     <% end %>
     </div>
 </div>
+
+<%= javascript_pack_tag 'proof_checkboxes' %>

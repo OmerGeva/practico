@@ -61,8 +61,8 @@
       <div class="achievements">
 
         <h4 class='marker mb-3' data-content="Achievements">Achievements</h4>
-        <% unless current_user.wins.count.zero? %>
-          <% current_user.wins.each do |win|%>
+        <% unless @user.wins.count.zero? %>
+          <% @user.wins.each do |win|%>
 
           <div class="tooltipp">
             <span class="tooltiptext">

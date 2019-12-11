@@ -123,6 +123,9 @@ guitar = Skill.create(
 code = Skill.create(
   title: 'Code Practico'
   )
+salsa = Skill.create(
+  title: 'Learn Salsa'
+  )
 ############# Challenges ##################################
 puts 'Creating challenges...'
 
@@ -174,7 +177,22 @@ chatroom3 = ChatRoom.create(
   challenge_id: challenge3.id,
   name: code.title,
   )
-
+challenge4 = Challenge.create(
+  skill: salsa,
+  milestone: 14,
+  starting_date: Date.parse('31-12-2019'),
+  first_place: "reward",
+  last_place: "penalty",
+  description: "Salsa",
+  time_type: 'days',
+  count_type: 'in a row',
+  validation_type: 'checkbox',
+  photo_proof: true
+  )
+chatroom4 = ChatRoom.create(
+  challenge_id: challenge4.id,
+  name: salsa.title,
+  )
 ############# For Chat Rooms ##################################
 puts 'Creating ChatRooms...'
 
@@ -186,11 +204,13 @@ users_challenge1 = UsersChallenge.create(
   user_progress: 29
   )
 users_challenge2 = UsersChallenge.create(
+  accepted: true,
   user: dean,
   challenge: challenge1,
   user_progress: 17
   )
 users_challenge3 = UsersChallenge.create(
+  accepted: true,
   user: alisa,
   challenge: challenge1,
   user_progress: 3
@@ -200,11 +220,13 @@ users_challenge3 = UsersChallenge.create(
 puts 'Creating UsersChallenges...'
 
 users_challenge4 = UsersChallenge.create(
+  accepted: true,
   user: brad,
   challenge: challenge2,
   user_progress: 35
   )
 users_challenge5 = UsersChallenge.create(
+  accepted: true,
   user: omer,
   challenge: challenge2,
   user_progress: 48
@@ -212,21 +234,25 @@ users_challenge5 = UsersChallenge.create(
 
 ############# For Challenge Three ##################################
 users_challenge6 = UsersChallenge.create(
+  accepted: true,
   user: brad,
   challenge: challenge3,
   user_progress: 13
   )
 users_challenge7 = UsersChallenge.create(
+  accepted: true,
   user: omer,
   challenge: challenge3,
   user_progress: 4
   )
 users_challenge8 = UsersChallenge.create(
+  accepted: true,
   user: alisa,
   challenge: challenge3,
   user_progress: 4
   )
 users_challenge9 = UsersChallenge.create(
+  accepted: true,
   user: dean,
   challenge: challenge3,
   user_progress: 3
@@ -292,10 +318,10 @@ check_in6.save
 
 ############# Achievements ##################################
 puts 'Creating Wins...'
-Win.create(challenge_id: challenge3.id, user_id: brad.id, date: Date.today - 21)
-Win.create(challenge_id: challenge2.id, user_id: brad.id, date: Date.today - 54)
-Win.create(challenge_id: challenge3.id, user_id: brad.id, date: Date.today - 521)
-Win.create(challenge_id: challenge1.id, user_id: brad.id, date: Date.today - 121)
+Win.create(challenge_id: challenge4.id, user_id: brad.id, date: Date.today - 21)
+Win.create(challenge_id: challenge4.id, user_id: brad.id, date: Date.today - 54)
+Win.create(challenge_id: challenge4.id, user_id: brad.id, date: Date.today - 521)
+Win.create(challenge_id: challenge4.id, user_id: brad.id, date: Date.today - 121)
 
 
 

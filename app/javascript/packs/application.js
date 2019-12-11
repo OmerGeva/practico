@@ -17,6 +17,7 @@ import  'ion-rangeslider/css/ion.rangeSlider.css';
 
 import { timer } from '../components/timer';
 import { setupCreateChallengePage } from '../components/create-challenge'
+import { checkBox } from '../components/checkbox';
 
 
 initSweetAlertDeleteFriend();
@@ -27,6 +28,7 @@ if (document.URL.match('/challenges/new')) {
 }
 
 previewImageOnFileSelect();
+checkBox();
 
 // timer();
 

@@ -1,4 +1,4 @@
-<script >function initImageUpload(box) {
+function initImageUpload(box) {
   let uploadField = box.querySelector('.image-upload');
 
   uploadField.addEventListener('change', getFile);

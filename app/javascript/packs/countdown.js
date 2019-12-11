@@ -19,7 +19,7 @@ const setterBtns = document.querySelectorAll('button[data-setter]');
 
 let intervalTimer;
 let timeLeft;
-let wholeTime = 60; // manage this to set the whole time
+let wholeTime = 5; // manage this to set the whole time
 let isPaused = false;
 let isStarted = false;
 
@@ -122,9 +122,14 @@ function displayTimeLeft (timeLeft){ //displays time on the input
 
 const postTimer = (elapsedTime) => {
   const submitTime = document.getElementById('check_in_duration');
-  submitTime.value = elapsedTime
-  document.getElementById('timer-container').setAttribute('class', 'd-none');
-  document.getElementById('photo-and-submit').setAttribute('class', '');
+  const timerContainer = document.getElementById('timer-container');
+  const photoAndSubmit = document.getElementById('photo-and-submit');
+  submitTime.value = Math.round(elapsedTime / 3600 * 100) / 100 ;
+  console.log(submitTime.value);
+  console.log(photoAndSubmit.classList);
+  timerContainer.classList.add('d-none');
+  photoAndSubmit.classList.remove('d-none');
+  console.log({photoAndSubmit});
 }
 
 pauseBtn.addEventListener('click',pauseTimer);

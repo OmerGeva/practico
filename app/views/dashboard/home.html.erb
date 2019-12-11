@@ -130,7 +130,10 @@
           <p><i class="fas fa-calendar-day"></i><strong>Start: </strong><%= challenge.starting_date.strftime('%e %B %Y') %></p>
           <% if user_challenge.accepted %>
             <!-- CHECK-IN BUTTON -->
-            <div class='check-in-btn' data-toggle="modal" data-target="#exampleModal<%= user_challenge.challenge.id%>">
+            <div class='check-in-div'>
+              <p>Check In ➜</p>
+              <div class='check-in-btn' data-toggle="modal" data-target="#exampleModal<%= user_challenge.challenge.id%>">
+            </div>
             </div>
             <div class="dashboard-avatars">
               <% challenge.users.each do |user| %>

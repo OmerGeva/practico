@@ -13,10 +13,15 @@ button[data-setter] {
 
 button[data-setter]:hover { opacity: 0.5; }
 
+.circle.timer {
+  margin: 16px auto 32px auto;
+  width: 300px;
+}
+
 .setters {
   position: absolute;
-  left: 85px;
-  top: 75px;
+  left: 110px;
+  top: 100px;
 }
 
 .minutes-set {
@@ -28,8 +33,8 @@ button[data-setter]:hover { opacity: 0.5; }
 
 .controlls {
   position: absolute;
-  left: 75px;
-  top: 105px;
+  left: 100px;
+  top: 120px;
   text-align: center;
 }
 

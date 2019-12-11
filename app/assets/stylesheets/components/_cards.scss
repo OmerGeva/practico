@@ -121,3 +121,45 @@
   }
 }
 
+.recent-check-in {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  img {
+    height: 110px;
+    width: 110px;
+    border: none;
+    background: rgba(1,1,1,0.03);
+    object-fit: cover;
+  }
+  h5 {
+    font-size: 18px;
+    color: $dark-turq;
+  }
+  p {
+    font-size: 16px;
+    opacity: 0.8;
+  }
+  i {
+    margin-right: 6px;
+    color: $turq;
+  }
+}
+
+.stakes {
+  h2 {
+    margin-bottom: 8px;
+  }
+  img {
+    width: 28px;
+    filter: saturate(1.2);
+    margin-right: 6px;
+  }
+}
+
+#graph-challenge-card {
+  text {
+    font-family: $body-font;
+    font-size: 13px;
+  }
+}

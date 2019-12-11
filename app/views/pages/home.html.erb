@@ -1,13 +1,32 @@
-<div class="container text-center" style="background-color: ">
-<div class="col-8 m-auto">
-<div class="mt-5">
+<div class="landing-container">
 
-<h1>PractiCo</h1>
-<p>Social accountability for skill learning</p>
-
-<%= link_to "sign up", new_user_registration_path, class: "btn btn-primary" %>
-<%= link_to "log in", new_user_session_path, class: "btn btn-primary" %>
-
+<div class='logo'>
+  <!-- <h1>PractiCo.</h1> -->
+  <%= image_tag("practico.png", alt: "PractiCo") %>
+  <p>Social accountability for skill learning</p>
 </div>
+
+<div class="landing-imgs">
+  <div>
+    <h4>Stop procrastinating</h4>
+    <%= image_tag("hiding.png") %>
+  </div>
+  <div>
+    <h4>Work together with your friends</h4>
+    <%= image_tag("working.png") %>
+  </div>
+  <div>
+    <h4>And achieve your goals!</h4>
+    <%= image_tag("winning.png") %>
+  </div>
 </div>
+
+<div class='d-flex mt-4'>
+  <div class="btn-box">
+    <%= link_to "Let's start!", new_user_session_path, class: "btn btn-secondary btn-lg" %>
+  </div>
+  <% link_to "sign up",new_user_registration_path, class: "btn btn-primary mr-2" %>
+  <% link_to "log in",new_user_session_path, class: "btn btn-primary ml-2" %>
+</div>
+
 </div>

@@ -1,0 +1,71 @@
+.finished-container {
+  margin-top: 7.5vh;
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 3px 3px 12px rgba(1,1,1,0.2);
+}
+
+.finished-card-top {
+  height: 75%;
+  width: 100%;
+  display: flex;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 0;
+  h1 {
+    margin-bottom: 8px;
+    background: linear-gradient(0deg, transparent 50%, $light-turq 50%);
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 32px;
+  }
+  h4 {
+    strong {color: $dark-turq;}
+    text-transform: none;
+    font-size: 24px;
+    letter-spacing: 0.6px;
+  }
+  h6 {
+    font-size: 20px;
+  }
+}
+
+.finished-card-bottom {
+  display: flex;
+  flex-direction: column;
+  height: 25%;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: $turq;
+  border-radius: 0 0 12px 12px;
+  margin-top: 0;
+  h5 {
+    color: #fff;
+    background: $turq;
+    text-transform: none;
+    font-size: 20px;
+    letter-spacing: 0.6px;
+  }
+}

@@ -46,17 +46,17 @@
           <div class="mt-2">
             <% @challenge.users.order(user_progress: :desc).each do |user| %>
               <% @progress = ((UsersChallenge.find_by(challenge_id: @challenge.id, user_id: user.id).user_progress/@challenge.milestone)*100).round %>
-              <div class="row d-flex align-items-center mb-2">
-                <h6 class="my-0 mx-2"><%= counter%></h6>
-                <%= cl_image_tag user.photo, class: 'avatar-small mr-2', alt: "avatar" %>
-                <% counter +=1 %>
-                <p class='mt-0'><strong>@<%= user.username %> </strong>: <%= @challenge.users_challenges.find_by(user: user).user_progress.round %> <%= @challenge.time_type %></p>
-
-                <div style='position: absolute; right: 16px;'>
+              <div class="row d-block align-items-center mb-2">
+                <div class='d-flex align-items-center'>
+                  <h6 class="my-0 mx-2"><%= counter%></h6>
+                  <%= cl_image_tag user.photo, class: 'avatar-small mr-2', alt: "avatar" %>
+                  <% counter +=1 %>
+                  <p class='mt-0'><strong>@<%= user.username %> </strong>: <%= @challenge.users_challenges.find_by(user: user).user_progress.round %> <%= @challenge.time_type %></p>
+                </div>
+                <div style='margin: -2px 0 12px 62px;'>
                   <progress class="skill-1 mb-0 mt-2" style='width: 180px;' max="100" value="<%= @progress %>">
                   </progress>
                 </div>
-
               </div>
             <% end %>
           </div>

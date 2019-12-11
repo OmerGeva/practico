@@ -25,6 +25,24 @@
   }
 }
 
+.btn-turq {
+  border: 1.5px solid rgba(255,255,255,0.8);
+  color: white;
+  background: transparent;
+  border-radius: 16px;
+  padding: 8px 20px;
+  transition: .4s;
+  &:hover {
+    font-weight: bold;
+    background: rgba(255,255,255,0.8);
+    color: $dark-turq;
+  }
+  i {
+    font-size: 14px;
+    margin-right: 4px;
+  }
+}
+
 .btn-box {
   display: flex;
   align-items: center;

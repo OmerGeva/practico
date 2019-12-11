@@ -1,7 +1,11 @@
 import "bootstrap";
 
+
+
 import "../plugins/flatpickr"
 import "../plugins/confetti"
+
+import "../components/facebook_sign_in"
 
 import "../components/chat"
 import "../components/week_month_year_chart"

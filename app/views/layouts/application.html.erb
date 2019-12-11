@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= meta_title %></title>
     <meta name="description" content="<%= meta_description %>">
-
+    <!-- <meta name="google-signin-client_id" content="616026410184-bve1a24c8gglc556t0c2n4jp1n51k3hs.apps.googleusercontent.com"> -->
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
@@ -36,6 +36,7 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@0.4.0/dist/confetti.browser.min.js"></script>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

@@ -9,43 +9,42 @@
       </div>
       <%= image_tag('underline.png', width: '210') %>
     </div>
+
   <% else %>
 
-  <!-- COUNTDOWN TIMER -->
-  <div class='timer-container'>
-  <div class="setters">
-    <div class="minutes-set">
-      <button data-setter="minutes-plus">+</button>
-      <button data-setter="minutes-minus">-</button>
-    </div>
-    <div class="seconds-set">
-      <button data-setter="seconds-plus">+</button>
-      <button data-setter="seconds-minus">-</button>
+    <!-- COUNTDOWN TIMER -->
+    <div id='timer-container'>
+      <div class="setters">
+        <div class="minutes-set">
+          <button data-setter="minutes-plus">+</button>
+          <button data-setter="minutes-minus">-</button>
+        </div>
+        <div class="seconds-set">
+          <button data-setter="seconds-plus">+</button>
+          <button data-setter="seconds-minus">-</button>
+        </div>
+      </div>
 
+      <div class="circle">
+        <svg width="300" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+           <g transform="translate(110,110)">
+              <circle r="100" class="e-c-base"/>
+              <g transform="rotate(-90)">
+                 <circle r="100" class="e-c-progress"/>
+                 <g id="e-pointer">
+                    <circle cx="100" cy="0" r="8" class="e-c-pointer"/>
+                 </g>
+              </g>
+           </g>
+        </svg>
+      </div>
+
+      <div class="controlls">
+        <div class="display-remain-time">00:30</div>
+        <button class="play" id="pause"></button>
+      </div>
     </div>
 
-    <div class="circle">
-      <svg width="300" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-         <g transform="translate(110,110)">
-            <circle r="100" class="e-c-base"/>
-            <g transform="rotate(-90)">
-               <circle r="100" class="e-c-progress"/>
-               <g id="e-pointer">
-                  <circle cx="100" cy="0" r="8" class="e-c-pointer"/>
-               </g>
-            </g>
-         </g>
-      </svg>
-    </div>
-
-    <div class="controlls">
-      <div class="display-remain-time">00:30</div>
-      <button class="play" id="pause"></button>
-    </div>
-  </div>
-</div>
-
-  <% end %>
 
 
   <div class="d-none">
@@ -53,19 +52,19 @@
   </div>
 
 
-  <div id="photo-and-submit" class="">
+  <div id="photo-and-submit" class="d-none">
     <div class="d-block justify-content-center">
 
       <!-- PHOTO UPLOADER -->
       <div id="photo-uploader">
         <% if challenge.photo_proof %>
-        <div class="wrapper">
-          <div class="box">
-            <%= image_tag "", class: "hidden", id: "photo-preview" %>
+          <div class="wrapper">
+            <div class="box">
+              <%= image_tag "", class: "hidden", id: "photo-preview" %>
+            </div>
+              <%= f.input :photo, input_html: { class: 'hidden d-none', id: 'photo-input'}, label_html: { class: 'upload-photo' }, label: '.' %>
+              <%= f.input :photo_cache, as: :hidden %>
           </div>
-            <%= f.input :photo, input_html: { class: 'hidden d-none', id: 'photo-input'}, label_html: { class: 'upload-photo' }, label: '.' %>
-            <%= f.input :photo_cache, as: :hidden %>
-        </div>
         <% end %>
       </div>
 
@@ -76,6 +75,7 @@
     </div>
   </div>
 
+  <% end %>
 <% end %>
 
 <%= javascript_pack_tag 'countdown' %>

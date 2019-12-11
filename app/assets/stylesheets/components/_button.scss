@@ -12,6 +12,27 @@
   border-radius: 16px;
 }
 
+.btn-secondary {
+  background: linear-gradient(to top, $light-turq, $turq);
+  border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 16px;
+  padding: 8px 20px;
+  transition: .4s;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+  &:hover {
+    background: linear-gradient(to top, #f26d52, #ed462d);
+    border: 6px solid #f26d52;
+  }
+}
+
+.btn-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 80px;
+}
+
 #remove-friend-btn {
   height: 40px;
   align-self: center;
@@ -47,10 +68,20 @@
   }
 }
 
-.check-in-btn {
+
+.check-in-div {
   position: absolute;
   bottom: 12px;
   right: 12px;
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0;
+    margin-right: 12px;
+    color: $dark;
+  }
+}
+.check-in-btn {
   background-image: url(asset-path('checked-turq.svg'));
   background-size: cover;
   background-repeat: no-repeat;
@@ -92,5 +123,16 @@
     cursor: pointer;
     color: $dark-turq;
     filter: brightness(1.3);
+  }
+}
+
+img[alt="schedule"] {
+  height: 36px;
+  filter: invert(1);
+  opacity: 0.85;
+  margin-right: 16px;
+  padding-right: 6px;
+  &:hover {
+    opacity: 1;
   }
 }

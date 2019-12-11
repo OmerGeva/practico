@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :events, only: [:index]
   devise_for :users
-  root to: 'dashboard#home'
-
+  root to: 'pages#home'
+  get '/dashboard', to: 'dashboard#home'
   post 'update_avatar/:id', to: 'pages#update_avatar', as: 'avatar'
 
   resources :challenges do

@@ -22,7 +22,7 @@
     <meta name="twitter:description" content="<%= meta_description %>">
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
-    <%= favicon_link_tag('login-img.png') %>
+    <%= favicon_link_tag('logo-min-bc.png') %>
     <!-- <link rel="icon" type="image" href="/assets/images/login-img.png"> -->
     <link href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
@@ -34,6 +34,7 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
+    <%= render 'shared/logo' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
 

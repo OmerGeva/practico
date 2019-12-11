@@ -56,6 +56,7 @@ p {
 
 .tw {
   color: white;
+  letter-spacing: 1.2px;
 }
 
 input:-webkit-autofill {
@@ -68,7 +69,19 @@ input:-webkit-autofill {
 }
 
 input.form-control:focus {
-    outline: none;
-    border: 1px solid lightgrey;
-    box-shadow: none;
+  outline: none;
+  border: 1px solid lightgrey;
+  box-shadow: none;
+}
+
+.logo-min {
+  img {
+    width: 56px;
+    opacity: 0.8;
   }
+  z-index: 2000;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+

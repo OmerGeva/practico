@@ -1,34 +1,33 @@
 <div class="landing-container">
 
-<div class='logo'>
-  <%= image_tag("practico.png", alt: "PractiCo") %>
-  <p>Social accountability for skill learning</p>
-</div>
-
-<div class="landing-imgs">
-  <div>
-    <h4>Stop procrastinating</h4>
-    <%= image_tag("hiding.png") %>
-  </div>
-  <div>
-    <h4>Work together with your friends</h4>
-    <%= image_tag("working.png") %>
-  </div>
-  <div>
-    <h4>And achieve your goals!</h4>
-    <%= image_tag("winning.png") %>
-  </div>
-</div>
-
-<div class='d-flex mt-4'>
-  <div class="btn-box">
-    <% if current_user %>
-      <%= link_to "Let's start!", dashboard_path, class: "btn btn-secondary btn-lg" %>
-    <% else %>
-      <%= link_to "Let's start!", new_user_session_path, class: "btn btn-secondary btn-lg" %>
-    <% end %>
+  <div class='logo'>
+    <%= image_tag("practico.png", alt: "PractiCo") %>
+    <p>Social accountability for skill learning</p>
   </div>
 
-</div>
+  <div class="landing-imgs">
+    <div>
+      <h4>Stop procrastinating</h4>
+      <%= image_tag("hiding.png") %>
+    </div>
+    <div>
+      <h4>Work with your friends</h4>
+      <%= image_tag("working.png") %>
+    </div>
+    <div>
+      <h4>And achieve your goals!</h4>
+      <%= image_tag("winning.png") %>
+    </div>
+  </div>
+
+  <div class='d-flex mt-4'>
+    <div class="btn-box">
+      <% if current_user %>
+        <%= link_to "Let's start!", dashboard_path, class: "btn btn-secondary btn-lg" %>
+      <% else %>
+        <%= link_to "Let's start!", new_user_session_path, class: "btn btn-secondary btn-lg" %>
+      <% end %>
+    </div>
+  </div>
 
 </div>

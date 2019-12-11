@@ -2,10 +2,10 @@
 <div class="finished-container">
   <div class="finished-card-top">
     <div>
-      <h1>Congrats <%= current_user.first_name %>!</h1>
+      <h1 class='mt-3'>Congrats <%= current_user.first_name %>!</h1>
       <h4>You have won the '<strong><%= @challenge.skill.title %></strong>' challenge!</h4>
       <h6><%= current_user.first_name %> <%= @challenge.first_place.downcase %>!</h6>
-      <%= image_tag('winning.png', width: 300) %>
+      <%= image_tag('winning_gif.gif', width: 300) %>
     </div>
   </div>
   <div class="finished-card-bottom">

@@ -3,11 +3,18 @@
   <% if challenge.validation_type == 'checkbox' %>
 
     <div style='width: 220px; margin: auto;'>
-      <div class='d-flex justify-content-center'>
-        <p class='mr-2'>I worked on this goal today!</p>
-        <%= f.input :completed, as: :boolean, checked_value: true, unchecked_value: false, label: false %>
+      <div class='d-block justify-content-center'>
+        <p class='mr-2 check-title'>I worked on this goal today!</p>
+        <div class="checkbox-container">
+          <input type="checkbox" id="cbtest" />
+          <label for="cbtest" class="check-box">
+          </label>
+            <%= f.input :completed, as: :boolean, checked_value: true, unchecked_value: false, label: false %>
+        </div>
       </div>
-      <%= image_tag('underline.png', width: '210') %>
+      <div id="submit" class="d-flex justify-content-center mb-4">
+        <%= f.submit "Check In", class: "btn btn-primary mt-4", id: "submit"  %>
+      </div>
     </div>
 
   <% else %>

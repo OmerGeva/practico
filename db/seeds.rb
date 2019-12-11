@@ -204,11 +204,13 @@ users_challenge1 = UsersChallenge.create(
   user_progress: 29
   )
 users_challenge2 = UsersChallenge.create(
+  accepted: true,
   user: dean,
   challenge: challenge1,
   user_progress: 17
   )
 users_challenge3 = UsersChallenge.create(
+  accepted: true,
   user: alisa,
   challenge: challenge1,
   user_progress: 3
@@ -218,11 +220,13 @@ users_challenge3 = UsersChallenge.create(
 puts 'Creating UsersChallenges...'
 
 users_challenge4 = UsersChallenge.create(
+  accepted: true,
   user: brad,
   challenge: challenge2,
   user_progress: 35
   )
 users_challenge5 = UsersChallenge.create(
+  accepted: true,
   user: omer,
   challenge: challenge2,
   user_progress: 48
@@ -230,21 +234,25 @@ users_challenge5 = UsersChallenge.create(
 
 ############# For Challenge Three ##################################
 users_challenge6 = UsersChallenge.create(
+  accepted: true,
   user: brad,
   challenge: challenge3,
   user_progress: 13
   )
 users_challenge7 = UsersChallenge.create(
+  accepted: true,
   user: omer,
   challenge: challenge3,
   user_progress: 4
   )
 users_challenge8 = UsersChallenge.create(
+  accepted: true,
   user: alisa,
   challenge: challenge3,
   user_progress: 4
   )
 users_challenge9 = UsersChallenge.create(
+  accepted: true,
   user: dean,
   challenge: challenge3,
   user_progress: 3

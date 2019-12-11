@@ -4,10 +4,18 @@ if (document.URL.match('/challenges/new')) {
 
 var el = {};
 
+// const placeHolderTime = document.querySelector('.time_type_placeholder');
+// const timeTypeList = document.querySelector('.time_type_list');
+
+// placeHolderTime.addEventListener('click', event => {
+//   event.currentTarget.style.opacity = 0;
+//   timeTypeList.classList.toggle('d-none')
+// })
 $('.time_type_placeholder').on('click', function (ev) {
   $('.time_type_placeholder').css('opacity', '0');
   $('.time_type_list').toggle();
 });
+
 
  $('.time_type_list a').on('click', function (ev) {
    ev.preventDefault();
@@ -75,19 +83,30 @@ countList1.addEventListener('change', (e) => {
 
 const countList2 = document.querySelector(".time_type_list")
 const countInput2 = document.getElementById("challenge_time_type")
+const timeItems = countList2.querySelectorAll('li');
 
-countList2.addEventListener('click', (e) => {
-  countInput2.value = e.currentTarget.firstChild.firstChild.innerText
-})
+const handleTimeItem = (event) => {
+  countInput2.value = event.currentTarget.innerText
+}
+timeItems.forEach(item => item.addEventListener('click', handleTimeItem))
 
 // COUNT_TYPE
 
 const countList3 = document.querySelector(".count_type_list")
 const countInput3 = document.getElementById("challenge_count_type")
+const countItems = countList3.querySelectorAll('li');
 
-countList3.addEventListener('click', (e) => {
-  countInput3.value = e.currentTarget.firstChild.firstChild.innerText
-})
+
+const handleCountItem = (event) => {
+  countInput3.value = event.currentTarget.innerText
+}
+countItems.forEach(item => item.addEventListener('click', handleCountItem))
+
+// countList3.addEventListener('click', (e) => {
+//   countInput3.value = e.currentTarget.firstChild.firstChild.innerText
+//     console.log(e.currentTarget.firstChild.firstChild.innerText);
+
+// })
 }
 
 // FRIENDS DROPDOWN

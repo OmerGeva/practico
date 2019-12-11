@@ -1,4 +1,5 @@
 //circle start
+if (document.querySelector('.e-c-progress')) {
 let progressBar = document.querySelector('.e-c-progress');
 let indicator = document.getElementById('e-indicator');
 let pointer = document.getElementById('e-pointer');
@@ -133,3 +134,4 @@ const postTimer = (elapsedTime) => {
 }
 
 pauseBtn.addEventListener('click',pauseTimer);
+}

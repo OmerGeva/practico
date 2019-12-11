@@ -1,11 +1,14 @@
 // Import Google fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
-@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina|Bebas+Neue|Cabin|Cantarell|Hanuman|Hind|Kulim+Park|Lato|Lexend+Deca|Lexend+Exa|Mada|Mallanna|Montserrat|Montserrat+Subrayada|Nanum+Gothic|Quicksand|Syncopate|Ubuntu|Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cabin|Cantarell|Hanuman|Hind|Kulim+Park|Lato|Lexend+Deca|Lexend+Exa|Mada|Mallanna|Montserrat|Montserrat+Subrayada|Nanum+Gothic|Quicksand|Syncopate|Ubuntu|Varela+Round&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Archivo|Arimo|Comfortaa|Josefin+Sans|Prompt|Ubuntu:500|Varela+Round&display=swap');
+
 
 // Define fonts for body and headers
 $body-font: "Lato", "Helvetica", "sans-serif";
-$headers-font: "Montserrat", "Helvetica", "sans-serif";
+// $headers-font: "Josefin Sans", "Helvetica", "sans-serif";
+$headers-font: "Ubuntu", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -16,3 +19,13 @@ $headers-font: "Montserrat", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+
+// font-family: 'Arimo', sans-serif;
+// font-family: 'Ubuntu', sans-serif;
+// font-family: 'Josefin Sans', sans-serif;
+// font-family: 'Varela Round', sans-serif;
+// font-family: 'Comfortaa', cursive;
+// font-family: 'Prompt', sans-serif;
+// font-family: 'Baloo Bhai', cursive;
+// font-family: 'Archivo', sans-serif;

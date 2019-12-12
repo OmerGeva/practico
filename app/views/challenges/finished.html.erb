@@ -4,7 +4,7 @@
     <div>
       <h1 class='mt-5'>Congrats <%= current_user.first_name %>!</h1>
       <h4>You have won the '<strong><%= @challenge.skill.title %></strong>' challenge!</h4>
-      <h6><%= current_user.first_name %> <%= @challenge.first_place.downcase %>!</h6>
+      <h6><%= current_user.first_name %> <%= @challenge.first_place %>!</h6>
       <%= image_tag('winning.gif', width: 300) %>
     </div>
   </div>

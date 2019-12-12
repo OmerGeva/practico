@@ -142,22 +142,20 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col chat-board chat-sticky">
-          <div class="chat-header text-center" style="width: 100%"><h4>Message Board</h4></div>
-          <div class="messages" style="height: 200px">
-            <% @chat_room.messages.each do |message| %>
-            <%= render 'message', message: message, user_is_messages_author: message.user == current_user %>
-            <% end %>
-          </div>
-          <div id="create-message">
-            <%= simple_form_for [@chat_room, Message.new], remote: true do |f| %>
-            <%= f.input :content, label: false, id: "message-content" %>
-            <%= f.submit value: 'Send Message', class:'btn btn-outline-primary' %>
-            <% end %>
-        </div>
-      </div>
     </div>
+  </div>
+  <div class="chat-board chat-sticky">
+    <div class="chat-header text-center" style="width: 100%"><h4>Message Board</h4></div>
+    <div class="messages" style="height: 200px">
+      <% @chat_room.messages.each do |message| %>
+      <%= render 'message', message: message, user_is_messages_author: message.user == current_user %>
+      <% end %>
+    </div>
+    <div id="create-message">
+      <%= simple_form_for [@chat_room, Message.new], remote: true do |f| %>
+      <%= f.input :content, label: false, id: "message-content" %>
+      <%= f.submit value: 'Send Message', class:'btn btn-outline-primary' %>
+      <% end %>
   </div>
   <% content_for :after_js do %>
   <script>

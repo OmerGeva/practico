@@ -317,9 +317,9 @@ CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duratio
 CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 146)
 CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 170)
 CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 43)
-check_in1 = CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 1)
-check_in2 = CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 2)
-check_in3 = CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 5)
+check_in1 = CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: 1.0, date: Date.today - 1)
+check_in2 = CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: 1.5, date: Date.today - 2)
+check_in3 = CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: 1.0, date: Date.today - 5)
 check_in1.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576148284/brad_checkin1_s7skqs.jpg'
 check_in1.save
 check_in2.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576148283/omer_checkin1_kvcxqp.jpg'

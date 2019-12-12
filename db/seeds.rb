@@ -320,7 +320,7 @@ CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duratio
 check_in1 = CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 1)
 check_in2 = CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 2)
 check_in3 = CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 5)
-check_in1.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576148284/brad_checkin1_s7skqs.jpg'
+check_in1.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576150559/AF703150-6BD7-4B8D-BE44-23AE8E92DC78_slac4f.jpg'
 check_in1.save
 check_in2.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576148283/omer_checkin1_kvcxqp.jpg'
 check_in2.save
@@ -353,9 +353,9 @@ check_in6 = CheckIn.create(users_challenge_id: users_challenge7.id, completed: t
 
 check_in4.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576148384/IMG_0527_gjglad.jpg'
 check_in4.save
-check_in5.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576144437/421735C8-4B25-4896-88F9-1287BCAD4E13_lafjqo.jpg'
+check_in5.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576150498/421735C8-4B25-4896-88F9-1287BCAD4E13_tv7zsb.jpg'
 check_in5.save
-check_in6.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576144437/421735C8-4B25-4896-88F9-1287BCAD4E13_lafjqo.jpg'
+check_in6.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576150502/DE25E5DA-10BF-4ED0-AC55-7B2A1CA5459B_2_to9teu.jpg'
 check_in6.save
 
 ############# Achievements ##################################

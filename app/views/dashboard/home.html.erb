@@ -162,10 +162,13 @@
       <% end %>
 
     <% else %>
-      <div class="challenge-card">
+      <div class="challenge-card no-challenge">
         <h2 class="text-center">You have no challenges</h2>
         <div class="d-flex justify-content-center">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" class="home-animation">
+          <img src="https://media.giphy.com/media/Y1SHDT7tgQnphf3ihK/giphy.gif" alt="gif">
+
+          <!-- SVG SPACE GHOST GIF -->
+<!--      <svg xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" class="home-animation">
             <defs>
               <mask id="MASK" maskunits="userSpaceOnUse"
               maskcontentunits="userSpaceOnUse">
@@ -174,10 +177,10 @@
               width="100%"/>
               </mask>
             </defs>
-
             <image mask="url(#MASK)" x="0" y="-20%" class="space" xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/space.jpg"
             height="198%" width="200%"/>
-          </svg>
+          </svg> -->
+
         </div>
         <div class="d-flex justify-content-around">
           <%= link_to "Make a new Challenge!", new_challenge_path, class: 'btn btn-primary'  %>

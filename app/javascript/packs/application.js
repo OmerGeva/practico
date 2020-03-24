@@ -29,6 +29,7 @@ if (document.URL.match('/challenges/new')) {
 
 previewImageOnFileSelect();
 checkBox();
+// ERROR: THIS SHOULD BE IMPORTED ONLY ON PAGES WITH CHECKBOX!
 
 // timer();
 

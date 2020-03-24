@@ -1,5 +1,6 @@
 .chat-board {
   border-radius: 10px;
+  height: 380px;
 }
 
 .messages {
@@ -32,19 +33,17 @@
 }
 .chat-sticky.up {
 position: fixed;
-height: 100%;
 right: 0px;
 width: 400px;
-top: 47vh;
+bottom: 15px;
 padding-top: 10px;
 padding-bottom: 10px;
 }
 .chat-sticky {
 position: fixed;
-height: 100%;
 right: 0px;
 width: 400px;
-top: 92vh;
+bottom: -320px;
 padding-top: 10px;
 padding-bottom: 10px;
 }

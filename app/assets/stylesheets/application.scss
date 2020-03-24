@@ -40,9 +40,20 @@ a {
   }
 }
 
-h1, h2, h3, h4 {
+h1 {
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+h2, h3, h4 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: $headers-font;
 }
 
 h4 {

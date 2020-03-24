@@ -126,6 +126,12 @@ code = Skill.create(
 salsa = Skill.create(
   title: 'Learn Salsa'
   )
+muay_thai = Skill.create(
+  title: 'Train Muay Thai'
+  )
+screenplay = Skill.create(
+  title: 'Write my screenplay'
+  )
 ############# Challenges ##################################
 puts 'Creating challenges...'
 
@@ -193,11 +199,45 @@ chatroom4 = ChatRoom.create(
   challenge_id: challenge4.id,
   name: salsa.title,
   )
+challenge5 = Challenge.create(
+  skill: muay_thai,
+  milestone: 14,
+  starting_date: Date.parse('31-12-2019'),
+  first_place: "reward",
+  last_place: "penalty",
+  description: "Salsa",
+  time_type: 'days',
+  count_type: 'in a row',
+  validation_type: 'checkbox',
+  photo_proof: true
+  )
+chatroom5 = ChatRoom.create(
+  challenge_id: challenge4.id,
+  name: muay_thai.title,
+  )
+challenge6 = Challenge.create(
+  skill: screenplay,
+  milestone: 14,
+  starting_date: Date.parse('31-12-2019'),
+  first_place: "reward",
+  last_place: "penalty",
+  description: "Salsa",
+  time_type: 'days',
+  count_type: 'in a row',
+  validation_type: 'checkbox',
+  photo_proof: true
+  )
+chatroom6 = ChatRoom.create(
+  challenge_id: challenge4.id,
+  name: screenplay.title,
+  )
 ############# For Chat Rooms ##################################
 puts 'Creating ChatRooms...'
 
 ############# For Challenge One ##################################
+puts 'Creating UsersChallenges...'
 
+# SMOKING
 users_challenge1 = UsersChallenge.create(
   user: brad,
   challenge: challenge1,
@@ -217,8 +257,8 @@ users_challenge3 = UsersChallenge.create(
   )
 
 ############# For Challenge Two ##################################
-puts 'Creating UsersChallenges...'
 
+# GUITAR
 users_challenge4 = UsersChallenge.create(
   accepted: true,
   user: brad,
@@ -233,6 +273,8 @@ users_challenge5 = UsersChallenge.create(
   )
 
 ############# For Challenge Three ##################################
+
+# PRACTICO
 users_challenge6 = UsersChallenge.create(
   accepted: true,
   user: brad,
@@ -275,14 +317,14 @@ CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duratio
 CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 146)
 CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 170)
 CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: nil, date: Date.today - 43)
-check_in1 = CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 1)
-check_in2 = CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 2)
-check_in3 = CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: nil, date: Date.today - 5)
-check_in1.remote_photo_url = 'https://www.uberchord.com/wp-content/uploads/2015/04/Songwriters-Paradise-Songwriting-1024x720.jpg'
+check_in1 = CheckIn.create(users_challenge_id: users_challenge4.id, completed: true, duration: 1.0, date: Date.today - 1)
+check_in2 = CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: 1.5, date: Date.today - 2)
+check_in3 = CheckIn.create(users_challenge_id: users_challenge5.id, completed: true, duration: 1.0, date: Date.today - 5)
+check_in1.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576150559/AF703150-6BD7-4B8D-BE44-23AE8E92DC78_slac4f.jpg'
 check_in1.save
-check_in2.remote_photo_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR79KfmmPPz7Iz7rJsg_eOv29x4LkUPGELAsGUDDipONAi1PbCy&s'
+check_in2.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576148283/omer_checkin1_kvcxqp.jpg'
 check_in2.save
-check_in3.remote_photo_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR79KfmmPPz7Iz7rJsg_eOv29x4LkUPGELAsGUDDipONAi1PbCy&s'
+check_in3.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576148277/omer_checkin2_yzaf1s.jpg'
 check_in3.save
 
 CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 80)
@@ -306,23 +348,21 @@ CheckIn.create(users_challenge_id: users_challenge7.id, completed: true, duratio
 CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 21)
 
 check_in4 = CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 1)
-check_in5 = CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 2)
-check_in6 = CheckIn.create(users_challenge_id: users_challenge6.id, completed: true, duration: nil, date: Date.today - 3)
+check_in5 = CheckIn.create(users_challenge_id: users_challenge7.id, completed: true, duration: nil, date: Date.today - 2)
+check_in6 = CheckIn.create(users_challenge_id: users_challenge7.id, completed: true, duration: nil, date: Date.today - 3)
 
-check_in4.remote_photo_url = 'https://cortexitrecruitment.com/wp-content/uploads/2015/08/laptop-guy.jpg'
+check_in4.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576148384/IMG_0527_gjglad.jpg'
 check_in4.save
-check_in5.remote_photo_url = 'https://www.explore-group.com/storage/images-processed/w-1500_h-auto_m-fit_s-any__highres_464010407.jpeg'
+check_in5.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576150498/421735C8-4B25-4896-88F9-1287BCAD4E13_tv7zsb.jpg'
 check_in5.save
-check_in6.remote_photo_url = 'https://www.romania-insider.com/sites/default/files/styles/article_large_image/public/featured_images/Academy-Plus.jpg'
+check_in6.remote_photo_url = 'https://res.cloudinary.com/daf8abic5/image/upload/v1576150502/DE25E5DA-10BF-4ED0-AC55-7B2A1CA5459B_2_to9teu.jpg'
 check_in6.save
 
 ############# Achievements ##################################
 puts 'Creating Wins...'
 Win.create(challenge_id: challenge4.id, user_id: brad.id, date: Date.today - 21)
-Win.create(challenge_id: challenge4.id, user_id: brad.id, date: Date.today - 54)
-Win.create(challenge_id: challenge4.id, user_id: brad.id, date: Date.today - 521)
-Win.create(challenge_id: challenge4.id, user_id: brad.id, date: Date.today - 121)
-
+Win.create(challenge_id: challenge5.id, user_id: brad.id, date: Date.today - 54)
+Win.create(challenge_id: challenge6.id, user_id: brad.id, date: Date.today - 521)
 
 
 

@@ -21,5 +21,5 @@ var interval = setInterval(function() {
             y: Math.random() - 0.2
         }
     });
-}, 200);
+}, 500);
 }

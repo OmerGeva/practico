@@ -25,7 +25,8 @@
     <%= favicon_link_tag('logo-min-bc.png') %>
     <!-- <link rel="icon" type="image" href="/assets/images/login-img.png"> -->
     <link href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arimo">
+    <link href="https://fonts.googleapis.com/css?family=Archivo|Arimo|Baloo+Bhai|Comfortaa|Josefin+Sans|Prompt|Ubuntu:500|Varela+Round&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -35,7 +36,7 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/logo' %>
-    <%= render 'shared/flashes' %>
+    <% render 'shared/flashes' %>
 
     <%= yield %>
 

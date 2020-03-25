@@ -1,7 +1,5 @@
 import "bootstrap";
 
-
-
 import "../plugins/flatpickr"
 import "../plugins/confetti"
 
@@ -29,6 +27,10 @@ if (document.URL.match('/challenges/new')) {
 
 previewImageOnFileSelect();
 checkBox();
+// ERROR: THIS SHOULD BE IMPORTED ONLY ON PAGES WITH CHECKBOX!
 
 // timer();
 
+document.addEventListener("DOMContentLoaded", (event) => {
+  document.querySelector("body").classList.remove("preload");
+});

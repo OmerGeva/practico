@@ -18,6 +18,13 @@
   }
 }
 
+.no-challenge {
+  img {
+    height: 200px;
+    width: 200px;
+  }
+}
+
 .user-info {
   background: #fff;
   padding: 16px;
@@ -92,6 +99,21 @@
   position: absolute;
   top: 15px;
   right: 15px;
+  display: flex;
+  img {
+    margin: 0 1px;
+  }
+  img:nth-child(n+8) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-avatars {
+    img:nth-child(n+5) {
+      display: none;
+    }
+  }
 }
 
 // USER PROFILE

@@ -10,3 +10,5 @@ const checkBox = () => {
 }
 
 export { checkBox }
+
+// ERROR: THIS SHOULD BE IMPORTED ONLY ON PAGES WITH CHECKBOX!

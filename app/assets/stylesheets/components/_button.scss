@@ -99,6 +99,15 @@
     color: $dark;
   }
 }
+
+@media (max-width: 768px) {
+  .check-in-div {
+    bottom: 6px;
+    right: 6px;
+    flex-direction: column-reverse;
+  }
+}
+
 .check-in-btn {
   background-image: url(asset-path('checked-turq.svg'));
   background-size: cover;
@@ -117,6 +126,13 @@
   top: 14px;
   right: 16px;
   display: flex;
+}
+
+@media (max-width: 768px) {
+  .thumbs {
+    margin-bottom: 1.2rem;
+    position: unset;
+  }
 }
 
 .thumbs-up {
@@ -153,4 +169,8 @@ img[alt="schedule"] {
   &:hover {
     opacity: 1;
   }
+}
+
+.friend-request-button {
+  padding-right: 6px;
 }

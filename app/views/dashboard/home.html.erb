@@ -1,8 +1,8 @@
 <div class="dashboard-container">
 
-  <div class="col-4">
-
-      <!-- USER INFO -->
+  <!-- ROW 1 -->
+  <div class='user-row'>
+    <!-- USER INFO -->
     <div class="user-info">
       <h4 class='marker' data-content='Average Progress'>Average Progress</h4>
       <!-- User Progress Average -->
@@ -17,54 +17,59 @@
         <% average_progress = 0 %>
       <% end %>
       <div class="single-chart">
-          <svg viewBox="0 0 36 36" class="circular-chart green">
-            <path class="circle-bg"
-              d="M18 2.0845
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
-            <path class="circle"
-              stroke-dasharray="<%= average_progress %>, 100"
-              d="M18 2.0845
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
-            <text x="18" y="20.35" class="percentage"><%= average_progress.to_i %>%</text>
-          </svg>
-        </div>
+        <svg viewBox="0 0 36 36" class="circular-chart green">
+          <path
+            class="circle-bg"
+            d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <path
+            class="circle"
+            stroke-dasharray="<%= average_progress %>, 100"
+            d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <text x="18" y="20.35" class="percentage">
+            <%= average_progress.to_i %>%
+          </text>
+        </svg>
+      </div>
       <p class='m-0'><i class="far fa-user-circle"></i> <%= current_user.username %></p>
     </div>
 
-      <!-- ACHIEVEMENTS -->
+    <!-- ACHIEVEMENTS -->
     <div class="achievements">
       <h4 class='marker' data-content="Achievements">Achievements</h4>
       <% unless current_user.wins.count.zero? %>
+        <div class='d-flex justify-content-start'>
+          <% current_user.wins.each do |win|%>
+            <div class="tooltipp">
+              <span class="tooltiptext">
+                <h4 style='font-size: 16px;'><%= win.challenge.skill.title.titleize %></h4>
+                <!-- <h4>Winner: </h4><p><%= "#{win.user.first_name} #{win.user.last_name}" %></p> -->
+                <% unless win.date.nil? %>
 
-        <% current_user.wins.each do |win|%>
-          <div class="tooltipp">
-            <span class="tooltiptext">
-              <h4 style='font-size: 16px;'><%= win.challenge.skill.title.titleize %></h4>
-              <!-- <h4>Winner: </h4><p><%= "#{win.user.first_name} #{win.user.last_name}" %></p> -->
-              <% unless win.date.nil? %>
-
-                <p><%= win.date.strftime('%e %B %Y') %></p>
-              <% end %>
-            </span>
-            <button type="button" class="btn-invite-friends" style="pointer-events: none;" data-toggle="modal" data-target="#exampleModalCenter" disabled>
-              <%= image_tag('trophy.png', height: '62') %>
-            </button>
-          </div>
-        <% end %>
+                  <p><%= win.date.strftime('%e %B %Y') %></p>
+                <% end %>
+              </span>
+              <button type="button" class="btn-invite-friends" style="pointer-events: none;" data-toggle="modal" data-target="#exampleModalCenter" disabled>
+                <%= image_tag('trophy.png', height: '62') %>
+              </button>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
 
     <!-- NOTIFICATIONS -->
     <div class="notifications">
-      <h4 class="marker border-bottom pb-1" data-content="Notifications">Notifications</h4>
-      <div class="border-bottom">
-        <p class="mb-2"><strong>Finished Challenges:</strong></p>
+      <h4 class="marker pb-1" data-content="Notifications">Notifications</h4>
+      <div>
         <% current_user.users_challenges.each do |users_challenge| %>
           <% if users_challenge.unread %>
+          <p class="mb-2"><strong>Finished Challenges:</strong></p>
           <div class="notification-card">
               <h6 class="mb-0"><strong><%= users_challenge.challenge.skill.title.capitalize %></strong>  has ended</h6>
               <h6 data-toggle="modal" data-target="#exampleModal" class="mt-0 mb-0 mouse-hover" style="color: #ED462D;">Check Challenge</h6>
@@ -88,22 +93,33 @@
         <% end %>
       </div>
 
-      <p><strong>Friend Requests:</strong></p>
-      <% current_user.requested_friends.each do |friend| %>
-      <div class="notification-card">
-        <div class="d-flex align-items-center">
-          <%= cl_image_tag friend.photo, alt: "user avatar", class: 'avatar-small mr-2' %>
-          <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}"  %>
+      <% unless current_user.requested_friends.empty? %>
+        <p><strong>Friend Requests:</strong></p>
+        <% current_user.requested_friends.each do |friend| %>
+        <div class="notification-card">
+          <div class="d-flex align-items-center">
+            <%= cl_image_tag friend.photo, alt: "user avatar", class: 'avatar-small mr-2' %>
+            <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}"  %>
+          </div>
+          <%= link_to "Accept", accept_friend_account_path(friend), method: :post, class: "friend-request-button" %>
         </div>
-        <%= link_to "Accept", accept_friend_account_path(friend), method: :post, class: "friend-request-button" %>
-      </div>
+        <% end %>
+      <% end %>
+
+      <% if current_user.requested_friends.empty? &&
+          current_user.users_challenges.each do |users_challenge| %>
+              <% users_challenge.unread.nil? %>
+          <% end %>
+        <p>You have no notifications</p>
       <% end %>
     </div>
+
   </div>
 
-    <!-- CHALLENGES -->
 
-  <div class="col-8 challenges-index pl-0">
+  <!-- CHALLENGES -->
+  <div class="challenges-index">
+  <h2 class='current-challenges'>Current challenges</h2>
     <% unless current_user.challenges.empty? %>
       <% @users_challenges.each do |user_challenge| %>
       <!-- CHALLENGE CARD -->
@@ -131,7 +147,7 @@
           <% if user_challenge.accepted %>
             <!-- CHECK-IN BUTTON -->
             <div class='check-in-div'>
-              <p>Check In →</p>
+              <p>Check In</p>
               <div class='check-in-btn' data-toggle="modal" data-target="#exampleModal<%= user_challenge.challenge.id%>">
             </div>
             </div>
@@ -162,10 +178,13 @@
       <% end %>
 
     <% else %>
-      <div class="challenge-card">
+      <div class="challenge-card no-challenge">
         <h2 class="text-center">You have no challenges</h2>
         <div class="d-flex justify-content-center">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" class="home-animation">
+          <img src="https://media.giphy.com/media/Y1SHDT7tgQnphf3ihK/giphy.gif" alt="gif">
+
+          <!-- SVG SPACE GHOST GIF -->
+<!--      <svg xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" class="home-animation">
             <defs>
               <mask id="MASK" maskunits="userSpaceOnUse"
               maskcontentunits="userSpaceOnUse">
@@ -174,10 +193,10 @@
               width="100%"/>
               </mask>
             </defs>
-
             <image mask="url(#MASK)" x="0" y="-20%" class="space" xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/space.jpg"
             height="198%" width="200%"/>
-          </svg>
+          </svg> -->
+
         </div>
         <div class="d-flex justify-content-around">
           <%= link_to "Make a new Challenge!", new_challenge_path, class: 'btn btn-primary'  %>

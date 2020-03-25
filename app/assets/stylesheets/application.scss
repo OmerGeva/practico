@@ -25,6 +25,13 @@ body {
   background-repeat: no-repeat;
 }
 
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
 li {
   list-style: none;
 }
@@ -90,9 +97,15 @@ input.form-control:focus {
     width: 56px;
     opacity: 0.8;
   }
-  z-index: 2000;
+  z-index: 500;
   position: absolute;
   top: 18px;
   right: 18px;
+
+  @media (max-width: 768px) {
+    img {
+      width: 46px;
+    }
+  }
 }
 

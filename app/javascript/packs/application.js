@@ -1,7 +1,5 @@
 import "bootstrap";
 
-
-
 import "../plugins/flatpickr"
 import "../plugins/confetti"
 
@@ -33,3 +31,6 @@ checkBox();
 
 // timer();
 
+document.addEventListener("DOMContentLoaded", (event) => {
+  document.querySelector("body").classList.remove("preload");
+});

@@ -1,3 +1,10 @@
+#sidebarCollapse {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border-radius: 50%;
+  background: #fff;
+  z-index: 1000;
+}
+
 .vertical-nav {
   min-width: 15.5rem;
   width: 15.5rem;
@@ -65,7 +72,6 @@
   margin-left: 15.5rem;
   transition: all 0.4s;
 }
-
 
 /* for toggle behavior */
 

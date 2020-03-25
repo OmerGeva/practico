@@ -14,7 +14,7 @@
 
   .dashboard-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     grid-gap: 0;
     height: 100%;
     margin-top: 16px;
@@ -48,3 +48,18 @@
   }
 }
 
+.current-challenges {
+  visibility: hidden;
+}
+
+@media (max-width: 768px) {
+  .current-challenges {
+    visibility: visible;
+    margin-top: 28px;
+    margin-bottom: -6px;
+    color: #fff;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+}

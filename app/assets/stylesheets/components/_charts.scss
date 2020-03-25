@@ -4,7 +4,12 @@
   max-width: 80%;
   max-height: 250px;
   width: 320px;
-  margin-bottom: 26px;
+}
+
+@media (max-width: 768px) {
+  .circular-chart {
+    max-width: 70%;
+  }
 }
 
 .circle-bg {

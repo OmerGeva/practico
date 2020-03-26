@@ -24,6 +24,7 @@
 }
 
 .login-img {
+  width: 50%;
   background-image: url(asset-path('login-img.png'));
   background-size: cover;
   background-repeat: no-repeat;
@@ -32,17 +33,40 @@
 }
 
 .login-card-details {
+  width: 50%;
   padding: 16px;
   align-self: center;
+
+  .user_first_name {
+    margin-right: 3px;
+  }
+
+  .user_last_name {
+    margin-left: 3px;
+  }
+
+  .user_password_confirmation {
+    margin-bottom: 1.5rem;
+  }
+
+  .text-muted {
+    margin-bottom: -12px;
+  }
+
   .form-inputs {
     input {
       text-align: center;
       background-color: rgba(255,255,255,0.85);
     }
+    input[type=checkbox] {
+      display: block;
+    }
   }
+
   .form-check-label.boolean.optional {
     color: $turq;
   }
+
   h2 {
     background: linear-gradient(0deg, transparent 60%, $light-turq 40%);
     display: table;
@@ -53,7 +77,42 @@
 }
 
 .form-actions {
-  margin: 0 -24px;
+  margin: 0;
 }
 
+.forgot-password {
+  margin-right: 2rem;
+
+  a:nth-child(2) {
+    opacity: 0.7;
+    position: fixed;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-card {
+    flex-direction: column;
+    width: 90vw;
+    height: auto;
+  }
+
+  .login-img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    content: url(asset-path('login-img.png'));
+    background-image: none;
+    z-index: 200;
+    position: relative;
+    top: -78px;
+  }
+
+  .login-card-details {
+    width: 100%;
+    height: 60%;
+    position: relative;
+    top: -78px;
+    margin-bottom: -64px;
+  }
+}
 

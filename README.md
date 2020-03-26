@@ -5,15 +5,16 @@
 </p>
 
 PractiCo. is the productivity app that let's you turn personal development goals
-into challenges that you can work on with your friends.
-
-<p align="center">
-  <img src="./app/assets/images/screenshots/dashboard.png" width="500" alt="dashboard" />
-</p>
+into challenges that you can work on with your friends. Stop procrastinating with
+social accountability.
 
 View it live: (https://elpracti.co)
 
 Watch the demo: (https://youtu.be/Toe2ColbDco?t=3317)
+
+<p align="center">
+  <img src="./app/assets/images/screenshots/dashboard.png" width="500" alt="dashboard" />
+</p>
 
 Create an account and start a new challenge, including the skill you want to learn
 and your practice goals, then invite your friends to participate in the challenge.
@@ -37,14 +38,10 @@ after a practice to track your progress.
 Best of all you can invite your friends to join the challenge and set the stakes
 for the challenge, and even chat with them in-app.
 
-<p align="center">
-  <img src="./app/assets/images/screenshots/chat.png" width="500" alt="chat" />
-</p>
-
 Celebrate your victories!!
 
 <p align="center">
-  <img src="./app/assets/images/win.png" width="500" alt="win" />
+  <img src="./app/assets/images/screenshots/win.png" width="500" alt="win" />
 </p>
 
 

@@ -20,14 +20,12 @@
     </div>
   </div>
 
-  <div class='d-flex mt-4'>
-    <div class="btn-box">
-      <% if current_user %>
-        <%= link_to "Let's start!", dashboard_path, class: "btn btn-secondary btn-lg" %>
-      <% else %>
-        <%= link_to "Let's start!", new_user_session_path, class: "btn btn-secondary btn-lg" %>
-      <% end %>
-    </div>
+  <div class="btn-start">
+    <% if current_user %>
+      <%= link_to "Let's start!", dashboard_path, class: "btn btn-secondary btn-lg" %>
+    <% else %>
+      <%= link_to "Let's start!", new_user_session_path, class: "btn btn-secondary btn-lg" %>
+    <% end %>
   </div>
 
 </div>

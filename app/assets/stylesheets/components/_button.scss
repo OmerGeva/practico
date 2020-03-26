@@ -43,12 +43,18 @@
   }
 }
 
-.btn-box {
+.btn-start {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 180px;
-  height: 80px;
+  margin-top: 2rem;
+}
+
+@media (max-width: 1023px) {
+  .btn-start {
+    margin-top: 0;
+    margin-bottom: 32px;
+  }
 }
 
 #remove-friend-btn {

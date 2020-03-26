@@ -55,10 +55,6 @@ Celebrate your victories!!
 ![Heroku](https://img.shields.io/badge/Heroku-host-green.svg)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-database-yellow.svg)
 
-
-# Keywords
-Self help, Artificial Intelligence, Data Science, Neural Networks, Applied Mathematics, Cognitive Behavioral Therapy (CBT), Mental Health First Aid, Columbia University.
-
 # Our team
     Omer Geva
 

@@ -136,7 +136,11 @@
                     <p><i class="fas fa-hourglass-half"></i> <%= check_in.duration %> hours</p>
                   <% end %>
                 </div>
-                <%= cl_image_tag check_in.photo %>
+                <% if check_in.photo.filename %>
+                  <%= cl_image_tag check_in.photo %>
+                <% else %>
+                  <%= image_tag 'login-img.png' %>
+                <% end %>
               </div>
             <% end %>
           </div>

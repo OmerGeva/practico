@@ -35,6 +35,12 @@ after a practice to track your progress.
   <img src="./app/assets/images/screenshots/current-challenge.png" width="500" alt="timer" />
 </p>
 
+After creating the challenge, you can schedule the time you will dedicate to it.
+
+<p align="center">
+  <img src="./app/assets/images/screenshots/calendar.png" width="500" alt="new challenge" />
+</p>
+
 Best of all you can invite your friends to join the challenge and set the stakes
 for the challenge, and even chat with them in-app.
 

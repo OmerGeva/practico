@@ -1,3 +1,14 @@
+//CHECK IN WITH CHECKBOX THEN PHOTO
+
+document.querySelector('.check-box').addEventListener('click', event => {
+  event.target.style.display = "none";
+  document.querySelector('.check-title').style.display = 'none';
+  document.querySelector('#photo-uploader').style.display="";
+  document.querySelector('.after-check-in').style.width = '100%';
+});
+
+
+
 //circle start
 if (document.querySelector('.e-c-progress')) {
 let progressBar = document.querySelector('.e-c-progress');

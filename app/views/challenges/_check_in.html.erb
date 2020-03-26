@@ -2,7 +2,8 @@
 
   <% if challenge.validation_type == 'checkbox' %>
 
-    <div style='width: 220px; margin: auto;'>
+
+    <div class="after-check-in"style='width: 220px; margin: auto;'>
       <div class='d-block justify-content-center'>
         <p class='mr-2 check-title'>I worked on this goal today!</p>
         <div class="checkbox-container">
@@ -12,6 +13,18 @@
             <%= f.input :completed, as: :boolean, checked_value: true, unchecked_value: false, label: false %>
         </div>
       </div>
+        <% if challenge.photo_proof %>
+        <div id="photo-uploader" style="display:none;">
+        <h4 class='text-center'>Add your photo proof!</h4>
+          <div class="wrapper">
+            <div class="box">
+              <%= image_tag "", class: "hidden", id: "photo-preview" %>
+            </div>
+              <%= f.input :photo, input_html: { class: 'hidden d-none', id: 'photo-input'}, label_html: { class: 'upload-photo' }, label: '.' %>
+              <%= f.input :photo_cache, as: :hidden %>
+          </div>
+      </div>
+        <% end %>
       <div id="submit" class="d-flex justify-content-center mb-4">
         <%= f.submit "Check In", class: "btn btn-primary mt-4", id: "submit"  %>
       </div>

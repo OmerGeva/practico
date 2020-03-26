@@ -1,12 +1,12 @@
 
 <div class="grid">
   <div class="login-card">
-    <div class='col-6 login-img'>
+    <div class='login-img'>
     </div>
-    <div class='col-6 login-card-details'>
+    <div class='login-card-details'>
     <h2 class="text-center pb-2">Sign Up</h2>
     <div class="row d-flex justify-content-center align-items-center">
-      <div class="col-8">
+      <div class="col-10">
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
@@ -18,6 +18,7 @@
                 autofocus: true,
                 placeholder: 'Email',
                 input_html: { autocomplete: "email" }%>
+
         <div class="d-flex">
         <%= f.input :first_name,
                 label: false,
@@ -51,7 +52,7 @@
                 input_html: { autocomplete: "new-password" } %>
 
       </div>
-      <div class="form-actions d-flex justify-content-between">
+      <div class="form-actions d-flex justify-content-between" style='margin: 0;'>
       <div class='d-inline mr-5'><%= render "devise/shared/links" %></div>
         <div><%= f.button :submit, "Sign Up", class: 'btn btn-primary' %></div>
       </div>

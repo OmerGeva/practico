@@ -17,6 +17,6 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   def set_picture
-    self.remote_photo_url = 'https://i.kym-cdn.com/photos/images/newsfeed/001/452/271/0f9'
+    self.remote_photo_url = 'https://res.cloudinary.com/alisasilina/image/upload/v1585250680/avatar-placeholder_hm3fr3.svg'
   end
 end

@@ -177,13 +177,36 @@ img[alt="schedule"] {
   }
 }
 
+.btn-search {
+  color: $turq;
+  border: 1px solid #ECECEC;
+  border-left: none;
+  font-size: 16px;
+  border-radius: 0 6px 6px 0;
+  background: rgba(255, 255, 255, 0.6);
+  height: 35px;
+  width: 35px;
+}
+
 .fa-user-check {
   padding-right: 6px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .fa-user-times {
   color: $turq;
-  font-size: 20px;
+  font-size: 18px;
   padding-right: 6px;
+}
+
+@media (max-width: 768px) {
+  .fa-user-check, .fa-user-times {
+    font-size: 20px;
+  }
+
+  .btn-search {
+    height: 38px;
+    width: 38px;
+    font-size: 19px;
+  }
 }

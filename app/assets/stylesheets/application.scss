@@ -25,6 +25,10 @@ body {
   background-repeat: no-repeat;
 }
 
+*:focus {
+  outline: none !important;
+}
+
 .preload * {
   -webkit-transition: none !important;
   -moz-transition: none !important;

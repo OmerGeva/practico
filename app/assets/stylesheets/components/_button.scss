@@ -177,6 +177,13 @@ img[alt="schedule"] {
   }
 }
 
-.friend-request-button {
+.fa-user-check {
+  padding-right: 6px;
+  font-size: 20px;
+}
+
+.fa-user-times {
+  color: $turq;
+  font-size: 20px;
   padding-right: 6px;
 }

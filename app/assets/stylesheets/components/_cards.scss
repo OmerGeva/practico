@@ -50,6 +50,11 @@
   }
 }
 
+.achievements-row {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .notifications {
   background: #fff;
   padding: 16px;

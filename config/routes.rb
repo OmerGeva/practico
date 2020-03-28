@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       post 'request-friend', to: "accounts#request_friend"
       delete 'delete-friend', to: "accounts#delete_friend"
       post 'accept-friend', to: "accounts#accept_friend"
+      delete 'decline-friend', to: "accounts#decline_friend"
       post 'update_avatar'
     end
   end

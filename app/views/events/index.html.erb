@@ -1,4 +1,11 @@
-<%= month_calendar events: @events do |date, events| %>
+<% if
+ %>
+ <%= week_calendar number_of_weeks: 2 do |date| %>
+   <%= date %>
+ <% end %>
+
+
+<% end %><%= month_calendar events: @events do |date, events| %>
   <%= date %>
   <div class='badges'>
   <% events.each do |event| %>

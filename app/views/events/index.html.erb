@@ -1,11 +1,8 @@
-<% if
- %>
- <%= week_calendar number_of_weeks: 2 do |date| %>
-   <%= date %>
- <% end %>
+<% if mobile_device == "mobile" %>
+  <!-- <h3>It's mobile view</h1> -->
+<% end %>
 
-
-<% end %><%= month_calendar events: @events do |date, events| %>
+<%= month_calendar events: @events do |date, events| %>
   <%= date %>
   <div class='badges'>
   <% events.each do |event| %>
@@ -25,5 +22,6 @@
   </div>
   <% end %>
 </div>
+
 
 <%= javascript_pack_tag 'tippy' %>

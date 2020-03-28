@@ -1,5 +1,5 @@
 <div class="container text-center p-0">
-  <h1 class='tw'>New Challenge</h1>
+  <h1 class='tw new-ch'>New Challenge</h1>
 
   <%= simple_form_for [@challenge], html: { autocomplete: 'off' } do |f| %>
   <div class='new-challenge-card' style="backdrop-filter: blur(6px);">
@@ -15,21 +15,21 @@
 
           <div class='milestone-input'>
             <input type="number" id="milestone" placeholder="30" size="3" class="milestone_input", min='0'>
-            <div class="underline" style="bottom: 1px;"></div>
+            <div class="underline"></div>
           </div>
 
 
           <div class="list time_type"><span class="time_type_placeholder">days</span>
             <ul class="time_type_list">
-              <div class='blur' style='height: 125px; width: 155px; right: 18px;'></div>
+              <div class='blur'></div>
               <li><a href="">hours</a></li>
               <li><a href="">days</a></li>
               <li><a href="">weeks</a></li>
             </ul>
           </div>
-          <div class="list count_type"><span class="count_type_placeholder">in a row</span>.
+          <div class="list count_type"><span class="count_type_placeholder">in a row</span>
             <ul class="count_type_list">
-              <div class='blur' style='height: 75px; width: 135px; right: 34px;'></div>
+              <div class='blur'></div>
               <li><a href="">in a row</a></li>
               <li><a href="">total</a></li>
             </ul>

@@ -38,6 +38,14 @@ class AccountsController < ApplicationController
     redirect_to friends_account_path(current_user)
   end
 
+  def decline_friend
+    unfriended_user = User.find(params[:id])
+    current_user.decline_request(unfriended_user)
+    skip_authorization
+
+    redirect_to dashboard_path
+  end
+
   def delete_friend
     unfriended_user = User.find(params[:id])
     current_user.remove_friend(unfriended_user)

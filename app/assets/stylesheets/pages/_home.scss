@@ -5,30 +5,11 @@
   margin-right: auto;
   margin-left: auto;
   height: 100vh;
+  margin: 0;
 }
 
-@media (max-width: 768px) {
-  .page-content {
-    padding: 2rem !important;
-  }
-
-  .dashboard-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    grid-gap: 0;
-    height: 100%;
-    margin-top: 16px;
-  }
-
-  .user-row {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-row-gap: 16px;
-
-    div {
-      margin: 0;
-    }
-  }
+.current-challenges {
+  display: none;
 }
 
 .user-info {
@@ -48,11 +29,42 @@
   }
 }
 
-.current-challenges {
-  display: none;
+.accept-decline {
+  justify-self: left;
 }
 
 @media (max-width: 768px) {
+  .page-content {
+    max-width: 768px;
+    padding: 2rem !important;
+  }
+
+  .dashboard-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0;
+    height: 100%;
+    margin-top: 16px;
+
+    .notification-card {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  .user-row {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-row-gap: 16px;
+
+    div {
+      margin: 0;
+    }
+  }
+
   .current-challenges {
     display: block;
     margin-top: 28px;
@@ -63,3 +75,5 @@
     text-align: center;
   }
 }
+
+

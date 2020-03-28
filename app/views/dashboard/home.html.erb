@@ -45,7 +45,7 @@
       <% if current_user.wins.count.zero? %>
         <p>You have no achievements</p>
       <% else %>
-        <div class='d-flex justify-content-start'>
+        <div class='achievements-row'>
           <% current_user.wins.each do |win|%>
             <div class="tooltipp">
               <span class="tooltiptext">
@@ -101,9 +101,18 @@
         <div class="notification-card">
           <div class="d-flex align-items-center">
             <%= cl_image_tag friend.photo, alt: "user avatar", class: 'avatar-small mr-2' %>
-            <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}"  %>
+            <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}" %>
           </div>
-          <%= link_to "Accept", accept_friend_account_path(friend), method: :post, class: "friend-request-button" %>
+          <div class='accept-decline'>
+            <!-- DECLINE -->
+            <%= link_to decline_friend_account_path(friend), method: :delete do %>
+              <i class="fas fa-user-times"></i>
+            <% end %>
+            <!-- ACCEPT -->
+            <%= link_to accept_friend_account_path(friend), method: :post do %>
+              <i class="fas fa-user-check"></i>
+            <% end %>
+          </div>
         </div>
         <% end %>
       <% end %>

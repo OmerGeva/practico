@@ -1,0 +1,53 @@
+.user-profile-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 16px;
+  margin-right: auto;
+  margin-left: auto;
+  height: 100vh;
+  margin: 0;
+}
+
+.user-challenges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  justify-content: space-between;
+  padding: 8px;
+  margin: auto;
+
+  .current-challenge {
+    width: auto;
+    margin: 0;
+  }
+}
+
+.user-friends {
+  .user-friend {
+    margin-bottom: 0.5rem;
+    &:last-child {
+      margin-bottom: -8px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .user-profile-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0;
+    height: 100%;
+    margin-top: 16px;
+    p {
+      font-size: 18px;
+    }
+  }
+
+  .user-challenges {
+    grid-template-columns: 1fr;
+  }
+
+  .avatar-upload {
+    margin: 12px auto 24px auto !important;
+  }
+}

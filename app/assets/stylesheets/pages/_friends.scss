@@ -1,0 +1,45 @@
+.friends-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 16px;
+}
+
+.friend-username {
+  margin-right: 0;
+}
+
+.user-friend {
+  .friend-username {
+    color: black;
+  }
+  .avatar-large {
+    margin-right: 1rem;
+  }
+  i {
+    font-size: 18px;
+    color: rgb(237, 70, 45);
+  }
+}
+
+@media (max-width: 768px) {
+  .friends-container {
+    grid-template-columns: 1fr;
+
+    .challenge-page-card {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    .avatar-large {
+      width: 50px;
+      height: 50px;
+      margin-right: 12px;
+    }
+  }
+
+  .user-friend {
+    i {
+      font-size: 20px;
+    }
+  }
+}

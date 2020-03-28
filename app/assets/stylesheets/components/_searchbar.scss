@@ -1,15 +1,44 @@
-.grid {
-  position: relative;
-}
-
 .friends-search {
-  width: 200px;
+  width: auto;
+  justify-self: center;
+  margin-top: 8px;
+  width: 40%;
   input {
     border-radius: 6px;
     background-color: rgba(255,255,255,0.6);
-    position: absolute;
-    right: 0;
-    top: -40px;
     width: 200px;
+  }
+}
+
+#query {
+  width: 100%;
+  border-radius: 6px 0 0 6px;
+  border-right: none;
+  &:focus {
+    border: 1px solid #ECECEC;
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+
+// MEDIA QUERIES
+
+// Mobile portrait
+@media (max-width: 768px) {
+  .friends-search {
+    width: 100%;
+  }
+  .friends-search {
+    margin-bottom: 16px;
+    justify-self: center;
+    input.form-control {
+      font-size: 16px;
+    }
+  }
+}
+
+// Mobile Landscape + Tablet portrait (768px)
+@media (min-width: 640px) and (max-width: 1023px) {
+  .friends-search {
+    width: 60%;
   }
 }

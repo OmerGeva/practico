@@ -15,7 +15,7 @@ $color-primary: $orange;
 }
 
 .transition {
-   transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
 }
 
 .wrapper {
@@ -79,8 +79,21 @@ $color-primary: $orange;
 }
 
 .list.time_type {
-    margin-right: 10px;
+  margin-right: 10px;
+  .blur {
+    height: 125px;
+    width: 155px;
+    right: 18px;
   }
+}
+
+.list.count_type {
+  .blur {
+    width: 135px;
+    height: 75px;
+    right: 34px;
+  }
+}
 
 .time_type_placeholder, .count_type_placeholder {
   //visibility: hidden;
@@ -143,6 +156,7 @@ textarea:focus {
     }
   }
   .underline {
+    display: none;
     width: 0;
     height: 4px;
     position: absolute;
@@ -163,7 +177,7 @@ textarea:focus {
   line-height: 1;
   color: $dark;
   text-decoration: none;
-  width: 90px;
+  width: 75px;
   background: transparent;
   border: none;
   border-bottom: 4px solid lighten($dark, 30%);
@@ -177,7 +191,7 @@ textarea:focus {
 
 .milestone-input {
   display: inline-block;
-  width: 100px;
+  width: 90px;
   position: relative;
   .underline {
     width: 0;
@@ -194,4 +208,79 @@ textarea:focus {
       width: 100%;
     }
   }
+}
+
+// MEDIA QUERIES
+
+// Mobile Portrait
+@media (max-width: 768px) {
+  .milestone-input {
+    text-align: center;
+    width: 42px;
+    .milestone_input  {
+      font-size: 25px;
+      width: 56px;
+      margin-left: -5px;
+    }
+  }
+
+  .skill-input {
+    font-size: 18px;
+    width: 274px !important;
+    margin: 0 auto;
+    input {
+      font-size: 30px;
+    }
+  }
+
+  .wrapper.typo {
+    font-size: 18px;
+    width: 287px;
+    margin: 0 auto;
+
+    input {
+      font-size: 30px;
+    }
+
+    a {
+      font-size: 30px;
+    }
+  }
+
+  .list.time_type {
+    font-size: 30px;
+    margin-right: -5px;
+    .blur {
+      height: 90px;
+      width: 110px;
+      right: 56px;
+      top: 52px;
+    }
+  }
+
+  .list.count_type {
+    font-size: 30px;
+    .blur {
+      height: 60px;
+      width: 135px;
+      right: 32px;
+      top: 40px;
+    }
+  }
+}
+
+// Mobile Landscape + Tablet portrait (768px)
+@media (min-width: 640px) and (max-width: 1023px) {
+  .skill-input {
+    width: 90%;
+  }
+  .wrapper.typo {
+    width: 90%;
+    font-size: 30px;
+  }
+}
+
+// Tablet landscape
+@media (min-width: 1024px) {
+
 }

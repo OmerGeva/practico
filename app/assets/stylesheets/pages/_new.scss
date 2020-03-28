@@ -105,3 +105,14 @@ input[type=checkbox]:checked + label {
 .orange {
   color: $orange !important;
 }
+
+// MEDIA QUERIES
+@media (max-width: 768px) {
+  .proofs {
+    width: 287px;
+  }
+  .new-ch {
+    margin: 12px 0 8px 0;
+    font-size: 30px;
+  }
+}

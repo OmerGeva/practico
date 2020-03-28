@@ -68,12 +68,10 @@
 
 .new-challenge-card {
   background-color: rgba(255, 255, 255, .7);
-  // backdrop-filter: blur(6px);
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 16px;
 }
-
 
 // --- CHALLENGE PAGE ---
 
@@ -188,5 +186,12 @@
   text {
     font-family: $body-font;
     font-size: 13px;
+  }
+}
+
+// MEDIA QUERIES
+@media (max-width: 768px) {
+  .new-challenge-card {
+    padding: 12px;
   }
 }

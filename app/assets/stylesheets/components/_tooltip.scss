@@ -2,49 +2,6 @@
   cursor: pointer;
 }
 
-//
-
-.tooltipp {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltipp .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background: rgba(255,255,255,0.9);
-  color: $dark;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-
-  /* Position the tooltip */
-  position: absolute;
-  width: 120px;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -60px;
-
-  z-index: 100;
-}
-
-.tooltipp .tooltiptext::after {
-  content: " ";
-  position: absolute;
-  top: 100%; /* At the bottom of the tooltip */
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgba(255,255,255,0.9) transparent transparent transparent;
-}
-
-.tooltipp:hover .tooltiptext {
-  visibility: visible;
-}
-
-///
-
 .help-tip{
     position: absolute;
     top: 18px;
@@ -126,4 +83,59 @@
 @keyframes fadeIn {
     0% { opacity:0; }
     100% { opacity:100%; }
+}
+
+// TOOLTIP FROM W3SCHOOLS
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin: 6px 4px !important;
+  opacity: 1;
+  .tooltiptext {
+    p {
+      margin: 0;
+    }
+    font-size: 16px;
+    visibility: hidden;
+    width: 120px;
+    background: rgba(255,255,255,0.95);
+    color: $dark;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    width: 150px;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    margin-left: -60px;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    /* Tooltip arrow */
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgba(255,255,255,0.9) transparent transparent transparent;
+    }
+  }
+
+  &:hover {
+    .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 }

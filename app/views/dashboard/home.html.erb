@@ -1,6 +1,6 @@
 <div class="dashboard-container">
 
-  <!-- ROW 1 -->
+  <!-- USER SECTION -->
   <div class='user-row'>
     <!-- USER INFO -->
     <div class="user-info">
@@ -47,19 +47,14 @@
       <% else %>
         <div class='achievements-row'>
           <% current_user.wins.each do |win|%>
-            <div class="tooltipp">
-              <span class="tooltiptext">
-                <h4 style='font-size: 16px;'><%= win.challenge.skill.title.titleize %></h4>
-                <!-- <h4>Winner: </h4><p><%= "#{win.user.first_name} #{win.user.last_name}" %></p> -->
-                <% unless win.date.nil? %>
-
-                  <p><%= win.date.strftime('%e %B %Y') %></p>
-                <% end %>
-              </span>
-              <button type="button" class="btn-invite-friends" style="pointer-events: none;" data-toggle="modal" data-target="#exampleModalCenter" disabled>
-                <%= image_tag('trophy.png', height: '62') %>
-              </button>
-            </div>
+          <div class="tooltip"><%= image_tag('trophy.png', height: '62') %>
+            <span class="tooltiptext">
+              <h4><%= win.challenge.skill.title.titleize %></h4>
+              <% unless win.date.nil? %>
+                <p><%= win.date.strftime('%e %B %Y') %></p>
+              <% end %>
+            </span>
+          </div>
           <% end %>
         </div>
       <% end %>
@@ -195,20 +190,6 @@
         <h2 class="text-center">You have no challenges</h2>
         <div class="d-flex justify-content-center">
           <img src="https://media.giphy.com/media/Y1SHDT7tgQnphf3ihK/giphy.gif" alt="gif">
-
-          <!-- SVG SPACE GHOST GIF -->
-<!--      <svg xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" class="home-animation">
-            <defs>
-              <mask id="MASK" maskunits="userSpaceOnUse"
-              maskcontentunits="userSpaceOnUse">
-              <image xlink:href="https://media.giphy.com/media/3o85xyj0M45c9MkXhS/giphy.gif"
-              height="100%"
-              width="100%"/>
-              </mask>
-            </defs>
-            <image mask="url(#MASK)" x="0" y="-20%" class="space" xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/space.jpg"
-            height="198%" width="200%"/>
-          </svg> -->
 
         </div>
         <div class="d-flex justify-content-around">

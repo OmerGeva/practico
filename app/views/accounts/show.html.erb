@@ -75,31 +75,23 @@
 
     <!-- ACHIEVEMENTS -->
     <div class="achievements">
-
-      <h4 class='marker mb-3' data-content="Achievements">Achievements</h4>
-      <% if @user.wins.count.zero? %>
+      <h4 class='marker' data-content="Achievements">Achievements</h4>
+      <% if current_user.wins.count.zero? %>
         <p class='grey'>No achievements yet.<br>Increase the effort or start a new challenge!</p>
       <% else %>
-        <% @user.wins.each do |win|%>
-
-        <div class="tooltipp">
-          <span class="tooltiptext">
-            <h4 style='font-size: 16px;'><%= win.challenge.skill.title.titleize %></h4>
-            <!-- <h4>Winner: </h4><p><%= "#{win.user.first_name} #{win.user.last_name}" %></p> -->
-            <% unless win.date.nil? %>
-
-              <p><%= win.date.strftime('%e %B %Y') %></p>
-            <% end %>
-          </span>
-          <button type="button" class="btn-invite-friends" style="pointer-events: none;" data-toggle="modal" data-target="#exampleModalCenter" disabled>
-            <%= image_tag('trophy.png', height: '74') %>
-
-          </button>
+        <div class='achievements-row'>
+          <% current_user.wins.each do |win|%>
+          <div class="tooltip"><%= image_tag('trophy.png', height: '62') %>
+            <span class="tooltiptext">
+              <h4><%= win.challenge.skill.title.titleize %></h4>
+              <% unless win.date.nil? %>
+                <p><%= win.date.strftime('%e %B %Y') %></p>
+              <% end %>
+            </span>
+          </div>
+          <% end %>
         </div>
-
-        <% end %>
       <% end %>
-
     </div>
 
     <!-- CURRENT CHALLENGES -->
@@ -124,4 +116,5 @@
 
 </div>
 </div>
+
 <%= javascript_pack_tag 'avatar_uploader' %>

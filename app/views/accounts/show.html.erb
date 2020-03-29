@@ -1,6 +1,6 @@
 <!-- MAIN HEADER -->
 <div class='user-header'>
-  <h1 class="tw"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
+  <h1 class="tw new-ch"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
   <% if @user == current_user %>
     <!-- nothing -->
   <% elsif @user.friends_with?(current_user) %>

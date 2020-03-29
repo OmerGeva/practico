@@ -1,6 +1,5 @@
 .login-card {
   display: flex;
-  height: 60vh;
   width: 60vw;
   margin: auto;
   border-radius: 10px;
@@ -34,7 +33,7 @@
 
 .login-card-details {
   width: 50%;
-  padding: 16px;
+  padding: 46px 16px;
   align-self: center;
 
   .user_first_name {
@@ -115,4 +114,3 @@
     margin-bottom: -64px;
   }
 }
-

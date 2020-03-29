@@ -106,10 +106,6 @@ input[type=checkbox]:checked + label {
   color: $orange !important;
 }
 
-.new-ch {
-  text-align: center;
-}
-
 // MEDIA QUERIES
 @media (max-width: 768px) {
   .proofs {

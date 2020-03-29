@@ -22,7 +22,7 @@
   <ul class="nav flex-column bg-white mb-0">
 
   <!-- DASHBOARD -->
-  <% if current_page?(root_url) || current_page?('/dashboard') %>
+  <% if current_page?(root_url) %>
     <li class="nav-item-active">
       <%= link_to root_path do %>
       <img src="https://image.flaticon.com/icons/svg/1828/1828791.svg" alt="dashboard">

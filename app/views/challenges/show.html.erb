@@ -1,8 +1,7 @@
-<h1 class="tw new-ch"><%= @challenge.skill.title %></h1>
+<h1 class="text-center tw"><%= @challenge.skill.title %></h1>
 
 <div class="main-challenge-container">
 
-  <!-- CHALLENGE ACTIONS -->
   <div class="challenge-actions">
     <!-- CHECK-IN BUTTON -->
     <div class='check-in-show'>
@@ -11,6 +10,7 @@
         <p>Check In</p>
       </div>
     </div>
+
     <!-- SCHEDULE BUTTON -->
     <% if @users_challenge.scheduled %>
       <%= link_to events_path do %>
@@ -26,151 +26,151 @@
     <% end %>
   </div>
 
-  <!-- MODAL -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title text-center" id="exampleModalLabel">Check In</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <%= render 'check_in', challenge: @challenge, check_in: CheckIn.new %>
+
+      <!-- MODAL -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center" id="exampleModalLabel">Check In</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= render 'check_in', challenge: @challenge, check_in: CheckIn.new %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- CHALLENGE CONTAINER -->
-  <div class="challenge-container">
-    <!-- FIRST COLUMN -->
-    <div>
+    <div class="challenge-container">
       <!-- CHALLENGE LEADERBOARD -->
-      <div class="challenge-page-card mb-4" style='position: relative;'>
-        <% counter = 1 %>
-        <h2 class='mb-3'>Challenge Leaderboard</h2>
-        <div>
-          <% @challenge.users.order(user_progress: :desc).each do |user| %>
-            <% @progress = ((UsersChallenge.find_by(challenge_id: @challenge.id, user_id: user.id).user_progress/@challenge.milestone)*100).round %>
-            <div class="row d-block align-items-center mb-2">
-              <div class='d-flex align-items-center'>
-                <h6 class="my-0 mx-2"><%= counter%></h6>
-                <%= cl_image_tag user.photo, class: 'avatar-small mr-2', alt: "avatar" %>
-                <% counter +=1 %>
-                <p class='mt-0'><strong>@<%= user.username %> </strong>: <%= @challenge.users_challenges.find_by(user: user).user_progress.round %> <%= @challenge.time_type %></p>
+      <div>
+        <div class="challenge-page-card mb-4" style='position: relative;'>
+          <% counter = 1 %>
+          <h2 class='mb-3'>Challenge Leaderboard</h2>
+          <div>
+            <% @challenge.users.order(user_progress: :desc).each do |user| %>
+              <% @progress = ((UsersChallenge.find_by(challenge_id: @challenge.id, user_id: user.id).user_progress/@challenge.milestone)*100).round %>
+              <div class="row d-block align-items-center mb-2">
+                <div class='d-flex align-items-center'>
+                  <h6 class="my-0 mx-2"><%= counter%></h6>
+                  <%= cl_image_tag user.photo, class: 'avatar-small mr-2', alt: "avatar" %>
+                  <% counter +=1 %>
+                  <p class='mt-0'><strong>@<%= user.username %> </strong>: <%= @challenge.users_challenges.find_by(user: user).user_progress.round %> <%= @challenge.time_type %></p>
+                </div>
+                <div style='margin: -2px 0 12px 62px;'>
+                  <progress class="skill-1 mb-0 mt-2" style='width: 180px;' max="100" value="<%= @progress %>">
+                  </progress>
+                </div>
               </div>
-              <div style='margin: -2px 0 12px 62px;'>
-                <progress class="skill-1 mb-0 mt-2" style='width: 180px;' max="100" value="<%= @progress %>">
-                </progress>
-              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- PERSONAL STATS -->
+        <div class="challenge-page-card d-flex justify-content-between mb-4">
+          <div>
+            <h2 class='mb-3'>Challenge Personal Stats</h2>
+            <p><strong>Your progress:</strong> <%= @challenge.users_challenges.find_by(user: current_user).user_progress.round %> <%= @challenge.time_type %></p>
+            <p><strong>Current Streak:</strong> <%= @streak %> days</p>
+          </div>
+
+          <% @user_progress = ((@users_challenge.user_progress/@challenge.milestone)*100).round %>
+
+          <div class="single-chart-small" style='z-index: 100; width: 150px;'>
+              <svg viewBox="0 0 36 36" class="circular-chart blue">
+                <path class="circle-bg"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <path class="circle"
+                  stroke-dasharray="<%= @user_progress %>, 100"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <text x="18" y="20.35" class="percentage"><%= @user_progress %>%</text>
+              </svg>
             </div>
-          <% end %>
         </div>
+
+        <!-- THE STAKES -->
+
+        <div class="challenge-page-card stakes">
+          <h2 class='mb-3'>The Stakes</h2>
+          <div class='mb-2'><i class="fas fa-smile-wink orange"></i><p>Winner <%= @challenge.first_place %></p></div>
+          <div><i class="fas fa-frown turq"></i><p>Loser <%= @challenge.last_place %></p></div>
+        </div>
+
       </div>
 
-      <!-- PERSONAL STATS -->
-      <div class="challenge-page-card d-flex justify-content-between mb-4">
+
         <div>
-          <h2 class='mb-3'>Challenge Personal Stats</h2>
-          <p><strong>Your progress:</strong> <%= @challenge.users_challenges.find_by(user: current_user).user_progress.round %> <%= @challenge.time_type %></p>
-          <p><strong>Current Streak:</strong> <%= @streak %> days</p>
-        </div>
 
-        <% @user_progress = ((@users_challenge.user_progress/@challenge.milestone)*100).round %>
+        <!-- WEEK MONTH YEAR STATS -->
 
-        <div class="single-chart-small">
-            <svg viewBox="0 0 36 36" class="circular-chart blue">
-              <path class="circle-bg"
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-              <path class="circle"
-                stroke-dasharray="<%= @user_progress %>, 100"
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-              <text x="18" y="20.35" class="percentage"><%= @user_progress %>%</text>
-            </svg>
-        </div>
-      </div>
+          <div class="challenge-page-card mb-4" id="graph-challenge-card">
+            <script src="https://d3js.org/d3.v4.js"></script>
+            <div class="d-flex justify-content-around" style="height: 32px;">
+              <h4 id="week_button" class="mouse-hover"<% @weekly_user_check_ins.each do |user, value| %>
+              data-week-<%= user.first_name %>="<%= value.count %>"
+              <% end %>>Week</h4>
+              <h4 id="month_button" class="mouse-hover" <% @monthly_user_check_ins.each do |user, value| %>
+              data-month-<%= user.first_name %>="<%= value.count %>"
+              <% end %>>Month</h4>
+              <h4 id="year_button" class="mouse-hover" <% @yearly_user_check_ins.each do |user, value| %>
+              data-year-<%= user.first_name %>="<%= value.count %>"
+              <% end %>>Year</h4>
+            </div>
+            <h2 class="text-center mt-2">Number of check-ins</h2>
+            <div id="week_month_year"></div>
+          </div>
 
-      <!-- THE STAKES -->
-      <div class="challenge-page-card stakes">
-        <h2 class='mb-3'>The Stakes</h2>
-        <div class='mb-2'><i class="fas fa-smile-wink orange"></i><p>Winner <%= @challenge.first_place %></p></div>
-        <div><i class="fas fa-frown turq"></i><p>Loser <%= @challenge.last_place %></p></div>
-      </div>
-    </div>
-
-    <!-- SECOND COLUMN -->
-    <div>
-      <!-- WEEK MONTH YEAR STATS -->
-      <div class="challenge-page-card mb-4" id="graph-challenge-card">
-        <script src="https://d3js.org/d3.v4.js"></script>
-        <div class="d-flex justify-content-around" style="height: 32px;">
-          <h4 id="week_button" class="mouse-hover"<% @weekly_user_check_ins.each do |user, value| %>
-          data-week-<%= user.first_name %>="<%= value.count %>"
-          <% end %>>Week</h4>
-          <h4 id="month_button" class="mouse-hover" <% @monthly_user_check_ins.each do |user, value| %>
-          data-month-<%= user.first_name %>="<%= value.count %>"
-          <% end %>>Month</h4>
-          <h4 id="year_button" class="mouse-hover" <% @yearly_user_check_ins.each do |user, value| %>
-          data-year-<%= user.first_name %>="<%= value.count %>"
-          <% end %>>Year</h4>
-        </div>
-        <h2 class="text-center mt-2">Number of check-ins</h2>
-        <div id="week_month_year"></div>
-      </div>
-
-      <!-- RECENT CHECK-INS -->
-      <div class="challenge-page-card">
-        <h2 class="mb-3">Recent Check-ins</h2>
-        <% if @challenge.check_ins.empty? %>
-          <p class='grey'>No check-ins yet</p>
-        <% else %>
-          <% @challenge.check_ins.last(3).each do |check_in|%>
-            <div class="recent-check-in" >
-              <div>
-                <h5><%= "#{check_in.users_challenge.user.first_name} #{check_in.users_challenge.user.last_name}" %></h5>
-                <p><i class="fas fa-calendar-day"></i> <%= check_in.date.strftime('%e %B %Y') %></p>
-                <% if check_in.duration %>
-                  <p><i class="fas fa-hourglass-half"></i> <%= check_in.duration %> hours</p>
-                <% end %>
-              </div>
-              <% if check_in.photo.filename %>
-                <%= cl_image_tag check_in.photo %>
-              <% else %>
-                <%= image_tag 'login-img.png' %>
+          <!-- RECENT CHECK-INS -->
+          <div class="challenge-page-card">
+            <h2 class="mb-3">Recent Check-ins</h2>
+            <% if @challenge.check_ins.empty? %>
+              <p class='grey'>No check-ins yet</p>
+            <% else %>
+              <% @challenge.check_ins.last(3).each do |check_in|%>
+                <div class="recent-check-in" >
+                  <div>
+                    <h5><%= "#{check_in.users_challenge.user.first_name} #{check_in.users_challenge.user.last_name}" %></h5>
+                    <p><i class="fas fa-calendar-day"></i> <%= check_in.date.strftime('%e %B %Y') %></p>
+                    <% if check_in.duration %>
+                      <p><i class="fas fa-hourglass-half"></i> <%= check_in.duration %> hours</p>
+                    <% end %>
+                  </div>
+                  <% if check_in.photo.filename %>
+                    <%= cl_image_tag check_in.photo %>
+                  <% else %>
+                    <%= image_tag 'login-img.png' %>
+                  <% end %>
+                </div>
               <% end %>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
+            <% end %>
+          </div>
+        </div>
     </div>
   </div>
-
-</div>
-
-<!-- CHAT -->
-<div class="chat-board chat-sticky">
-  <div class="chat-header text-center w-100"><h4>Message Board</h4></div>
-  <div class="messages" style="height: 200px">
-    <% @chat_room.messages.each do |message| %>
-    <%= render 'message', message: message, user_is_messages_author: message.user == current_user %>
-    <% end %>
+  <div class="chat-board chat-sticky">
+    <div class="chat-header text-center" style="width: 100%"><h4>Message Board</h4></div>
+    <div class="messages" style="height: 200px">
+      <% @chat_room.messages.each do |message| %>
+      <%= render 'message', message: message, user_is_messages_author: message.user == current_user %>
+      <% end %>
+    </div>
+    <div id="create-message">
+      <%= simple_form_for [@chat_room, Message.new], remote: true do |f| %>
+      <%= f.input :content, label: false, id: "message-content" %>
+      <%= f.submit value: 'Send Message', class:'btn btn-outline-primary' %>
+      <% end %>
   </div>
-  <div id="create-message">
-    <%= simple_form_for [@chat_room, Message.new], remote: true do |f| %>
-    <%= f.input :content, label: false, id: "message-content" %>
-    <%= f.submit value: 'Send Message', class:'btn btn-outline-primary' %>
-    <% end %>
-</div>
-
-<% content_for :after_js do %>
+  <% content_for :after_js do %>
   <script>
     scrollLastMessageIntoView();
     App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create(
@@ -184,4 +184,4 @@
       }
     })
   </script>
-<% end %>
+  <% end %>

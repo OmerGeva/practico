@@ -4,20 +4,13 @@
   overflow-y: auto;
 }
 
-.modal-backdrop {
-  position: relative;
-  display: none;
-}
+.modal-backdrop {position: relative;}
 
 .modal-dialog {
   max-width: 600px;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  margin: auto;
 }
 .modal-content {
-  z-index: 2000;
+  z-index: 100;
   border-radius: 10px;
   border: none;
   background: white;

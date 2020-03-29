@@ -1,3 +1,7 @@
+= require jquery3
+= require jquery_ujs
+= require_tree .
+
 import "bootstrap";
 
 import "../plugins/flatpickr"
@@ -16,7 +20,6 @@ import  'ion-rangeslider/css/ion.rangeSlider.css';
 import { timer } from '../components/timer';
 import { setupCreateChallengePage } from '../components/create-challenge'
 import { checkBox } from '../components/checkbox';
-
 
 initSweetAlertDeleteFriend();
 

@@ -4,7 +4,7 @@
   <h4 class='text-center' style="color: #f26d52"><strong><%= @challenge.skill.title %></strong></h3>
   <p class='text-center'>Goal: <%= @challenge.milestone %> <%= @challenge.time_type %> <%= @challenge.count_type %></p>
 <center>
-  <div class='schedule-container'>
+  <div class='d-table justify-content-center'>
   <div class='weekdays'>
     <h4 class='mb-4'>Choose weekdays:</h4>
     <% unless @challenge.time_type == 'days' && @challenge.count_type == 'in a row' %>
@@ -12,40 +12,35 @@
       <% counter = 0 %>
       <%= form_with  url: challenge_schedule_path(@challenge), local: true do |f| %>
 
-      <div class='weekdays-container'>
-        <div>
-          <div>
-            <input type="checkbox" class="hidden" name="daysunday" id="daysunday" value="1" class='mr-2'>
-            <label for="daysunday"><h4 class="mb-0">Sun</h4></label>
-          </div>
-          <div>
-            <input type="checkbox" class="hidden" name="daymonday" id="daymonday" value="1" class='mr-2'>
-            <label for="daymonday"><h4 class='mb-0'>Mon</h4></label>
-          </div>
-          <div>
-            <input type="checkbox" class="hidden" name="daytuesday" id="daytuesday" value="1" class='mr-2'>
-            <label for="daytuesday"><h4 class='mb-0'>Tue</h4></label>
-          </div>
-        </div>
-        <div>
-          <div>
-            <input type="checkbox" class="hidden" name="daywednesday" id="daywednesday" value="1" class='mr-2'>
-            <label for="daywednesday"><h4 class='mb-0'>Wed</h4></label>
-          </div>
-          <div>
-            <input type="checkbox" class="hidden" name="daythursday" id="daythursday" value="1" class='mr-2'>
-            <label for="daythursday"><h4 class='mb-0'>Thu</h4></label>
-          </div>
-          <div>
-            <input type="checkbox" class="hidden" name="dayfriday" id="dayfriday" value="1" class='mr-2'>
-            <label for="dayfriday"><h4 class='mb-0'>Fri</h4></label>
-            <% check_box_tag "dayfriday" %>
-          </div>
-          <div>
-            <input type="checkbox" class="hidden" name="daysaturday" id="daysaturday" value="1" class='mr-2'>
-            <label for="daysaturday"><h4 class='mb-0'>Sat</h4></label>
-          </div>
-        </div>
+
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="daysunday" id="daysunday" value="1" class='mr-2'>
+        <label for="daysunday"><h4 class="mb-0">Sun</h4></label>
+      </div>
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="daymonday" id="daymonday" value="1" class='mr-2'>
+        <label for="daymonday"><h4 class='mb-0'>Mon</h4></label>
+      </div>
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="daytuesday" id="daytuesday" value="1" class='mr-2'>
+        <label for="daytuesday"><h4 class='mb-0'>Tue</h4></label>
+      </div>
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="daywednesday" id="daywednesday" value="1" class='mr-2'>
+        <label for="daywednesday"><h4 class='mb-0'>Wed</h4></label>
+      </div>
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="daythursday" id="daythursday" value="1" class='mr-2'>
+        <label for="daythursday"><h4 class='mb-0'>Thu</h4></label>
+      </div>
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="dayfriday" id="dayfriday" value="1" class='mr-2'>
+        <label for="dayfriday"><h4 class='mb-0'>Fri</h4></label>
+      <% check_box_tag "dayfriday" %>
+      </div>
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="hidden" name="daysaturday" id="daysaturday" value="1" class='mr-2'>
+        <label for="daysaturday"><h4 class='mb-0'>Sat</h4></label>
       </div>
     </div>
 

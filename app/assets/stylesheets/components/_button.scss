@@ -177,6 +177,14 @@ img[alt="schedule"] {
   }
 }
 
+.fa-user-minus {
+  cursor: pointer;
+  color: $turq !important;
+  &:hover {
+    color: $dark-turq !important;
+  }
+}
+
 .btn-search {
   color: $turq;
   border: 1px solid #ECECEC;
@@ -191,12 +199,79 @@ img[alt="schedule"] {
 .fa-user-check {
   padding-right: 6px;
   font-size: 18px;
+  &:hover {
+    color: $dark-orange;
+  }
 }
 
 .fa-user-times {
   color: $turq;
   font-size: 18px;
   padding-right: 6px;
+  &:hover {
+    color: $dark-turq;
+  }
+}
+
+.add-friend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  background: $orange;
+  color: white;
+  font-size: 18px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  z-index: 1000;
+  &:hover {
+    color: white;
+    background: $dark-orange;
+  }
+}
+
+.check-in-show {
+  cursor: pointer;
+  &:hover {
+    .fa-check-circle {
+      opacity: 1;
+    }
+  }
+  .fa-check-circle {
+    opacity: 0.85;
+    font-size: 36px;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    margin-left: 20px;
+    margin-right: 8px;
+  }
+  p {
+    margin: 0;
+    margin-right: 12px;
+    color: white;
+  }
+}
+
+.schedule-div {
+  color: white;
+  display: flex;
+  align-items: center;
+  &:hover {
+    .schedule-icon {
+      opacity: 1;
+    }
+  }
+  .schedule-icon {
+    margin-right: 16px;
+    height: 38px;
+    filter: invert(1);
+    margin-left: 12px;
+  }
+  p {
+    margin: 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -208,5 +283,11 @@ img[alt="schedule"] {
     height: 38px;
     width: 38px;
     font-size: 19px;
+  }
+  .add-friend {
+    font-size: 20px;
+    height: 48px;
+    width: 48px;
+    margin: 0;
   }
 }

@@ -31,6 +31,39 @@
   }
 }
 
+.user-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 60px;
+  text-align: center;
+  h1 {
+    margin: 0;
+  }
+  .add-friend {
+    margin-left: 14px;
+  }
+  .fa-user-minus {
+    color: white !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    background: $turq;
+    color: white;
+    font-size: 18px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    z-index: 1000;
+    margin-left: 14px;
+    &:hover {
+      color: white !important;
+      background: $dark-turq;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .user-profile-container {
     grid-template-columns: 1fr;
@@ -49,5 +82,23 @@
 
   .avatar-upload {
     margin: 12px auto 24px auto !important;
+  }
+
+  .user-header {
+    flex-direction: column;
+    margin: 8px 0 0 0;
+    .fa-user-minus {
+      font-size: 20px;
+      background: $light-turq;
+      height: 48px;
+      width: 48px;
+      margin: 0 !important;
+    }
+  }
+  .add-friend {
+    font-size: 20px;
+    height: 48px;
+    width: 48px;
+    margin: 0 !important;
   }
 }

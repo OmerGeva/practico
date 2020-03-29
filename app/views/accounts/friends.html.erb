@@ -17,35 +17,47 @@
       <!-- PENDING REQUESTS -->
       <div class="challenge-page-card">
         <h2 class='mb-2'>Pending Requests</h2>
-        <% @user.pending_friends.each do |friend| %>
-        <div class="notification-card">
-          <div class="d-flex align-items-center">
-            <%= cl_image_tag friend.photo, alt: "user avatar", class: 'avatar-small mr-2' %>
-            <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}"  %>
+        <% if @user.pending_friends.empty? %>
+          <p class='grey'>No pending requests</p>
+        <% else %>
+          <% @user.pending_friends.each do |friend| %>
+          <div class="notification-card">
+            <div class="d-flex align-items-center">
+              <%= link_to account_path(friend), class: 'text-dark' do %>
+                <%= cl_image_tag friend.photo, alt: "user avatar", class: 'avatar-small mr-2' %>
+                <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}" %>
+              <% end %>
+            </div>
           </div>
-        </div>
+          <% end %>
         <% end %>
       </div>
       <!-- FRIEND REQUESTS -->
       <div class="challenge-page-card">
         <h2 class="mb-2">Friend Requests</h2>
-        <% @user.requested_friends.each do |friend| %>
-        <div class="notification-card">
-          <div class="d-flex align-items-center">
-            <%= cl_image_tag friend.photo, alt: "user avatar", class: 'avatar-small mr-2' %>
-            <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}"  %>
-          </div>
-          <div class='accept-decline'>
-            <!-- DECLINE -->
-            <%= link_to decline_friend_account_path(friend), method: :delete do %>
-              <i class="fas fa-user-times"></i>
-            <% end %>
-            <!-- ACCEPT -->
-            <%= link_to accept_friend_account_path(friend), method: :post do %>
-              <i class="fas fa-user-check"></i>
-            <% end %>
-          </div>
-        </div>
+        <% if @user.requested_friends.empty? %>
+          <p class='grey'>No friend requests</p>
+        <% else %>
+          <% @user.requested_friends.each do |friend| %>
+            <div class="notification-card">
+              <div class="d-flex align-items-center">
+                <%= link_to account_path(friend), class: 'text-dark' do %>
+                  <%= cl_image_tag friend.photo, alt: "user avatar", class: 'avatar-small mr-2' %>
+                  <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}"  %>
+                <% end %>
+              </div>
+              <div class='accept-decline'>
+                <!-- DECLINE -->
+                <%= link_to decline_friend_account_path(friend), method: :delete do %>
+                  <i class="fas fa-user-times"></i>
+                <% end %>
+                <!-- ACCEPT -->
+                <%= link_to accept_friend_account_path(friend), method: :post do %>
+                  <i class="fas fa-user-check"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -56,25 +68,27 @@
 
         <h2 class='mb-3'>Friends</h2>
         <ul class="mt-2 pl-0">
-        <% @user.friends.each do |friend| %>
-            <li class='d-flex justify-content-between user-friend'>
-              <div class="d-flex align-items-center">
-              <%= link_to account_path(friend) do%>
-
-              <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar-large" %>
-
-              <span class="friend-username"><%= friend.username %></span>
-              <% end %>
-              </div>
-              <% if @user == current_user %>
-              <i class="fas fa-user-minus mouse-hover mt-3 mr-2" id="remove-friend-btn" data-friendId="<%= friend.id %>"></i>
-                <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;"%>
-              <% elsif !friend.friends_with?(current_user) %>
-                <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
-              <% end %>
-            </li>
+        <% if @user.friends.empty? %>
+          <p class='grey'>Looks like it's time to add some friends!</p>
+        <% else %>
+          <% @user.friends.each do |friend| %>
+              <li class='d-flex justify-content-between user-friend'>
+                <div class="d-flex align-items-center">
+                <%= link_to account_path(friend) do %>
+                  <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar-large" %>
+                  <span class="friend-username"><%= friend.username %></span>
+                <% end %>
+                </div>
+                <% if @user == current_user %>
+                <i class="fas fa-user-minus mt-3 mr-2" id="remove-friend-btn" data-friendId="<%= friend.id %>"></i>
+                  <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;"%>
+                <% elsif !friend.friends_with?(current_user) %>
+                  <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
+                <% end %>
+              </li>
+          <% end %>
         <% end %>
-          </ul>
+        </ul>
       </div>
     </div>
   </div>

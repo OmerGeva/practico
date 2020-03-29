@@ -1,8 +1,16 @@
 <!-- MAIN HEADER -->
-<h1 class="text-center tw"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
-<div class="text-right">
-  <% unless @user == current_user && !current_user.friends_with?(@user)%>
-  <%= link_to "Add Friend", request_friend_account_path(@user), method: :post, class: "btn btn-primary" %>
+<div class='user-header'>
+  <h1 class="tw"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
+  <% if @user == current_user %>
+    <!-- nothing -->
+  <% elsif @user.friends_with?(current_user) %>
+    <%= link_to request_friend_account_path(@user), method: :post do %>
+      <i class="fas fa-user-minus"></i>
+    <% end %>
+  <% else %>
+    <%= link_to request_friend_account_path(@user), method: :post, class: 'add-friend' do %>
+      <i class="fas fa-user-plus"></i>
+    <% end %>
   <% end %>
 </div>
 
@@ -33,23 +41,31 @@
     <!-- FRIENDS -->
     <div class="challenge-page-card user-friends">
       <h2 class='mb-3'>Friends</h2>
-      <% @user.friends.each do |friend| %>
-        <div class='user-friend'>
-          <div class="d-flex justify-content-between">
-            <%= link_to account_path(friend) do %>
-              <div class='d-flex align-items-center'>
-                <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar-small" %>
-                <p class='m-0 pl-2' style="color: black;"><%= friend.username %></p>
-              </div>
-            <% end %>
-            <% if @user == current_user %>
-              <i class="fas fa-user-minus mouse-hover mt-1 mr-2" style="font-size: 16px; color: rgb(237, 70, 45);" id="remove-friend-btn" data-friendId="<%= friend.id %>"></i>
-              <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "btn btn-primary btn-sm ml-5",  data: { friendId: friend.id }, style: "position: absolute; top: -1000px;"%>
-            <% elsif !friend.friends_with?(current_user) %>
-              <%= link_to "Add Friend", request_friend_account_path(friend), method: :post, class: "btn btn-primary" %>
-            <% end %>
+      <% if @user.friends.empty? %>
+        <p class='grey'>Looks like it's time to add some friends!</p>
+      <% else %>
+        <% @user.friends.each do |friend| %>
+          <div class='user-friend'>
+            <div class="d-flex justify-content-between">
+              <%= link_to account_path(friend) do %>
+                <div class='d-flex align-items-center'>
+                  <%= cl_image_tag friend.photo, alt: "user avatar", class: "avatar-small" %>
+                  <p class='m-0 pl-2 text-dark'><%= friend.username %></p>
+                </div>
+              <% end %>
+              <% if friend == current_user %>
+                <!-- nothing -->
+              <% elsif !current_user.friends_with?(friend) %>
+                <%= link_to request_friend_account_path(friend), method: :post do %>
+                  <i class="fas fa-user-plus mr-2"></i>
+                <% end %>
+              <% else %>
+                <i class="fas fa-user-minus mt-1 mr-2" id="remove-friend-btn" data-friendId="<%= friend.id %>"></i>
+                <%= link_to "Unfriend",  delete_friend_account_path(friend), method: :delete, id: "remove-friend-#{friend.id}", class: "d-none",  data: { friendId: friend.id } %>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -61,7 +77,9 @@
     <div class="achievements">
 
       <h4 class='marker mb-3' data-content="Achievements">Achievements</h4>
-      <% unless @user.wins.count.zero? %>
+      <% if @user.wins.count.zero? %>
+        <p class='grey'>No achievements yet.<br>Increase the effort or start a new challenge!</p>
+      <% else %>
         <% @user.wins.each do |win|%>
 
         <div class="tooltipp">

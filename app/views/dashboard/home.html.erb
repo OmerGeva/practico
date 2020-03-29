@@ -43,7 +43,7 @@
     <div class="achievements">
       <h4 class='marker' data-content="Achievements">Achievements</h4>
       <% if current_user.wins.count.zero? %>
-        <p>You have no achievements</p>
+        <p class='grey'>You have no achievements so far</p>
       <% else %>
         <div class='achievements-row'>
           <% current_user.wins.each do |win|%>
@@ -100,8 +100,10 @@
         <% current_user.requested_friends.each do |friend| %>
         <div class="notification-card">
           <div class="d-flex align-items-center">
-            <%= cl_image_tag friend.photo, alt: "user avatar", class: 'avatar-small mr-2' %>
-            <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}" %>
+            <%= link_to account_path(friend), class: 'text-dark' do %>
+              <%= cl_image_tag friend.photo, alt: "user avatar", class: 'avatar-small mr-2' %>
+              <%= "#{friend.first_name.capitalize} #{friend.last_name.capitalize}" %>
+            <% end %>
           </div>
           <div class='accept-decline'>
             <!-- DECLINE -->
@@ -121,7 +123,7 @@
           current_user.users_challenges.each do |users_challenge| %>
               <% users_challenge.unread.nil? %>
           <% end %>
-        <p>You have no notifications</p>
+        <p class='grey'>You have no notifications</p>
       <% end %>
     </div>
 
@@ -154,13 +156,13 @@
 
           <% end %>
           <p><i class="fas fa-bullseye"></i><strong>Goal: </strong><%= challenge.milestone %> <%= challenge.time_type %> <%= challenge.count_type %></p>
-          <p><i class="fas fa-calendar-day"></i><strong>Start: </strong><%= challenge.starting_date.strftime('%e %B %Y') %></p>
+          <p><i class="fas fa-calendar-day"></i><strong>Start: </strong><%= challenge.starting_date.strftime('%e %b %Y') %></p>
           <% if user_challenge.accepted %>
             <!-- CHECK-IN BUTTON -->
             <div class='check-in-div'>
               <p>Check In</p>
               <div class='check-in-btn' data-toggle="modal" data-target="#exampleModal<%= user_challenge.challenge.id%>">
-            </div>
+              </div>
             </div>
             <div class="dashboard-avatars">
               <% challenge.users.each do |user| %>

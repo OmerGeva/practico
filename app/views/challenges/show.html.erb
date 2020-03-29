@@ -1,21 +1,28 @@
 <h1 class="text-center tw"><%= @challenge.skill.title %></h1>
-<%#= link_to "Check in", new_challenge_check_in_path(@challenge), class: 'btn btn-secondary' %>
+
 <div class="d-flex justify-content-between align-items-center">
   <div class="container">
     <div class="grid">
       <div class="row d-flex justify-content-between">
 
-        <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#exampleModal">
-          Check in
-        </button>
+        <!-- CHECK-IN BUTTON -->
+        <div class='check-in-show'>
+          <div data-toggle="modal" data-target="#exampleModal" class='d-flex align-items-center'>
+            <i class="fas fa-check-circle"></i>
+            <p>Check In</p>
+          </div>
+        </div>
 
         <% if @users_challenge.scheduled %>
-          <%= link_to events_path do%>
-          <img src="https://image.flaticon.com/icons/svg/61/61469.svg" alt="schedule">
+          <%= link_to events_path do %>
+          <img src="https://image.flaticon.com/icons/svg/61/61469.svg" class="schedule-icon" alt="schedule">
           <% end %>
         <% else %>
-          <%= link_to challenge_schedule_path(@challenge) do%>
-          <img src="https://image.flaticon.com/icons/svg/61/61469.svg" style="height: 38px; filter: invert(1);" class="mr-3"alt="schedule">
+          <%= link_to challenge_schedule_path(@challenge) do %>
+            <div class='schedule-div'>
+              <p>Schedule</p>
+              <img src="https://image.flaticon.com/icons/svg/61/61469.svg" class="schedule-icon" alt="schedule">
+            </div>
           <% end %>
         <% end %>
       </div>
@@ -120,28 +127,32 @@
               data-year-<%= user.first_name %>="<%= value.count %>"
               <% end %>>Year</h4>
             </div>
-            <h2 class="text-center mt-2">Number of check ins</h2>
+            <h2 class="text-center mt-2">Number of check-ins</h2>
             <div id="week_month_year"></div>
           </div>
 
           <!-- RECENT CHECK-INS -->
           <div class="challenge-page-card">
             <h2 class="mb-2">Recent Check-ins:</h2>
-            <% @challenge.check_ins.last(3).each do |check_in|%>
-              <div class="recent-check-in" >
-                <div>
-                  <h5><%= "#{check_in.users_challenge.user.first_name} #{check_in.users_challenge.user.last_name}" %></h5>
-                  <p><i class="fas fa-calendar-day"></i> <%= check_in.date.strftime('%e %B %Y') %></p>
-                  <% if check_in.duration %>
-                    <p><i class="fas fa-hourglass-half"></i> <%= check_in.duration %> hours</p>
+            <% if @challenge.check_ins.empty? %>
+              <p class='grey'>No check-ins yet</p>
+            <% else %>
+              <% @challenge.check_ins.last(3).each do |check_in|%>
+                <div class="recent-check-in" >
+                  <div>
+                    <h5><%= "#{check_in.users_challenge.user.first_name} #{check_in.users_challenge.user.last_name}" %></h5>
+                    <p><i class="fas fa-calendar-day"></i> <%= check_in.date.strftime('%e %B %Y') %></p>
+                    <% if check_in.duration %>
+                      <p><i class="fas fa-hourglass-half"></i> <%= check_in.duration %> hours</p>
+                    <% end %>
+                  </div>
+                  <% if check_in.photo.filename %>
+                    <%= cl_image_tag check_in.photo %>
+                  <% else %>
+                    <%= image_tag 'login-img.png' %>
                   <% end %>
                 </div>
-                <% if check_in.photo.filename %>
-                  <%= cl_image_tag check_in.photo %>
-                <% else %>
-                  <%= image_tag 'login-img.png' %>
-                <% end %>
-              </div>
+              <% end %>
             <% end %>
           </div>
         </div>

@@ -74,12 +74,12 @@
 
     <div class="wagers">
       <div class='skill-input'>First place
-        <%= f.input :first_place, label: false, placeholder: 'gets free lunch' %>
+        <%= f.input :first_place, label: false, placeholder: 'gets free lunch', input_html: {value: 'gets free lunch'} %>
       <div class='underline'></div>
       </div>
 
       <div class='skill-input'>Last place
-        <%= f.input :last_place, label: false, placeholder: 'buys the winner lunch' %>
+        <%= f.input :last_place, label: false, placeholder: 'buys lunch to the winner', input_html: {value: 'buys lunch to the winner'} %>
 
         <div class='underline'></div>
       </div>
@@ -103,30 +103,40 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
 
-                  <div class="friend-list">
-                    <input type="hidden" name="post[friend_ids][]" value="">
-                    <div class="friends-choices">
-                      <div class='row'>
+            <% if @friends.empty? %>
+              <div class="modal-body">
+                <p>Oops! Looks like you haven't added any friends yet</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+
+            <% else %>
+              <div class="modal-body">
+                <div class="friend-list">
+                  <input type="hidden" name="post[friend_ids][]" value="">
+                  <div class="friends-choices">
+                    <div class='row'>
                       <% @friends.each do |friend| %>
-                      <div class='col-6'>
-                        <input type="checkbox" class="hidden" value="<%= friend.id %>" name="challenge[users][]" id="challenge_users_<%= friend.id %>">
-                        <label for="challenge_users_<%= friend.id %>">
-                          <%= cl_image_tag friend.photo, alt: "Friend avatar", class: "avatar-small" %>
-                          <p><%= friend.first_name %> <%= friend.last_name %></p>
-                          <i class="fas fa-plus-circle"></i>
-                        </label>
-                      </div>
+                        <div class='col-6'>
+                          <input type="checkbox" class="hidden" value="<%= friend.id %>" name="challenge[users][]" id="challenge_users_<%= friend.id %>">
+                          <label for="challenge_users_<%= friend.id %>">
+                            <%= cl_image_tag friend.photo, alt: "Friend avatar", class: "avatar-small" %>
+                            <p><%= friend.first_name %> <%= friend.last_name %></p>
+                            <i class="fas fa-plus-circle"></i>
+                          </label>
+                        </div>
                       <% end %>
                     </div>
-                     </div>
-                  </div>
+                   </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+              </div>
+            <% end %>
 
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-            </div>
           </div>
         </div>
       </div>

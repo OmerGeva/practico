@@ -2,13 +2,24 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 16px;
+  .challenge-page-card {
+    min-height: 180px;
+  }
 }
 
 .friend-username {
   margin-right: 0;
 }
 
+.user-friends {
+  min-height: auto;
+}
+
 .user-friend {
+  div:first-child {
+    margin-bottom: 8px;
+  }
+
   .friend-username {
     color: black;
   }
@@ -41,6 +52,9 @@
   .user-friend {
     i {
       font-size: 20px;
+    }
+    div:first-child {
+      margin-bottom: 8px;
     }
   }
 }

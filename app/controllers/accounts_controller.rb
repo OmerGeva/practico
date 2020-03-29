@@ -27,7 +27,7 @@ class AccountsController < ApplicationController
     current_user.friend_request(friended_user)
     skip_authorization
 
-    redirect_to account_path(current_user)
+    redirect_to friends_account_path(current_user)
   end
 
   def accept_friend
@@ -35,7 +35,7 @@ class AccountsController < ApplicationController
     current_user.accept_request(friended_user)
     skip_authorization
 
-    redirect_to friends_account_path(current_user)
+    redirect_back(fallback_location: root_path)
   end
 
   def decline_friend
@@ -51,7 +51,7 @@ class AccountsController < ApplicationController
     current_user.remove_friend(unfriended_user)
     skip_authorization
 
-    redirect_to account_path(current_user)
+    redirect_back(fallback_location: root_path)
   end
 
 end

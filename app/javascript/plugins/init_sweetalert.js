@@ -10,6 +10,7 @@ const initSweetAlertDeleteFriend = () => {
       swal("Are you sure?", {
         dangerMode: true,
         buttons: true,
+        buttons: ["Cancel", "Yes"],
       })
       .then((value) => {
         if (value) {

@@ -45,14 +45,10 @@
   margin: 16px 0;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, .85);
-  img {
-    margin: 4px 0;
-  }
 }
 
 .achievements-row {
-  display: flex;
-  justify-content: flex-start;
+  display: inline-block;
 }
 
 .notifications {
@@ -71,6 +67,7 @@
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 16px;
+  color: $dark;
 }
 
 // --- CHALLENGE PAGE ---
@@ -191,5 +188,7 @@
 @media (max-width: 768px) {
   .new-challenge-card {
     padding: 12px;
+  }
+  .achievements-row {
   }
 }

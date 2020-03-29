@@ -110,9 +110,37 @@ input[type=checkbox]:checked + label {
 @media (max-width: 768px) {
   .proofs {
     width: 287px;
+    max-width: 100%;
   }
   .new-ch {
     margin: 12px 0 8px 0;
     font-size: 30px;
+  }
+  .custom-control {
+    transform: scale(1.2) !important;
+    padding-left: 2.35rem;
+  }
+  .skill-input {
+    width: inherit;
+  }
+  .wrapper.typo {
+    width: inherit !important;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  .photo-proof {
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+  }
+
+  .string.required {
+    font-size: 16px;
+  }
+
+  .wrapper.typo {
+    font-size: 16px;
   }
 }

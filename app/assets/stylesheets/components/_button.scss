@@ -170,8 +170,6 @@ img[alt="schedule"] {
   height: 36px;
   filter: invert(1);
   opacity: 0.85;
-  margin-right: 16px;
-  padding-right: 6px;
   &:hover {
     opacity: 1;
   }
@@ -244,12 +242,10 @@ img[alt="schedule"] {
     color: white;
     border-radius: 50%;
     border: none;
-    margin-left: 20px;
-    margin-right: 8px;
+    margin-right: 12px;
   }
   p {
     margin: 0;
-    margin-right: 12px;
     color: white;
   }
 }
@@ -264,7 +260,6 @@ img[alt="schedule"] {
     }
   }
   .schedule-icon {
-    margin-right: 16px;
     height: 38px;
     filter: invert(1);
     margin-left: 12px;

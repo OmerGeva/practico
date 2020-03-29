@@ -1,31 +1,33 @@
 <h1 class="text-center tw"><%= @challenge.skill.title %></h1>
 
-<div class="d-flex justify-content-between align-items-center">
-  <div class="container">
-    <div class="grid">
-      <div class="row d-flex justify-content-between">
+<div class="main-challenge-container">
 
-        <!-- CHECK-IN BUTTON -->
-        <div class='check-in-show'>
-          <div data-toggle="modal" data-target="#exampleModal" class='d-flex align-items-center'>
-            <i class="fas fa-check-circle"></i>
-            <p>Check In</p>
-          </div>
-        </div>
-
-        <% if @users_challenge.scheduled %>
-          <%= link_to events_path do %>
-          <img src="https://image.flaticon.com/icons/svg/61/61469.svg" class="schedule-icon" alt="schedule">
-          <% end %>
-        <% else %>
-          <%= link_to challenge_schedule_path(@challenge) do %>
-            <div class='schedule-div'>
-              <p>Schedule</p>
-              <img src="https://image.flaticon.com/icons/svg/61/61469.svg" class="schedule-icon" alt="schedule">
-            </div>
-          <% end %>
-        <% end %>
+  <div class="challenge-actions">
+    <!-- CHECK-IN BUTTON -->
+    <div class='check-in-show'>
+      <div data-toggle="modal" data-target="#exampleModal" class='d-flex align-items-center'>
+        <i class="fas fa-check-circle"></i>
+        <p>Check In</p>
       </div>
+    </div>
+
+    <!-- SCHEDULE BUTTON -->
+    <% if @users_challenge.scheduled %>
+      <%= link_to events_path do %>
+      <img src="https://image.flaticon.com/icons/svg/61/61469.svg" class="schedule-icon" alt="schedule">
+      <% end %>
+    <% else %>
+      <%= link_to challenge_schedule_path(@challenge) do %>
+        <div class='schedule-div'>
+          <p>Schedule</p>
+          <img src="https://image.flaticon.com/icons/svg/61/61469.svg" class="schedule-icon" alt="schedule">
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+
+      <!-- MODAL -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -42,15 +44,14 @@
         </div>
       </div>
     </div>
-    <div class="row mt-2">
-      <div class="col-5">
 
+    <div class="challenge-container">
       <!-- CHALLENGE LEADERBOARD -->
-
+      <div>
         <div class="challenge-page-card mb-4" style='position: relative;'>
           <% counter = 1 %>
-          <h2>Challenge Leaderboard</h2>
-          <div class="mt-2">
+          <h2 class='mb-3'>Challenge Leaderboard</h2>
+          <div>
             <% @challenge.users.order(user_progress: :desc).each do |user| %>
               <% @progress = ((UsersChallenge.find_by(challenge_id: @challenge.id, user_id: user.id).user_progress/@challenge.milestone)*100).round %>
               <div class="row d-block align-items-center mb-2">
@@ -70,10 +71,9 @@
         </div>
 
         <!-- PERSONAL STATS -->
-
         <div class="challenge-page-card d-flex justify-content-between mb-4">
           <div>
-            <h2>Challenge Personal Stats</h2>
+            <h2 class='mb-3'>Challenge Personal Stats</h2>
             <p><strong>Your progress:</strong> <%= @challenge.users_challenges.find_by(user: current_user).user_progress.round %> <%= @challenge.time_type %></p>
             <p><strong>Current Streak:</strong> <%= @streak %> days</p>
           </div>
@@ -101,16 +101,15 @@
         <!-- THE STAKES -->
 
         <div class="challenge-page-card stakes">
-          <h2>The Stakes</h2>
-            <%= image_tag('thumbs-up-win.svg', alt: 'First place') %>Winner <%= @challenge.first_place %>
-            <!-- <p><img src="https://image.flaticon.com/icons/svg/2274/2274308.svg" alt="Last place"> <%= @challenge.last_place %></p> -->
-            <p><img src="https://image.flaticon.com/icons/svg/974/974764.svg" alt="Last place">Loser <%= @challenge.last_place %></p>
+          <h2 class='mb-3'>The Stakes</h2>
+          <div class='mb-2'><i class="fas fa-smile-wink orange"></i><p>Winner <%= @challenge.first_place %></p></div>
+          <div><i class="fas fa-frown turq"></i><p>Loser <%= @challenge.last_place %></p></div>
         </div>
 
       </div>
 
 
-        <div class="col-7">
+        <div>
 
         <!-- WEEK MONTH YEAR STATS -->
 
@@ -133,7 +132,7 @@
 
           <!-- RECENT CHECK-INS -->
           <div class="challenge-page-card">
-            <h2 class="mb-2">Recent Check-ins:</h2>
+            <h2 class="mb-3">Recent Check-ins</h2>
             <% if @challenge.check_ins.empty? %>
               <p class='grey'>No check-ins yet</p>
             <% else %>
@@ -156,7 +155,6 @@
             <% end %>
           </div>
         </div>
-      </div>
     </div>
   </div>
   <div class="chat-board chat-sticky">

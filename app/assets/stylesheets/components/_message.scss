@@ -12,6 +12,7 @@
 
 .avatar-chat {
   margin: 2px;
+  margin-left: 8px;
 }
 
 .message {
@@ -70,5 +71,11 @@ input.form-control {
 #check_in_duration {
   width: 50px;
   margin: auto;
+}
+
+@media (max-width: 768px) {
+  .messages {
+    font-size: 16px;
+  }
 }
 

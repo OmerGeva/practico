@@ -363,6 +363,10 @@ puts 'Creating Wins...'
 Win.create(challenge_id: challenge4.id, user_id: brad.id, date: Date.today - 21)
 Win.create(challenge_id: challenge5.id, user_id: brad.id, date: Date.today - 54)
 Win.create(challenge_id: challenge6.id, user_id: brad.id, date: Date.today - 521)
+Win.create(challenge_id: challenge6.id, user_id: brad.id, date: Date.today - 521)
+Win.create(challenge_id: challenge6.id, user_id: brad.id, date: Date.today - 521)
+Win.create(challenge_id: challenge6.id, user_id: brad.id, date: Date.today - 521)
+Win.create(challenge_id: challenge6.id, user_id: brad.id, date: Date.today - 521)
 
 
 

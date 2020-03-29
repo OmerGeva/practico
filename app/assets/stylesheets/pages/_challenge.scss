@@ -1,0 +1,47 @@
+.main-challenge-container {
+
+}
+
+.challenge-actions {
+  margin: 0 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.challenge-container {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-column-gap: 24px;
+}
+
+.stakes {
+  div {
+    display: flex;
+    align-items: center;
+  }
+  i {
+    font-size: 24px;
+    margin-right: 8px;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.recent-check-in:first-child {
+  margin-bottom: 16px;
+}
+
+.recent-check-in:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .challenge-container {
+    display: block;
+    .stakes {
+      margin-bottom: 24px;
+      width: auto;
+    }
+  }
+}

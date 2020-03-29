@@ -108,12 +108,20 @@ input.form-control:focus {
   }
 }
 
+.orange {
+  color: $orange;
+}
+
+.turq {
+  color: $turq;
+}
+
 .logo-min {
   img {
     width: 56px;
     opacity: 0.8;
   }
-  z-index: 500;
+  z-index: -1;
   position: absolute;
   top: 18px;
   right: 18px;

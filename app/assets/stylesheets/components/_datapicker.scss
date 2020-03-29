@@ -3,7 +3,6 @@ $color-primary: $orange;
 .typo {
   font-size: 38px;
   font-weight: 500;
-  color: $dark;
   text-decoration: none;
   option {
     font-size: 30px;
@@ -225,7 +224,9 @@ textarea:focus {
 
   .skill-input {
     font-size: 18px;
-    width: 274px !important;
+    // width: 274px !important;
+    width: 90% !important;
+    max-width: 95%;
     margin: 0 auto;
     input {
       font-size: 30px;

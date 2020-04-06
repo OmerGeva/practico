@@ -45,15 +45,14 @@
 
 .btn-start {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  margin-top: 2rem;
+  height: 82px;
 }
 
 @media (max-width: 1023px) {
   .btn-start {
-    margin-top: 0;
-    margin-bottom: 32px;
+    align-items: flex-start;
   }
 }
 

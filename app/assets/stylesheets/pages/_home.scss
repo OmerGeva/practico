@@ -77,3 +77,9 @@
   }
 }
 
+.accepted-challenge-title {
+  color: $turq;
+  &:hover {
+    color: $dark-turq;
+  }
+}

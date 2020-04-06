@@ -91,12 +91,22 @@
 }
 
 .arrow {
-  font-size: 24px;
+  font-family: "FontAwesome";
+  font-size: 32px;
   color: rgba(0,0,0,0.4);
+  vertical-align: middle;
   &:hover {
     text-decoration: none;
     color: rgba(0,0,0,0.7);
   }
+}
+
+.arrow-right:before {
+  content: "\f0da";
+}
+
+.arrow-left:before {
+  content: "\f0d9";
 }
 
 @media(max-width: 992px) {

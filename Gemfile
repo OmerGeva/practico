@@ -20,7 +20,7 @@ gem 'pundit'
 gem 'has_friendship'
 gem "simple_calendar", "~> 2.0"
 gem 'redis', '~> 3.3'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'social-share-button'
 
 group :development do
